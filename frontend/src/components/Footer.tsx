@@ -12,7 +12,15 @@ const teamLinks = [
 
 function FacebookIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
     </svg>
   );
@@ -20,7 +28,15 @@ function FacebookIcon(props: SVGProps<SVGSVGElement>) {
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
       <path d="M22 4s-.7 2.1-2 3.4c1.6 9.4-8.4 16.2-16.5 11.6 2.9.1 5.8-.8 8-2.6-2.9-.2-5.3-2.1-6.1-4.9 1 .3 2 .2 2.9-.1C5.3 10.8 3.8 8.5 4 6c1 1 2.4 1.7 4 1.7C6.5 6 6.9 2.8 9.1 1.7c2.5-1.3 5.5-.6 7.2 1.7 1.1 0 2.2-.3 3.1-.9-.3 1.1-1 2.1-2 2.7 1 0 1.9-.3 2.6-.8z" />
     </svg>
   );
@@ -28,7 +44,15 @@ function TwitterIcon(props: SVGProps<SVGSVGElement>) {
 
 function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
       <rect x="2" y="9" width="4" height="12" />
       <circle cx="4" cy="4" r="2" />
       <path d="M10 9v12h4v-7a3 3 0 0 1 6 0v7h4v-8a6 6 0 0 0-6-6c-1.5 0-3 1-4 2V9z" />
@@ -38,7 +62,15 @@ function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
 
 function FigmaIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
       <path d="M8 2a3 3 0 0 0 0 6h3V2H8z" />
       <path d="M8 8a3 3 0 1 0 3 3V8H8z" />
       <path d="M11 14h2a3 3 0 1 1-3 3v-3z" />
