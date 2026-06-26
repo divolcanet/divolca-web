@@ -1,3 +1,4 @@
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -7,6 +8,7 @@ const navLinks = [
   { to: "/tentang-dieng", label: "Tentang Dieng" },
   { to: "/tentang-tim", label: "Tentang Tim" },
   { to: "/galeri", label: "Galeri" },
+  { to: "/faq", label: "FAQ" },
   { to: "/glosarium", label: "Glosarium" },
 ];
 
@@ -14,7 +16,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-volcanic-900 border-b border-volcanic-700">
+    <nav className="sticky top-0 z-50 bg-volcanic-900 border-b border-volcanic-700 shadow-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <NavLink
@@ -47,34 +49,13 @@ export default function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {mobileOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            {mobileOpen ? <X /> : <Menu />}
           </button>
         </div>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-volcanic-700 bg-volcanic-900">
+        <div className="absolute w-full border-t border-volcanic-700 bg-volcanic-900">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navLinks.map((link) => (
               <NavLink

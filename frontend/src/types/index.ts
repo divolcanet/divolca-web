@@ -26,3 +26,10 @@ export interface DepthSlice {
   magneticImage: string | null;
   description: string;
 }
+
+export interface GlossaryEntry {
+  slug: string;
+  title: string;
+  content: string;
+  externalLink?: string;
+}

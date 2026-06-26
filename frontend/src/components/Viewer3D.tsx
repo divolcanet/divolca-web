@@ -1,43 +1,42 @@
-import { useState, useCallback } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
-import { MapPin, Clock, Calendar, Database } from 'lucide-react'
-import TerrainMesh from './TerrainMesh'
-import CrossSectionPlane from './CrossSectionPlane'
-import DepthScrollbar from './DepthScrollbar'
-import DepthPopup from './DepthPopup'
-import spatialData from '../data/spatial.json'
-import type { SpatialLayer, DepthSlice } from '../types'
+import { useState, useCallback } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import TerrainMesh from "./TerrainMesh";
+import CrossSectionPlane from "./CrossSectionPlane";
+import DepthScrollbar from "./DepthScrollbar";
+import DepthPopup from "./DepthPopup";
+import spatialData from "../data/spatial.json";
+import type { SpatialLayer, DepthSlice } from "../types";
 
 const depthToY = (index: number, total: number): number => {
-  const min = -2
-  const max = 2
-  return max - (index / (total - 1)) * (max - min)
-}
+  const min = -2;
+  const max = 2;
+  return max - (index / (total - 1)) * (max - min);
+};
 
 export default function Viewer3D() {
-  const [layers, setLayers] = useState<SpatialLayer[]>(spatialData.layers)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const [layers, setLayers] = useState<SpatialLayer[]>(spatialData.layers);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const slices = spatialData.depthSlices as DepthSlice[]
-  const activeIndex = selectedIndex ?? hoveredIndex
+  const slices = spatialData.depthSlices as DepthSlice[];
+  const activeIndex = selectedIndex ?? hoveredIndex;
 
   const toggleLayer = (id: string) => {
     setLayers((prev) =>
       prev.map((layer) =>
-        layer.id === id ? { ...layer, visible: !layer.visible } : layer
-      )
-    )
-  }
+        layer.id === id ? { ...layer, visible: !layer.visible } : layer,
+      ),
+    );
+  };
 
   const handleDepthClick = useCallback((index: number) => {
-    setSelectedIndex((prev) => (prev === index ? null : index))
-  }, [])
+    setSelectedIndex((prev) => (prev === index ? null : index));
+  }, []);
 
   const handlePopupClose = useCallback(() => {
-    setSelectedIndex(null)
-  }, [])
+    setSelectedIndex(null);
+  }, []);
 
   return (
     <section id="viewer" className="bg-volcanic-900 py-16 sm:py-20">
@@ -47,8 +46,9 @@ export default function Viewer3D() {
             Model 3D Pegunungan
           </h2>
           <p className="text-volcanic-400 max-w-2xl mx-auto">
-            Jelajahi model tiga dimensi Pegunungan Dieng beserta data spasial gravitasi dan magnetik.
-            Gunakan scrollbar di sisi kanan untuk melihat irisan data pada setiap kedalaman.
+            Jelajahi model tiga dimensi Pegunungan Dieng beserta data spasial
+            gravitasi dan magnetik. Gunakan scrollbar di sisi kanan untuk
+            melihat irisan data pada setiap kedalaman.
           </p>
         </div>
 
@@ -60,40 +60,54 @@ export default function Viewer3D() {
               onClick={() => toggleLayer(layer.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 layer.visible
-                  ? 'bg-volcanic-700 text-volcanic-50 ring-2 ring-offset-2 ring-offset-volcanic-900'
-                  : 'bg-volcanic-800 text-volcanic-500'
+                  ? "bg-volcanic-700 text-volcanic-50 ring-2 ring-offset-2 ring-offset-volcanic-900"
+                  : "bg-volcanic-800 text-volcanic-500"
               }`}
               style={{
-                ...(layer.visible ? { '--tw-ring-color': layer.color } as React.CSSProperties : {}),
+                ...(layer.visible
+                  ? ({ "--tw-ring-color": layer.color } as React.CSSProperties)
+                  : {}),
               }}
               aria-pressed={layer.visible}
             >
               <span
                 className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: layer.visible ? layer.color : '#5a5a7a' }}
+                style={{
+                  backgroundColor: layer.visible ? layer.color : "#5a5a7a",
+                }}
               />
               {layer.name}
             </button>
           ))}
         </div>
 
-        <div className="rounded-xl overflow-hidden border border-volcanic-700 bg-volcanic-950 relative">
-          <div className="h-[500px] relative">
+        <div className="rounded-xl border border-volcanic-700 bg-volcanic-950 relative">
+          <div className=" aspect-video relative">
             <Canvas camera={{ position: [5, 5, 5], fov: 50 }}>
               <ambientLight intensity={0.4} />
               <directionalLight position={[5, 8, 5]} intensity={0.8} />
               <directionalLight position={[-3, 4, -3]} intensity={0.3} />
-              {layers.find((l) => l.id === 'mountain')?.visible && <TerrainMesh />}
-              {layers.find((l) => l.id === 'gravity')?.visible && (
+              {layers.find((l) => l.id === "mountain")?.visible && (
+                <TerrainMesh />
+              )}
+              {layers.find((l) => l.id === "gravity")?.visible && (
                 <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.01, 0]}>
                   <planeGeometry args={[10, 10]} />
-                  <meshStandardMaterial color="#dc2626" transparent opacity={0.4} />
+                  <meshStandardMaterial
+                    color="#dc2626"
+                    transparent
+                    opacity={0.4}
+                  />
                 </mesh>
               )}
-              {layers.find((l) => l.id === 'magnetic')?.visible && (
+              {layers.find((l) => l.id === "magnetic")?.visible && (
                 <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]}>
                   <planeGeometry args={[10, 10]} />
-                  <meshStandardMaterial color="#3b82f6" transparent opacity={0.4} />
+                  <meshStandardMaterial
+                    color="#3b82f6"
+                    transparent
+                    opacity={0.4}
+                  />
                 </mesh>
               )}
               {activeIndex !== null && (
@@ -123,30 +137,7 @@ export default function Viewer3D() {
             )}
           </div>
         </div>
-
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="bg-volcanic-800 rounded-lg p-4 text-center">
-            <MapPin className="w-5 h-5 text-magma-400 mx-auto mb-2" />
-            <dt className="text-xs uppercase tracking-wider text-volcanic-500 mb-1">Lokasi</dt>
-            <dd className="text-lg font-semibold text-magma-400">{spatialData.stats.lokasi}</dd>
-          </div>
-          <div className="bg-volcanic-800 rounded-lg p-4 text-center">
-            <Clock className="w-5 h-5 text-magma-400 mx-auto mb-2" />
-            <dt className="text-xs uppercase tracking-wider text-volcanic-500 mb-1">Penelitian Langsung</dt>
-            <dd className="text-lg font-semibold text-magma-400">{spatialData.stats.lamaPenelitianLangsung}</dd>
-          </div>
-          <div className="bg-volcanic-800 rounded-lg p-4 text-center">
-            <Calendar className="w-5 h-5 text-magma-400 mx-auto mb-2" />
-            <dt className="text-xs uppercase tracking-wider text-volcanic-500 mb-1">Total Penelitian</dt>
-            <dd className="text-lg font-semibold text-magma-400">{spatialData.stats.lamaPenelitianTotal}</dd>
-          </div>
-          <div className="bg-volcanic-800 rounded-lg p-4 text-center">
-            <Database className="w-5 h-5 text-magma-400 mx-auto mb-2" />
-            <dt className="text-xs uppercase tracking-wider text-volcanic-500 mb-1">Jenis Data</dt>
-            <dd className="text-lg font-semibold text-magma-400">{spatialData.stats.jenisData}</dd>
-          </div>
-        </div>
       </div>
     </section>
-  )
+  );
 }
