@@ -5,6 +5,7 @@ import ResearchPage from './pages/ResearchPage'
 import AboutDiengPage from './pages/AboutDiengPage'
 import AboutTeamPage from './pages/AboutTeamPage'
 import GalleryPage from './pages/GalleryPage'
+import FAQPage from './pages/FAQPage'
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="tentang-dieng" element={<AboutDiengPage />} />
           <Route path="tentang-tim" element={<AboutTeamPage />} />
           <Route path="galeri" element={<GalleryPage />} />
+          <Route path="faq" element={<FAQPage />} />
         </Route>
       </Routes>
     </>
