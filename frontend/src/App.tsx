@@ -1,11 +1,14 @@
-import { Routes, Route } from 'react-router-dom'
-import AppLayout from './layouts/AppLayout'
-import LandingPage from './pages/LandingPage'
-import ResearchPage from './pages/ResearchPage'
-import AboutDiengPage from './pages/AboutDiengPage'
-import AboutTeamPage from './pages/AboutTeamPage'
-import GalleryPage from './pages/GalleryPage'
-import ScrollToTop from './components/ScrollToTop'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
+import AppLayout from "./layouts/AppLayout";
+
+const LandingPage = React.lazy(() => import("./pages/LandingPage"));
+const ResearchPage = React.lazy(() => import("./pages/ResearchPage"));
+const AboutDiengPage = React.lazy(() => import("./pages/AboutDiengPage"));
+const AboutTeamPage = React.lazy(() => import("./pages/AboutTeamPage"));
+const GalleryPage = React.lazy(() => import("./pages/GalleryPage"));
+const GlossaryPage = React.lazy(() => import("./pages/GlossaryPage"));
 
 function App() {
   return (
@@ -18,10 +21,11 @@ function App() {
           <Route path="tentang-dieng" element={<AboutDiengPage />} />
           <Route path="tentang-tim" element={<AboutTeamPage />} />
           <Route path="galeri" element={<GalleryPage />} />
+          <Route path="glosarium" element={<GlossaryPage />} />
         </Route>
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
