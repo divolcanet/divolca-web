@@ -3,15 +3,11 @@ import { Mountain, Map, ArrowDown } from "lucide-react";
 export default function HeroSection() {
   return (
     <section
-      className="relative overflow-hidden"
-      style={{
-        backgroundImage: `url("/imgs/home_background.webp")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url("/imgs/home_background.webp")` }}
     >
-      <div className="w-full h-full bg-linear-to-b from-volcanic-900/90 to-volcanic-950/90 py-20 sm:py-28 lg:py-36">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="w-full h-[calc(100svh-80px)] bg-linear-to-b from-volcanic-900/90 to-volcanic-950/90 py-20 sm:py-28 lg:py-36">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             <Mountain
               className="w-12 h-12 sm:w-16 sm:h-16 text-magma-400"
@@ -40,7 +36,7 @@ export default function HeroSection() {
           </a>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 animate-bounce">
           <ArrowDown className="w-6 h-6 text-volcanic-500" />
         </div>
       </div>
