@@ -7,6 +7,7 @@ const navLinks = [
   { to: "/tentang-dieng", label: "Tentang Dieng" },
   { to: "/tentang-tim", label: "Tentang Tim" },
   { to: "/galeri", label: "Galeri" },
+  { to: "/faq", label: "FAQ" },
   { to: "/glosarium", label: "Glosarium" },
 ];
 
