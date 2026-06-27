@@ -137,7 +137,18 @@ export default function AboutTeamPage() {
   const member = team[index];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, #f59e0b 1px, transparent 0)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-magma-500/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-magma-500/5 rounded-full blur-3xl -z-10" />
+
       <h1 className="font-oswald text-4xl font-bold text-volcanic-50 mb-8">
         Tentang Tim
       </h1>
