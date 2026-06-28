@@ -10,7 +10,7 @@ export default function HeroSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             <Mountain
-              className="w-12 h-12 sm:w-16 sm:h-16 text-magma-400"
+              className="w-12 h-12 sm:w-16 sm:h-16 text-magma-400 animate-pulse"
               strokeWidth={1.5}
             />
           </div>

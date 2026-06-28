@@ -6,31 +6,31 @@ import {
   MapPin,
   Mountain,
 } from "lucide-react";
-import spatialData from "../data/spatial.json";
+import researchData from "../data/research.json";
 
 const stats = [
   {
     key: "location",
     title: "Lokasi",
-    value: spatialData.stats.lokasi,
+    value: researchData.stats.lokasi,
     icon: MapPin,
   },
   {
     key: "research-offline",
     title: "Penelitian Langsung",
-    value: spatialData.stats.lamaPenelitianLangsung,
+    value: researchData.stats.lamaPenelitianLangsung,
     icon: Clock,
   },
   {
     key: "research-total",
     title: "Total Penelitian",
-    value: spatialData.stats.lamaPenelitianTotal,
+    value: researchData.stats.lamaPenelitianTotal,
     icon: Calendar,
   },
   {
     key: "data-type",
     title: "Jenis Data",
-    value: spatialData.stats.jenisData,
+    value: researchData.stats.jenisData,
     icon: Database,
   },
 ];
