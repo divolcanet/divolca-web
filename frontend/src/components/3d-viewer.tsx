@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
-import { Canvas, useFrame, type ThreeEvent } from "@react-three/fiber";
-import { useGLTF, OrbitControls, Html, Center } from "@react-three/drei";
+import { useRef, useState } from "react";
+import { useFrame, type ThreeEvent } from "@react-three/fiber";
+import { useGLTF, Html, Center } from "@react-three/drei";
 import { type GLTF } from "three-stdlib";
 import * as THREE from "three";
-import type { MarkerData, MarkerInfo } from "../types";
+import type { MarkerInfo } from "../types";
 import { X } from "lucide-react";
 
 // Tipe untuk hasil load GLTF
