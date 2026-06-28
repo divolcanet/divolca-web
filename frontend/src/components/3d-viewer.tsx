@@ -6,7 +6,6 @@ import * as THREE from "three";
 import type { MarkerInfo } from "../types";
 import { X } from "lucide-react";
 
-// Tipe untuk hasil load GLTF
 type GLTFResult = GLTF & {
   nodes: { [key: string]: THREE.Object3D };
   materials: { [key: string]: THREE.Material };
@@ -17,7 +16,6 @@ interface MapModelProps {
 }
 
 export function MapModel({ url }: MapModelProps) {
-  // Cast hasil useGLTF ke GLTFResult jika memerlukan akses node spesifik
   const { scene } = useGLTF(url) as GLTFResult;
   return (
     <Center>
