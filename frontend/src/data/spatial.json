@@ -3,20 +3,5 @@
     { "id": "mountain", "name": "Model Gunung", "description": "Model 3D pegunungan Dieng", "color": "#f59e0b", "visible": true },
     { "id": "gravity", "name": "Model Gravitasi", "description": "Model anomali gravitasi bawah permukaan", "color": "#dc2626", "visible": false },
     { "id": "magnetic", "name": "Model Magnetik", "description": "Model anomali magnetik bawah permukaan", "color": "#3b82f6", "visible": false }
-  ],
-  "stats": {
-    "lokasi": "Pegunungan Dieng, Jawa Tengah, Indonesia",
-    "lamaPenelitianLangsung": "14 hari",
-    "lamaPenelitianTotal": "6 bulan",
-    "jenisData": "Primer"
-  },
-  "depthLevels": ["0m", "-50m", "-100m", "-200m", "-500m", "-1000m"],
-  "depthSlices": [
-    { "depth": "0m", "label": "Permukaan", "description": "Data anomali pada level permukaan", "gravityImage": null, "magneticImage": null },
-    { "depth": "-50m", "label": "50m Bawah Permukaan", "description": "Data anomali pada kedalaman 50 meter", "gravityImage": null, "magneticImage": null },
-    { "depth": "-100m", "label": "100m Bawah Permukaan", "description": "Data anomali pada kedalaman 100 meter", "gravityImage": null, "magneticImage": null },
-    { "depth": "-200m", "label": "200m Bawah Permukaan", "description": "Data anomali pada kedalaman 200 meter", "gravityImage": null, "magneticImage": null },
-    { "depth": "-500m", "label": "500m Bawah Permukaan", "description": "Data anomali pada kedalaman 500 meter", "gravityImage": null, "magneticImage": null },
-    { "depth": "-1000m", "label": "1000m Bawah Permukaan", "description": "Data anomali pada kedalaman 1000 meter", "gravityImage": null, "magneticImage": null }
   ]
 }
