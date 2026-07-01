@@ -12,7 +12,7 @@ const Container = ({
 }) => {
   return (
     <section id={id} className={cn(" w-full", classname)}>
-      <div className={"max-w-6xl mx-auto px-5 py-12"}>{children}</div>
+      <div className={"max-w-7xl mx-auto px-5 py-12"}>{children}</div>
     </section>
   );
 };
