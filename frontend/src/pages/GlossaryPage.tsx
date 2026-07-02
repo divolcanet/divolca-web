@@ -56,33 +56,31 @@ export default function GlossaryPage() {
       ) : (
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar — uses native <a href="#slug"> for browser-managed scroll */}
-          <Reveal delay={300}>
-            <aside className="lg:w-64 shrink-0">
-              <nav className=" p-4 lg:sticky lg:top-24 space-y-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto rounded-xl bg-white">
-                <h2 className="font-fraunces font-bold  mb-3 lg:mb-4">
-                  Daftar Istilah
-                </h2>
-                {glossaryData.map((entry) => (
-                  <a
-                    key={entry.slug}
-                    href={`#${entry.slug}`}
-                    onClick={() => setActiveSlug(entry.slug)}
-                    className={cn(
-                      buttonVariants({
-                        variant: activeSlug === entry.slug ? "default" : "link",
-                      }),
-                      "w-full justify-start",
-                    )}
-                  >
-                    {entry.title}
-                  </a>
-                ))}
-              </nav>
-            </aside>
-          </Reveal>
+          <aside className="lg:w-64 shrink-0">
+            <nav className=" p-4 lg:sticky lg:top-24 space-y-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto rounded-xl bg-white">
+              <h2 className="font-fraunces font-bold  mb-3 lg:mb-4">
+                Daftar Istilah
+              </h2>
+              {glossaryData.map((entry) => (
+                <a
+                  key={entry.slug}
+                  href={`#${entry.slug}`}
+                  onClick={() => setActiveSlug(entry.slug)}
+                  className={cn(
+                    buttonVariants({
+                      variant: activeSlug === entry.slug ? "default" : "link",
+                    }),
+                    "w-full justify-start",
+                  )}
+                >
+                  {entry.title}
+                </a>
+              ))}
+            </nav>
+          </aside>
 
           {/* Main content */}
-          <Reveal delay={400}>
+          <Reveal delay={300}>
             <div className="flex-1 min-w-0 divide-y divide-muted">
               {glossaryData.map((entry) => (
                 <div

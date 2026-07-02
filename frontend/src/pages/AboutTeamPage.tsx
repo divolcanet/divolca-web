@@ -189,46 +189,48 @@ export default function AboutTeamPage() {
         </p>
       </Reveal>
 
-      <div
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        className=" flex flex-col md:flex-row gap-10 items-center"
-      >
-        <div className="flex-1 w-full">
-          <MemberPhoto
-            name={member.name}
-            photo={member.photo}
-            onPrev={goPrev}
-            onNext={goNext}
-          />
-        </div>
-        <div className=" text-center md:text-start flex-2 flex flex-col gap-5 items-center md:items-start">
-          <span className="text-xs font-medium font-mono text-magma-400 tracking-wide uppercase">
-            {index + 1} / {team.length}
-          </span>
-          <h2 className="font-fraunces text-2xl font-semibold text-volcanic-50 ">
-            {member.name}
-          </h2>
-          <p className="text-sm text-volcanic-400 leading-relaxed">
-            {member.description}
-          </p>
+      <Reveal delay={300}>
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className=" flex flex-col md:flex-row gap-10 items-center"
+        >
+          <div className="flex-1 w-full">
+            <MemberPhoto
+              name={member.name}
+              photo={member.photo}
+              onPrev={goPrev}
+              onNext={goNext}
+            />
+          </div>
+          <div className=" text-center md:text-start flex-2 flex flex-col gap-5 items-center md:items-start">
+            <span className="text-xs font-medium font-mono text-magma-400 tracking-wide uppercase">
+              {index + 1} / {team.length}
+            </span>
+            <h2 className="font-fraunces text-2xl font-semibold text-volcanic-50 ">
+              {member.name}
+            </h2>
+            <p className="text-sm text-volcanic-400 leading-relaxed">
+              {member.description}
+            </p>
 
-          <div className="flex items-center w-fit gap-2">
-            {team.map((m, i) => (
-              <button
-                key={m.name}
-                type="button"
-                onClick={() => goTo(i)}
-                aria-label={`Ke profil ${m.name}`}
-                className={cn(
-                  "h-2.5 rounded-full transition-all",
-                  i === index ? " bg-primary-10 w-6" : "bg-muted w-2.5",
-                )}
-              />
-            ))}
+            <div className="flex items-center w-fit gap-2">
+              {team.map((m, i) => (
+                <button
+                  key={m.name}
+                  type="button"
+                  onClick={() => goTo(i)}
+                  aria-label={`Ke profil ${m.name}`}
+                  className={cn(
+                    "h-2.5 rounded-full transition-all",
+                    i === index ? " bg-primary-10 w-6" : "bg-muted w-2.5",
+                  )}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </Container>
   );
 }
