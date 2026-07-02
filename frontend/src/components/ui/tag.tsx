@@ -9,7 +9,7 @@ const Tag = ({
   return (
     <span
       className={cn(
-        "inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest  uppercase bg-primary-25/10 rounded-full border border-primary-10/20",
+        "inline-block px-4 py-1.5 text-xs bg-primary-25/10 rounded-full border border-primary-10/20",
         className,
       )}
       {...props}

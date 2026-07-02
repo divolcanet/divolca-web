@@ -33,7 +33,9 @@ export default function Navbar() {
         isScrolled
           ? "bg-black/70 backdrop-blur-md py-3"
           : "bg-transparent py-4",
-        pathname === "/" ? " fixed top-0 left-0" : " bg-black/90 sticky top-0",
+        ["/", "/tentang-dieng"].includes(pathname)
+          ? " fixed top-0 left-0"
+          : " bg-black/90 sticky top-0",
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,0 +1,57 @@
+{
+  "characteristics": [
+    {
+      "title": "Dataran Tinggi Vulkanik",
+      "desc": "Salah satu dataran tinggi vulkanik terbesar di Indonesia dengan suhu udara berkisar 6–20°C."
+    },
+    {
+      "title": "Aktivitas Panas Bumi",
+      "desc": "Manifestasi panas bumi berupa kawah aktif, mata air panas, solfatara, dan fumarola."
+    },
+    {
+      "title": "Emisi Gas Beracun",
+      "desc": "Beberapa kawah menghasilkan gas CO₂ dan H₂S yang berbahaya, terutama di Kawah Timbang."
+    },
+    {
+      "title": "Tanah Vulkanik Subur",
+      "desc": "Material vulkanik menyuburkan tanah, menjadikan kawasan ini sentra pertanian kentang, kubis, wortel, carica, dan bawang daun."
+    },
+    {
+      "title": "Potensi Panas Bumi",
+      "desc": "Lapangan panas bumi Dieng telah dimanfaatkan untuk pembangkitan energi listrik melalui sistem geothermal."
+    }
+  ],
+
+  "eruptionTimeline": [
+    {
+      "year": "Abad 18–20",
+      "title": "Aktivitas Awal",
+      "desc": "Erupsi freatik berlangsung pada kawah-kawah aktif seperti Kawah Sileri, Kawah Timbang, dan Kawah Sikidang."
+    },
+    {
+      "year": "20 Februari 1979",
+      "title": "Tragedi Gas Beracun",
+      "desc": "Pelepasan gas CO₂ dari Kawah Sinila dan kawasan Timbang menyebabkan kematian sekitar 149 penduduk — salah satu bencana gas vulkanik terbesar di Indonesia."
+    },
+    {
+      "year": "2017",
+      "title": "Erupsi Kawah Sileri",
+      "desc": "Beberapa letusan freatik melontarkan lumpur dan material vulkanik hingga ratusan meter dari pusat erupsi."
+    },
+    {
+      "year": "2018",
+      "title": "Erupsi Kawah Sileri",
+      "desc": "Kawah Sileri kembali mengalami erupsi freatik dengan semburan lumpur dan uap panas."
+    },
+    {
+      "year": "29 April 2021",
+      "title": "Erupsi Kawah Sileri",
+      "desc": "Letusan freatik menghasilkan lontaran material hingga ratusan meter sehingga PVMBG menetapkan zona bahaya."
+    },
+    {
+      "year": "Des 2024 – Jan 2025",
+      "title": "Aktivitas Terbaru",
+      "desc": "Erupsi freatik di Kawah Sileri menghasilkan semburan lumpur, sedimen, dan kolom uap putih tanpa peningkatan aktivitas signifikan sebelumnya."
+    }
+  ]
+}
