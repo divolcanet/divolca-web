@@ -4,134 +4,9 @@ import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
 import { Button } from "../components/ui/button";
 import { X, ZoomIn } from "lucide-react";
+import gallery from "../data/gallery.json";
 
 type Photo = { src: string; caption: string };
-type Category = { key: string; label: string; photos: Photo[] };
-
-const categories: Category[] = [
-  {
-    key: "gravity",
-    label: "Gravity",
-    photos: [
-      {
-        src: "/gallery/gravity/kalibrasi-alat-badan-geologi.jpg",
-        caption: "Kalibrasi Alat di Badan Geologi",
-      },
-      {
-        src: "/gallery/gravity/pemukiman-dieng.jpg",
-        caption: "Pengukuran di dekat pemukiman Dieng",
-      },
-      {
-        src: "/gallery/gravity/jalan-dieng.jpg",
-        caption: "Pengukuran di jalan Dieng",
-      },
-      {
-        src: "/gallery/gravity/kawah-dieng.jpg",
-        caption: "Pengukuran di Kawah Dieng",
-      },
-      {
-        src: "/gallery/gravity/kawah-wurung.jpg",
-        caption: "Pengukuran di Kawah Wurung",
-      },
-      {
-        src: "/gallery/gravity/telaga-warna.jpg",
-        caption: "Pengukuran di Telaga Warna",
-      },
-      {
-        src: "/gallery/gravity/gunung-bismo.jpg",
-        caption: "Pengukuran di track Gunung Bismo",
-      },
-      {
-        src: "/gallery/gravity/gunung-prau.jpg",
-        caption: "Pengukuran di track Gunung Prau",
-      },
-      {
-        src: "/gallery/gravity/titik-ikat-banjarnegara.jpg",
-        caption: "Pengukuran titik ikat di Banjarnegara",
-      },
-    ],
-  },
-  {
-    key: "magnetik",
-    label: "Magnetik",
-    photos: [
-      {
-        src: "/gallery/magnetik/gunung-seroja.jpg",
-        caption: "Badan Gunung Seroja",
-      },
-      {
-        src: "/gallery/magnetik/basecamp-dieng.jpg",
-        caption: "Dekat basecamp Dieng",
-      },
-      { src: "/gallery/magnetik/dieng-kulon.jpg", caption: "Dieng Kulon" },
-      { src: "/gallery/magnetik/img-1968.jpg", caption: "Pengukuran lapangan" },
-      {
-        src: "/gallery/magnetik/jalan-dieng-banjarnegara.jpg",
-        caption: "Jalan Dieng - Banjarnegara",
-      },
-      {
-        src: "/gallery/magnetik/kalibrasi-alat.jpg",
-        caption: "Kalibrasi alat",
-      },
-      {
-        src: "/gallery/magnetik/gunung-pakuwaja.jpg",
-        caption: "Kawah Gunung Pakuwaja",
-      },
-      { src: "/gallery/magnetik/kawah-sileri.jpg", caption: "Kawah Sileri" },
-      { src: "/gallery/magnetik/lapangan.jpg", caption: "Pengukuran lapangan" },
-      {
-        src: "/gallery/magnetik/basecamp-pengukuran.jpg",
-        caption: "Pengukuran di basecamp",
-      },
-      {
-        src: "/gallery/magnetik/puncak-gunung-bismo.jpg",
-        caption: "Puncak Gunung Bismo",
-      },
-      {
-        src: "/gallery/magnetik/gunung-prau-track.jpg",
-        caption: "Track Gunung Prau",
-      },
-    ],
-  },
-  {
-    key: "seismic",
-    label: "Seismic",
-    photos: [
-      {
-        src: "/gallery/seismic/seismik-01.jpg",
-        caption: "Dokumentasi kegiatan seismik 1",
-      },
-      {
-        src: "/gallery/seismic/seismik-02.jpg",
-        caption: "Dokumentasi kegiatan seismik 2",
-      },
-      {
-        src: "/gallery/seismic/seismik-03.jpg",
-        caption: "Dokumentasi kegiatan seismik 3",
-      },
-      {
-        src: "/gallery/seismic/seismik-04.jpg",
-        caption: "Dokumentasi kegiatan seismik 4",
-      },
-      {
-        src: "/gallery/seismic/seismik-05.jpg",
-        caption: "Dokumentasi kegiatan seismik 5",
-      },
-      {
-        src: "/gallery/seismic/seismik-06.jpg",
-        caption: "Dokumentasi kegiatan seismik 6",
-      },
-      {
-        src: "/gallery/seismic/seismik-07.jpg",
-        caption: "Dokumentasi kegiatan seismik 7",
-      },
-      {
-        src: "/gallery/seismic/seismik-08.jpg",
-        caption: "Dokumentasi kegiatan seismik 8",
-      },
-    ],
-  },
-];
 
 function PhotoCard({
   photo,
@@ -215,10 +90,9 @@ function Lightbox({ photo, onClose }: { photo: Photo; onClose: () => void }) {
 }
 
 export default function GalleryPage() {
-  const [activeKey, setActiveKey] = useState(categories[0].key);
+  const [activeKey, setActiveKey] = useState(gallery[0].key);
   const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null);
-  const activeCategory =
-    categories.find((c) => c.key === activeKey) ?? categories[0];
+  const activeCategory = gallery.find((c) => c.key === activeKey) ?? gallery[0];
 
   return (
     <Container className=" bg-primary-fg flex flex-col items-center">
@@ -235,7 +109,7 @@ export default function GalleryPage() {
       <Reveal delay={100}>
         <Tabs value={activeKey} onValueChange={setActiveKey} className=" mb-5">
           <TabsList className=" mx-auto">
-            {categories.map((category) => (
+            {gallery.map((category) => (
               <TabsTrigger key={category.key} value={category.key}>
                 {category.label}
               </TabsTrigger>

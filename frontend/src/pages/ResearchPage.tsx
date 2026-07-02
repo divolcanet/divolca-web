@@ -14,24 +14,13 @@ import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
 import Citation from "../components/Citation";
 
-const stats = [
-  {
-    ...researchData.stats[0],
-    icon: MapPin,
-  },
-  {
-    ...researchData.stats[1],
-    icon: Clock,
-  },
-  {
-    ...researchData.stats[2],
-    icon: Calendar,
-  },
-  {
-    ...researchData.stats[3],
-    icon: Database,
-  },
-];
+const icon = [MapPin, Clock, Calendar, Database];
+const stats = researchData.stats.map((stat, index) => {
+  return {
+    ...stat,
+    icon: icon[index],
+  };
+});
 
 export default function ResearchPage() {
   return (

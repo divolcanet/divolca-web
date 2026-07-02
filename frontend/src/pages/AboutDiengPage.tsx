@@ -9,32 +9,21 @@ import { Reveal } from "../components/ui/reveal";
 import Tag from "../components/ui/tag";
 import Container from "../components/ui/container";
 
-const destinations = [
-  {
-    img: sikidang,
-    ...aboutDieng.destinations[0],
-  },
-  {
-    img: sileri,
-    ...aboutDieng.destinations[1],
-  },
-  {
-    img: telagaWarna,
-    ...aboutDieng.destinations[2],
-  },
-  {
-    img: telagaPengilon,
-    ...aboutDieng.destinations[3],
-  },
-  {
-    img: candiArjuna,
-    ...aboutDieng.destinations[4],
-  },
-  {
-    img: bukitSikunir,
-    ...aboutDieng.destinations[5],
-  },
+const imgs = [
+  sikidang,
+  sileri,
+  telagaWarna,
+  telagaPengilon,
+  candiArjuna,
+  bukitSikunir,
 ];
+
+const destinations = aboutDieng.destinations.map((dest, index) => {
+  return {
+    ...dest,
+    img: imgs[index],
+  };
+});
 
 export default function AboutDiengPage() {
   return (

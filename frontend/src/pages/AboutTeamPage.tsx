@@ -13,74 +13,27 @@ import Container from "../components/ui/container";
 import { Reveal } from "../components/ui/reveal";
 import { cn } from "../lib/utils";
 import { Button } from "../components/ui/button";
+import researchData from "../data/research.json";
 
-type Member = {
-  name: string;
-  photo?: string;
-  description: string;
-};
-
-const team: Member[] = [
-  {
-    name: "Mohammad Hasib",
-    photo: hasib,
-    description:
-      "Periset bidang volcano seismology dan computational geophysics dengan fokus pada analisis aktivitas gunung api, tomografi seismik, serta pemodelan kebencanaan geologi. Dalam tim, berperan sebagai Principal Investigator yang mengoordinasikan dan mengontrol jalannya penelitian, melakukan akuisisi data lapangan, menganalisis data, serta menyusun laporan kegiatan.",
-  },
-  {
-    name: "Sukir Maryanto",
-    photo: sukir,
-    description:
-      "Akademisi dan pakar fisika gunung api, geofisika, seismologi, gravity, magnetik, dan mitigasi kebencanaan. Pengalaman risetnya mencakup monitoring gunung api, sistem peringatan dini, eksplorasi panas bumi, dan penguatan ketahanan bencana. Dalam tim, berperan sebagai validator interpretasi data serta melakukan analisis data seismik, gravity, dan magnetik.",
-  },
-  {
-    name: "Aditya Pratama",
-    photo: aditya,
-    description:
-      "Periset bidang volkanologi, geofisika, petrologi, geokimia, rock magnetism, serta volcanic hazard assessment. Memiliki pengalaman dalam kajian sistem magmatik, karakterisasi material vulkanik, dan analisis potensi bahaya gunung api. Dalam tim, berperan dalam akuisisi data lapangan, validasi data, serta analisis seismik, gravity, dan magnetik.",
-  },
-  {
-    name: "Ade Surya Putra",
-    description:
-      "Periset dengan kepakaran pada kebencanaan geologi dan pengolahan data geofisika berbasis komputasi. Latar belakangnya kuat dalam fisika dan teknik geofisika, termasuk pengembangan perangkat lunak untuk analisis sinyal seismik. Dalam tim, berperan melakukan akuisisi data lapangan, mengontrol perancangan desain web, serta mengolah data berbasis pemrograman.",
-  },
-  {
-    name: "Anjar Dwi Hariadi",
-    photo: anjar,
-    description:
-      "Praktisi dan pengembang bidang rekayasa perangkat lunak dengan pengalaman pada pengembangan sistem berbasis teknologi, machine learning, dan desain aplikasi. Dalam tim, berperan sebagai pengembang teknis yang merancang kerangka kerja website serta membuat, merancang, dan mendesain website.",
-  },
-  {
-    name: "Muhammad Aufaristama",
-    photo: aufa,
-    description:
-      "Pakar remote sensing, GIS, geospatial cloud computing, big data, time-series analysis, dan pemodelan bahaya geologi. Pengalamannya mencakup pemanfaatan citra satelit, data geospasial, dan aplikasi web untuk visualisasi hasil riset kebencanaan. Dalam tim, berperan dalam perancangan desain web, validasi website, serta pengolahan data fotogrametri dan satelit berbasis pemrograman.",
-  },
-  {
-    name: "Hanif 'Izzuddin Zakly",
-    photo: hanif,
-    description:
-      "Periset muda bidang geofisika dengan pengalaman pada pemetaan geologi, geokimia, sifat magnetik batuan, serta eksplorasi REE pada material vulkanik. Dalam tim, berperan melakukan akuisisi data lapangan, pengolahan dan analisis data lapangan, serta mendukung perancangan website.",
-  },
-  {
-    name: "Arif Nur Rohman",
-    photo: arif,
-    description:
-      "Periset bidang geofisika dengan latar belakang teknik geofisika dan pengalaman pada kegiatan ekspedisi geologi darat untuk mitigasi bencana serta pengelolaan sumber daya geologi. Dalam tim, berperan melakukan akuisisi data lapangan, pengolahan dan analisis data lapangan, serta membantu perancangan website.",
-  },
-  {
-    name: "Syafrizal Hidayat",
-    photo: syafrizal,
-    description:
-      "Periset bidang oseanografi dengan pengalaman pada pengembangan geoportal, instrumentasi oseanografi, pengukuran pasang surut, suhu permukaan laut, serta kegiatan kebencanaan pesisir dan tsunami. Dalam tim, berperan melakukan akuisisi data lapangan serta membuat dan merancang desain website.",
-  },
-  {
-    name: "Fadlu Rijal",
-    photo: fadlu,
-    description:
-      "Periset bidang geofisika dengan latar belakang teknik geofisika, seismologi eksplorasi, dan geofisika perminyakan. Berpengalaman pada ekspedisi geologi dan eksplorasi geofisika, akuisisi, pemrosesan, hingga interpretasi data geofisika untuk analisis bawah permukaan penemuan cadangan energi. Dalam tim, berperan melakukan akuisisi data lapangan serta pengolahan dan analisis data lapangan.",
-  },
+const teamPhoto = [
+  hasib,
+  sukir,
+  aditya,
+  undefined,
+  anjar,
+  aufa,
+  hanif,
+  arif,
+  syafrizal,
+  fadlu,
 ];
+
+const team = researchData.teams.map((person, index) => {
+  return {
+    ...person,
+    photo: teamPhoto[index],
+  };
+});
 
 function getInitials(name: string) {
   return name
