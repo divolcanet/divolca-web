@@ -30,7 +30,7 @@ const LandingPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen flex justify-center overflow-hidden">
+      <section className="relative h-svh flex justify-center overflow-hidden">
         {/* Background Image Container with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
