@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import Container from "../components/ui/container";
+import { cn } from "../lib/utils";
+import { Reveal } from "../components/ui/reveal";
 
 type FaqItem = {
   question: string;
@@ -77,15 +80,17 @@ export default function FAQPage() {
   };
 
   return (
-    <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 className="font-oswald text-4xl font-bold text-volcanic-50 mb-8">
-        FAQ
-      </h1>
-      <p className="text-volcanic-300 leading-relaxed text-lg mb-12">
-        Kumpulan pertanyaan yang sering diajukan seputar DiVolca dan Kompleks
-        Vulkanik Dieng. Tidak menemukan jawaban yang kamu cari? Gunakan
-        chatbot di pojok kanan bawah untuk bertanya langsung.
-      </p>
+    <Container className=" bg-primary-fg">
+      <Reveal>
+        <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
+          Frequently Asked Questions (FAQ)
+        </h1>
+        <p className="text-center leading-relaxed mb-12 mx-auto">
+          Kumpulan pertanyaan yang sering diajukan seputar DiVolca dan Kompleks
+          Vulkanik Dieng. Tidak menemukan jawaban yang kamu cari? Gunakan
+          chatbot di pojok kanan bawah untuk bertanya langsung.
+        </p>
+      </Reveal>
 
       <div className="space-y-3">
         {faqs.map((faq, index) => {
@@ -93,32 +98,41 @@ export default function FAQPage() {
           return (
             <div
               key={faq.question}
-              className="border border-volcanic-800 rounded-xl bg-volcanic-900 overflow-hidden"
+              aria-expanded={isOpen}
+              className="group rounded-full aria-expanded:rounded-4xl aria-expanded:border-2 aria-expanded:border-primary-10 bg-white shadow-sm"
             >
               <button
                 type="button"
                 onClick={() => toggle(index)}
-                aria-expanded={isOpen}
                 className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
               >
-                <span className="font-medium text-volcanic-50">
+                <span className="font-medium font-fraunces">
                   {faq.question}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 shrink-0 text-magma-400 transition-transform ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
+                  className={cn(
+                    "w-5 h-5 shrink-0 text-magma-400 transition-transform",
+                    isOpen ? "rotate-180" : "",
+                  )}
                 />
               </button>
-              {isOpen && (
-                <p className="px-5 pb-4 text-volcanic-400 leading-relaxed text-sm">
-                  {faq.answer}
-                </p>
-              )}
+
+              <div
+                className={cn(
+                  "grid transition-[grid-template-rows] duration-300 ease-in-out",
+                  isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                )}
+              >
+                <div className="overflow-hidden">
+                  <p className="px-5 pb-4 text-volcanic-400 leading-relaxed text-sm">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
             </div>
           );
         })}
       </div>
-    </section>
+    </Container>
   );
 }

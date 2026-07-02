@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../components/ui/tabs";
 import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
+import { Button } from "../components/ui/button";
+import { X, ZoomIn } from "lucide-react";
 
 type Photo = { src: string; caption: string };
 type Category = { key: string; label: string; photos: Photo[] };
@@ -154,36 +161,24 @@ function PhotoCard({
           const rect = e.currentTarget.getBoundingClientRect();
           setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
         }}
-        className="group relative block w-full aspect-square overflow-hidden rounded-xl border border-volcanic-800 bg-volcanic-900 cursor-none"
+        className="group relative block w-full aspect-square overflow-hidden rounded-xl border-2 border-primary-10 cursor-none"
       >
         <img
           src={photo.src}
           alt={photo.caption}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-volcanic-950/90 via-volcanic-950/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        <p className="absolute left-0 right-0 bottom-0 p-3 text-sm text-volcanic-50 translate-y-full group-hover:translate-y-0 transition-transform duration-300 line-clamp-2">
+        <div className="absolute inset-0 bg-linear-to-t from-accent/50  to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <p className="absolute left-0 right-0 bottom-0 p-3 text-sm text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 line-clamp-2">
           {photo.caption}
         </p>
 
         {hover && (
           <div
-            className="pointer-events-none absolute z-10 flex items-center justify-center w-12 h-12 rounded-full bg-magma-400/90 text-volcanic-950 -translate-x-1/2 -translate-y-1/2"
+            className="pointer-events-none absolute z-10 flex items-center justify-center w-12 h-12 rounded-full bg-primary-10/50 -translate-x-1/2 -translate-y-1/2"
             style={{ left: cursorPos.x, top: cursorPos.y }}
           >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zM11 8v6m-3-3h6"
-              />
-            </svg>
+            <ZoomIn />
           </div>
         )}
       </button>
@@ -200,36 +195,25 @@ function Lightbox({ photo, onClose }: { photo: Photo; onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-volcanic-950/95 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-accent/95 flex items-center justify-center p-4"
       onClick={onClose}
     >
-      <button
-        type="button"
+      <Button
         onClick={onClose}
         aria-label="Tutup"
-        className="absolute top-4 right-4 p-2 rounded-full bg-volcanic-800 hover:bg-volcanic-700 text-volcanic-100 transition-colors"
+        size="icon"
+        variant="outline"
+        className="absolute top-4 right-4 bg-white"
       >
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
+        <X />
+      </Button>
       <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
         <img
           src={photo.src}
           alt={photo.caption}
           className="w-full max-h-[80vh] object-contain rounded-lg"
         />
-        <p className="text-volcanic-300 text-center mt-4">{photo.caption}</p>
+        <p className=" text-white text-center mt-4">{photo.caption}</p>
       </div>
     </div>
   );
@@ -242,20 +226,20 @@ export default function GalleryPage() {
     categories.find((c) => c.key === activeKey) ?? categories[0];
 
   return (
-    <Container className=" bg-primary-fg">
+    <Container className=" bg-primary-fg flex flex-col items-center">
       <Reveal>
-        <h1 className="font-fraunces text-4xl font-bold text-primary-75 mb-4">
+        <h1 className="font-fraunces text-4xl text-center font-bold text-primary-75 mb-4">
           Galeri Kegiatan
         </h1>
-        <p className="text-muted leading-relaxed text-lg max-w-3xl mb-10">
+        <p className="text-muted text-center max-w-3xl mb-10 mx-auto">
           Dokumentasi kegiatan akuisisi data lapangan tim DiVolca di Pegunungan
           Dieng, meliputi survei gravity, magnetik, dan seismik.
         </p>
       </Reveal>
 
       <Reveal delay={100}>
-        <Tabs value={activeKey} onValueChange={setActiveKey}>
-          <TabsList>
+        <Tabs value={activeKey} onValueChange={setActiveKey} className=" mb-5">
+          <TabsList className=" mx-auto">
             {categories.map((category) => (
               <TabsTrigger key={category.key} value={category.key}>
                 {category.label}

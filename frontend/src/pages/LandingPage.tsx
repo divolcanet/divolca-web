@@ -1,6 +1,6 @@
 import { ArrowDown, Rotate3D } from "lucide-react";
 import bgImage from "../assets/images/landing-cover.jpeg";
-import { Button, buttonVariants } from "../components/ui/button";
+import { buttonVariants } from "../components/ui/button";
 import { cn } from "../lib/utils";
 import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
