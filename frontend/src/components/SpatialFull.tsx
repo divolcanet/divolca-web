@@ -2,16 +2,16 @@ import { useState } from "react";
 import { Hotspot, MapModel, Viewer3D } from "./3d-viewer";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { spatialDieng } from "../data/spatial";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { Home, Menu } from "lucide-react";
+import { Home } from "lucide-react";
 import { cn } from "../lib/utils";
-import { Button, buttonVariants } from "./ui/button";
+import { buttonVariants } from "./ui/button";
 import { Link } from "react-router-dom";
 import Legend from "./Legend";
 import icon from "../assets/icons/icon-dark.svg";
+import iconInitial from "../assets/icons/icon-intial.svg";
+import SpatialModelMenu from "./SpatialModelMenu";
 
 export const SpatialFull = () => {
-  const [menuExpanded, setMenuExpanded] = useState(true);
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
   const [tab, setTab] = useState<string | undefined>(
     spatialDieng.categories[0].key,
@@ -43,44 +43,22 @@ export const SpatialFull = () => {
 
       {/* Logo */}
       <Link to="/" className=" absolute top-4 left-1/2 -translate-x-1/2">
-        <img src={icon} width={240} />
+        <img className=" hidden md:block " src={icon} width={200} />
+        <img className=" block md:hidden" src={iconInitial} width={72} />
       </Link>
 
       {/* Top Left Menu */}
-      <div
-        aria-expanded={menuExpanded}
-        className=" group bg-primary-75 text-white p-4 absolute top-4 left-4 rounded-xl flex flex-col gap-4"
-      >
-        <Button
-          variant="outline"
-          size="icon"
-          className=" text-white"
-          onClick={() => setMenuExpanded((exp) => !exp)}
-        >
-          <Menu />
-        </Button>
-        <div
-          className={cn(
-            "space-y-4 transition-all min-w-0 min-h-0",
-            menuExpanded ? " block" : " hidden",
-          )}
-        >
-          <h3 className=" text-primary-10 text-xl">Model Tersedia</h3>
-          <RadioGroup value={model} onValueChange={setModel}>
-            {selectedCategory?.models.map((model) => (
-              <label key={model.key} className=" flex gap-2 ">
-                <RadioGroupItem value={model.key} />
-                {model.label}
-              </label>
-            ))}
-          </RadioGroup>
-        </div>
-      </div>
+      <SpatialModelMenu
+        models={selectedCategory?.models ?? []}
+        value={model}
+        onValueChange={setModel}
+        className="p-4 absolute top-4"
+      />
 
       {/* Top Right Menu */}
       <div className="absolute top-4 right-4">
         <Tabs value={tab} onValueChange={setTab}>
-          <TabsList className=" mx-auto">
+          <TabsList className=" mx-auto flex-col rounded-2xl md:flex-row md:rounded-full">
             {spatialDieng.categories.map((category) => (
               <TabsTrigger key={category.key} value={category.key}>
                 {category.label}
@@ -98,7 +76,7 @@ export const SpatialFull = () => {
           "absolute bottom-4 right-4 bg-white",
         )}
       >
-        Beranda
+        <span className=" hidden md:block">Beranda</span>
         <Home />
       </Link>
 
