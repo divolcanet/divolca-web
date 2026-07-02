@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
+import { Reveal } from "../components/ui/reveal";
+import Container from "../components/ui/container";
 
 type Photo = { src: string; caption: string };
 type Category = { key: string; label: string; photos: Photo[] };
@@ -129,47 +131,6 @@ const categories: Category[] = [
   },
 ];
 
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      } ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
 function PhotoCard({
   photo,
   delay,
@@ -281,12 +242,12 @@ export default function GalleryPage() {
     categories.find((c) => c.key === activeKey) ?? categories[0];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Container className=" bg-primary-fg">
       <Reveal>
-        <h1 className="font-oswald text-4xl font-bold text-volcanic-50 mb-4">
+        <h1 className="font-fraunces text-4xl font-bold text-primary-75 mb-4">
           Galeri Kegiatan
         </h1>
-        <p className="text-volcanic-300 leading-relaxed text-lg max-w-3xl mb-10">
+        <p className="text-muted leading-relaxed text-lg max-w-3xl mb-10">
           Dokumentasi kegiatan akuisisi data lapangan tim DiVolca di Pegunungan
           Dieng, meliputi survei gravity, magnetik, dan seismik.
         </p>
@@ -324,6 +285,6 @@ export default function GalleryPage() {
           onClose={() => setLightboxPhoto(null)}
         />
       )}
-    </section>
+    </Container>
   );
 }

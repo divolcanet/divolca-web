@@ -4,16 +4,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import icon from "../assets/icons/icon-light.svg";
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
-
-const navLinks = [
-  { to: "/", label: "Beranda" },
-  { to: "/riset", label: "Riset" },
-  { to: "/tentang-dieng", label: "Tentang Dieng" },
-  { to: "/tentang-tim", label: "Tentang Tim" },
-  { to: "/galeri", label: "Galeri" },
-  { to: "/faq", label: "FAQ" },
-  { to: "/glosarium", label: "Glosarium" },
-];
+import { navLinks } from "./nav-links";
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -40,7 +31,7 @@ export default function Navbar() {
       className={cn(
         " w-full z-50 transition-all duration-300",
         isScrolled
-          ? "bg-black/90 backdrop-blur-md py-3"
+          ? "bg-black/70 backdrop-blur-md py-3"
           : "bg-transparent py-4",
         pathname === "/" ? " fixed top-0 left-0" : " bg-black/90 sticky top-0",
       )}
@@ -71,7 +62,7 @@ export default function Navbar() {
           <Button
             variant="outline"
             size="icon"
-            className="lg:hidden bg-white"
+            className="lg:hidden bg-primary-10"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
