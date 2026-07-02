@@ -10,6 +10,7 @@ const AboutTeamPage = React.lazy(() => import("./pages/AboutTeamPage"));
 const GalleryPage = React.lazy(() => import("./pages/GalleryPage"));
 const FAQPage = React.lazy(() => import("./pages/FAQPage"));
 const GlossaryPage = React.lazy(() => import("./pages/GlossaryPage"));
+const FullPage = React.lazy(() => import("./pages/FullPage"));
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="faq" element={<FAQPage />} />
           <Route path="glosarium" element={<GlossaryPage />} />
         </Route>
+        <Route path="/full" element={<FullPage />} />
       </Routes>
     </>
   );

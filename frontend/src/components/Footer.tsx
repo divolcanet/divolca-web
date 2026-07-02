@@ -121,7 +121,7 @@ export default function Footer() {
         </div>
 
         <div className=" flex flex-col items-center text-center md:items-start md:text-start gap-6">
-          <NavLink className={buttonVariants({ size: "lg" })} to="/#3d-view">
+          <NavLink className={buttonVariants({ size: "lg" })} to="/full">
             Jelajahi Model 3D
             <Rotate3D className="w-7 h-7" />
           </NavLink>

@@ -29,7 +29,8 @@ export function MapModel({ url }: MapModelProps) {
 
 interface HotspotProps {
   position: [number, number, number];
-  info: MarkerInfo;
+  title: string;
+  description: string;
   markerId: number;
   activeMarker: number | null;
   setActiveMarker: (id: number | null) => void;
@@ -37,7 +38,8 @@ interface HotspotProps {
 
 export function Hotspot({
   position,
-  info,
+  title,
+  description,
   markerId,
   activeMarker,
   setActiveMarker,
@@ -142,8 +144,8 @@ export function Hotspot({
             >
               <X />
             </button>
-            <h3 className=" mr-1.5 text-lg font-bold pr-4">{info.title}</h3>
-            <p className=" text-gray-600">{info.description}</p>
+            <h3 className=" mr-1.5 text-lg font-bold pr-4">{title}</h3>
+            <p className=" text-gray-600">{description}</p>
           </div>
         </Html>
       )}

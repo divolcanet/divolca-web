@@ -11,7 +11,7 @@ function Tabs({
     <TabsPrimitive.Root
       data-slot="tabs"
       data-orientation="horizontal"
-      className={cn("group/tabs flex flex-col gap-2", className)}
+      className={cn("group/tabs flex flex-col gap-2 rounded-full", className)}
       {...props}
     />
   );
