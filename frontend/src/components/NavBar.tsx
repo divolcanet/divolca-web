@@ -73,7 +73,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="absolute w-full border-t border-primary-10 bg-black text-white">
+        <div className="absolute w-full border-t border-primary-10 bg-black ">
           <div className="px-2 py-4 flex flex-col gap-2 justify-start">
             {navLinks.map((link) => (
               <NavLink
@@ -82,7 +82,10 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   buttonVariants({
                     variant: "link",
-                    className: cn(" w-max", isActive ? " text-primary-10" : ""),
+                    className: cn(
+                      " w-max",
+                      isActive ? " text-primary-10" : "text-white",
+                    ),
                   })
                 }
                 onClick={() => setMobileOpen(false)}

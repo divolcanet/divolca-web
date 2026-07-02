@@ -96,40 +96,41 @@ export default function FAQPage() {
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
           return (
-            <div
-              key={faq.question}
-              aria-expanded={isOpen}
-              className="group rounded-full aria-expanded:rounded-4xl aria-expanded:border-2 aria-expanded:border-primary-10 bg-white shadow-sm"
-            >
-              <button
-                type="button"
-                onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
-              >
-                <span className="font-medium font-fraunces">
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  className={cn(
-                    "w-5 h-5 shrink-0 text-magma-400 transition-transform",
-                    isOpen ? "rotate-180" : "",
-                  )}
-                />
-              </button>
-
+            <Reveal key={faq.question} delay={300 + index * 100}>
               <div
-                className={cn(
-                  "grid transition-[grid-template-rows] duration-300 ease-in-out",
-                  isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
-                )}
+                aria-expanded={isOpen}
+                className="group rounded-full aria-expanded:rounded-4xl aria-expanded:border-2 aria-expanded:border-primary-10 bg-white shadow-sm"
               >
-                <div className="overflow-hidden">
-                  <p className="px-5 pb-4 text-volcanic-400 leading-relaxed text-sm">
-                    {faq.answer}
-                  </p>
+                <button
+                  type="button"
+                  onClick={() => toggle(index)}
+                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+                >
+                  <span className="font-medium font-fraunces">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    className={cn(
+                      "w-5 h-5 shrink-0 text-magma-400 transition-transform",
+                      isOpen ? "rotate-180" : "",
+                    )}
+                  />
+                </button>
+
+                <div
+                  className={cn(
+                    "grid transition-[grid-template-rows] duration-300 ease-in-out",
+                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                  )}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-5 pb-4 text-volcanic-400 leading-relaxed text-sm">
+                      {faq.answer}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           );
         })}
       </div>

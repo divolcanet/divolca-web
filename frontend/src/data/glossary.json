@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "gravity",
+    "title": "Gravitasi",
+    "content": "Metode geofisika yang mengukur variasi medan gravitasi bumi untuk mengidentifikasi perbedaan densitas batuan di bawah permukaan. Data gravitasi digunakan untuk memetakan struktur geologi bawah permukaan, seperti cekungan, patahan, dan intrusi batuan.",
+    "externalLink": "https://id.wikipedia.org/wiki/Gravitasi"
+  },
+  {
+    "slug": "magnetik",
+    "title": "Magnetik",
+    "content": "Metode geofisika yang mengukur variasi medan magnet bumi untuk mengidentifikasi batuan yang memiliki sifat kemagnetan. Data magnetik dimanfaatkan untuk memetakan struktur bawah permukaan, seperti keberadaan batuan beku dan patahan.",
+    "externalLink": "https://id.wikipedia.org/wiki/Magnetik"
+  },
+  {
+    "slug": "seismik",
+    "title": "Seismik",
+    "content": "Metode geofisika yang menggunakan gelombang seismik untuk menggambarkan struktur lapisan batuan di bawah permukaan. Dalam eksplorasi, metode seismik memberikan resolusi tinggi untuk mengidentifikasi struktur geologi dan potensi sumber daya alam.",
+    "externalLink": "https://id.wikipedia.org/wiki/Seismik"
+  },
+  {
+    "slug": "geofisika",
+    "title": "Geofisika",
+    "content": "Cabang ilmu kebumian yang mempelajari bumi menggunakan prinsip-prinsip fisika, seperti gravitasi, magnetik, seismik, dan listrik. Data geofisika digunakan untuk menyelidiki struktur dan komposisi bawah permukaan bumi."
+  },
+  {
+    "slug": "vulkanologi",
+    "title": "Vulkanologi",
+    "content": "Ilmu yang mempelajari gunung api, termasuk aktivitas erupsi, struktur magma, serta dampak vulkanik terhadap lingkungan. Vulkanologi berperan penting dalam mitigasi bencana geologi dan pemahaman sistem panas bumi.",
+    "externalLink": "https://id.wikipedia.org/wiki/Vulkanologi"
+  },
+  {
+    "slug": "anomali-gravitasi",
+    "title": "Anomali Gravitasi",
+    "content": "Perbedaan antara nilai gravitasi terukur di suatu titik dengan nilai gravitasi teoritis pada titik yang sama. Anomali ini mengindikasikan adanya variasi densitas batuan di bawah permukaan yang menjadi dasar interpretasi struktur geologi."
+  },
+  {
+    "slug": "anomali-magnetik",
+    "title": "Anomali Magnetik",
+    "content": "Perbedaan antara nilai medan magnet terukur dengan nilai medan magnet teoritis bumi. Anomali magnetik digunakan untuk mengidentifikasi batuan yang memiliki suseptibilitas magnetik tinggi, seperti batuan beku."
+  },
+  {
+    "slug": "tomografi-seismik",
+    "title": "Tomografi Seismik",
+    "content": "Teknik pencitraan struktur bawah permukaan menggunakan gelombang seismik, mirip dengan CT scan di bidang medis. Tomografi seismik menghasilkan model tiga dimensi kecepatan gelombang yang merepresentasikan distribusi material di dalam bumi."
+  },
+  {
+    "slug": "mitigasi-bencana",
+    "title": "Mitigasi Bencana Vulkanik",
+    "content": "Serangkaian upaya untuk mengurangi risiko bencana akibat aktivitas gunung api, meliputi pemantauan, pemetaan kawasan rawan bencana, sistem peringatan dini, serta edukasi masyarakat. Mitigasi berbasis data geofisika meningkatkan kesiapsiagaan dan mengurangi dampak erupsi."
+  },
+  {
+    "slug": "panas-bumi",
+    "title": "Panas Bumi (Geotermal)",
+    "content": "Energi panas yang tersimpan di dalam bumi, sering ditemukan di kawasan vulkanik seperti Dieng. Eksplorasi panas bumi menggunakan metode geofisika untuk mengidentifikasi reservoir dan mengestimasi potensi energinya.",
+    "externalLink": "https://id.wikipedia.org/wiki/Panas_bumi"
+  }
+]
