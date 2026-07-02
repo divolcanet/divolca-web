@@ -4,7 +4,6 @@ import { buttonVariants } from "../components/ui/button";
 import { cn } from "../lib/utils";
 import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
-import { Link, NavLink } from "react-router-dom";
 import Citation from "../components/Citation";
 import { SpatialMain } from "../components/SpatialMain";
 
