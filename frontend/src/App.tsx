@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
+import ScrollToTop from "./components/ScrollToTop";
 
 const LandingPage = React.lazy(() => import("./pages/LandingPage"));
 const ResearchPage = React.lazy(() => import("./pages/ResearchPage"));
@@ -13,6 +14,7 @@ const GlossaryPage = React.lazy(() => import("./pages/GlossaryPage"));
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<LandingPage />} />
