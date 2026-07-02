@@ -16,27 +16,19 @@ import Citation from "../components/Citation";
 
 const stats = [
   {
-    key: "location",
-    title: "Lokasi",
-    value: researchData.stats.lokasi,
+    ...researchData.stats[0],
     icon: MapPin,
   },
   {
-    key: "research-offline",
-    title: "Penelitian Langsung",
-    value: researchData.stats.lamaPenelitianLangsung,
+    ...researchData.stats[1],
     icon: Clock,
   },
   {
-    key: "research-total",
-    title: "Total Penelitian",
-    value: researchData.stats.lamaPenelitianTotal,
+    ...researchData.stats[2],
     icon: Calendar,
   },
   {
-    key: "data-type",
-    title: "Jenis Data",
-    value: researchData.stats.jenisData,
+    ...researchData.stats[3],
     icon: Database,
   },
 ];

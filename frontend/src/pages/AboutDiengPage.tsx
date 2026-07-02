@@ -12,39 +12,27 @@ import Container from "../components/ui/container";
 const destinations = [
   {
     img: sikidang,
-    title: "Kawah Sikidang",
-    desc: "Kawah aktif yang paling mudah diakses wisatawan, dikenal karena aktivitas solfatara dan lumpur panasnya.",
-    source: "Kompas.com, 2022",
+    ...aboutDieng.destinations[0],
   },
   {
     img: sileri,
-    title: "Kawah Sileri",
-    desc: "Kawah terbesar dan salah satu kawah paling aktif di Dieng yang sering mengalami erupsi freatik.",
-    source: "CNN Indonesia, 2021",
+    ...aboutDieng.destinations[1],
   },
   {
     img: telagaWarna,
-    title: "Telaga Warna",
-    desc: "Air telaga berubah warna-warni karena sinar matahari mengenai air yang mengandung sulfur tinggi.",
-    source: "Kompas.com, 2020",
+    ...aboutDieng.destinations[2],
   },
   {
     img: telagaPengilon,
-    title: "Telaga Pengilon",
-    desc: "Perubahan warna air dipengaruhi kandungan mineral dan aktivitas gas vulkanik di dasar danau.",
-    source: "Magelang Ekspres, 2023",
+    ...aboutDieng.destinations[3],
   },
   {
     img: candiArjuna,
-    title: "Kompleks Candi Arjuna",
-    desc: "Salah satu kompleks candi Hindu tertua di Jawa, diperkirakan dibangun pada abad ke-8 hingga ke-9 Masehi.",
-    source: "Kompasiana.com, 2025",
+    ...aboutDieng.destinations[4],
   },
   {
     img: bukitSikunir,
-    title: "Bukit Sikunir",
-    desc: "Lokasi pengamatan matahari terbit yang menjadi salah satu daya tarik wisata utama di Dieng.",
-    source: "Magelang Ekspres, 2023",
+    ...aboutDieng.destinations[5],
   },
 ];
 

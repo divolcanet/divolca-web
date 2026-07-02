@@ -1,9 +1,25 @@
 {
-  "stats": {
-    "lokasi": "Pegunungan Dieng, Jawa Tengah, Indonesia",
-    "lamaPenelitianLangsung": "14 hari",
-    "lamaPenelitianTotal": "6 bulan",
-    "jenisData": "Primer"
-  },
+  "stats": [
+    {
+      "key": "location",
+      "title": "Lokasi",
+      "value": "Pegunungan Dieng, Jawa Tengah, Indonesia"
+    },
+    {
+      "key": "research-offline",
+      "title": "Penelitian Langsung",
+      "value": "14 hari"
+    },
+    {
+      "key": "research-total",
+      "title": "Total Penelitian",
+      "value": "6 bulan"
+    },
+    {
+      "key": "data-type",
+      "title": "Jenis Data",
+      "value": "Primer"
+    }
+  ],
   "bibtex": "@misc{zhou2026danceopdonpolicygenerativefield,\n      title={DanceOPD: On-Policy Generative Field Distillation}, \n      author={Wei Zhou and Xiongwei Zhu and Zelin Xu and Bo Dong and Lixue Gong and Yongyuan Liang and Meng Chu and Leigang Qu and Lingdong Kong and Wei Liu and Tat-Seng Chua},\n      year={2026},\n      eprint={2606.27377},\n      archivePrefix={arXiv},\n      primaryClass={cs.CV},\n      url={https://arxiv.org/abs/2606.27377},\n}"
 }
