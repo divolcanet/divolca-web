@@ -1,10 +1,5 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "../components/ui/tabs";
+import { useEffect, useState } from "react";
+import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
 import { Button } from "../components/ui/button";
