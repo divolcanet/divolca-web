@@ -6,8 +6,27 @@ import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
 import { NavLink } from "react-router-dom";
 import Citation from "../components/Citation";
+import { Hotspot, MapModel, Viewer3D } from "../components/3d-viewer";
+import { useState } from "react";
+import type { MarkerData } from "../types";
+import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
 
 const LandingPage = () => {
+  const [activeMarker, setActiveMarker] = useState<number | null>(null);
+
+  // Data dengan anotasi tipe strict
+  const markers: MarkerData[] = [
+    {
+      id: 1,
+      position: [0, 3, 50],
+      info: { title: "Area A", description: "Detail informasi area A." },
+    },
+    {
+      id: 2,
+      position: [-3, 1, 4],
+      info: { title: "Area B", description: "Detail informasi area B." },
+    },
+  ];
   return (
     <>
       {/* Hero Section */}
@@ -61,16 +80,48 @@ const LandingPage = () => {
       </section>
 
       <Container className=" bg-primary-fg">
-        <Reveal className=" text-center">
-          <h1 className="font-fraunces text-4xl font-bold text-primary-75 mb-4">
+        <Reveal>
+          <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
             Model 3D Peta Spasial
           </h1>
-          <p className=" text-lg max-w-3xl mb-10">
+          <p className="text-center leading-relaxed mb-12 mx-auto">
             Jelajahi model spasial 3D peta data gaya berat (gravity) dan
             geomagnetik Kompleks Vulkanik Dieng. Gunakan scrollbar di sisi kanan
             untuk melihat irisan data pada setiap kedalaman.
           </p>
         </Reveal>
+
+        <Tabs defaultValue="magnetik" className=" mb-5">
+          <TabsList className=" mx-auto">
+            {[
+              { key: "magnetik", label: "Magnetik" },
+              { key: "gravity", label: "Gravity" },
+            ].map((category) => (
+              <TabsTrigger key={category.key} value={category.key}>
+                {category.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+
+        <div className="rounded-xl border border-muted bg-[#A1C2BD] relative overflow-hidden">
+          <div className=" aspect-video relative">
+            <Viewer3D>
+              <MapModel url="/3d/mountain_terrain.glb" />
+
+              {markers.map((marker) => (
+                <Hotspot
+                  key={marker.id}
+                  markerId={marker.id}
+                  position={marker.position}
+                  info={marker.info}
+                  activeMarker={activeMarker}
+                  setActiveMarker={setActiveMarker}
+                />
+              ))}
+            </Viewer3D>
+          </div>
+        </div>
       </Container>
 
       <Container className=" bg-primary-fg ">
