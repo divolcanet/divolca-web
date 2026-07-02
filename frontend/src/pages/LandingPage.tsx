@@ -5,6 +5,7 @@ import { cn } from "../lib/utils";
 import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
 import { NavLink } from "react-router-dom";
+import Citation from "../components/Citation";
 
 const LandingPage = () => {
   return (
@@ -70,6 +71,10 @@ const LandingPage = () => {
             untuk melihat irisan data pada setiap kedalaman.
           </p>
         </Reveal>
+      </Container>
+
+      <Container className=" bg-primary-fg ">
+        <Citation />
       </Container>
     </>
   );
