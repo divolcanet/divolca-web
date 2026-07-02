@@ -6,7 +6,6 @@ import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { X } from "lucide-react";
-import type { MarkerInfo } from "../types";
 
 type GLTFResult = GLTF & {
   nodes: { [key: string]: THREE.Object3D };
