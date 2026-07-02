@@ -34,7 +34,7 @@ export default function ResearchPage() {
             alt="Hero Background"
             className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
           />
-          <div className="absolute inset-0 bg-slate-900/30 compression mix-blend-multiply" />
+          {/* <div className="absolute inset-0 bg-slate-900/30 compression mix-blend-multiply" /> */}
         </div>
 
         {/* Hero Content */}

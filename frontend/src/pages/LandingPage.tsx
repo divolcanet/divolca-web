@@ -36,9 +36,8 @@ const LandingPage = () => {
           <img
             src={bgImage}
             alt="Hero Background"
-            className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
+            className=" w-full min-h-full h-256 object-cover"
           />
-          <div className="absolute inset-0 bg-slate-900/30 compression mix-blend-multiply" />
         </div>
 
         {/* Hero Content */}
@@ -46,7 +45,7 @@ const LandingPage = () => {
           <Reveal>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 font-fraunces">
               Informasi Geospasial <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary-25 to-primary-10 underline">
+              <span className="text-transparent bg-clip-text bg-primary-10  underline">
                 Kompleks Vulkanik Dieng
               </span>
             </h1>
