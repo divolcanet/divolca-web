@@ -1,39 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import hasib from "../assets/team/hasib.jpeg";
-import sukir from "../assets/team/sukir.jpg";
-import aditya from "../assets/team/aditya.jpeg";
-import anjar from "../assets/team/anjar.jpeg";
-import aufa from "../assets/team/aufa.jpg";
-import hanif from "../assets/team/hanif.jpeg";
-import arif from "../assets/team/arif.jpeg";
-import syafrizal from "../assets/team/syafrizal.jpeg";
-import fadlu from "../assets/team/fadlu.jpeg";
 import Container from "../components/ui/container";
 import { Reveal } from "../components/ui/reveal";
 import { cn } from "../lib/utils";
 import { Button } from "../components/ui/button";
-import researchData from "../data/research.json";
+import researchData from "../data/research";
 
-const teamPhoto = [
-  hasib,
-  sukir,
-  aditya,
-  undefined,
-  anjar,
-  aufa,
-  hanif,
-  arif,
-  syafrizal,
-  fadlu,
-];
-
-const team = researchData.teams.map((person, index) => {
-  return {
-    ...person,
-    photo: teamPhoto[index],
-  };
-});
+const team = researchData.teams;
 
 function getInitials(name: string) {
   return name

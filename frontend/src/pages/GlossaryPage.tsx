@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ExternalLink } from "lucide-react";
-import glossaryData from "../data/glossary.json";
+import glossaryData from "../data/glossary";
 import Container from "../components/ui/container";
 import { Reveal } from "../components/ui/reveal";
 import { cn } from "../lib/utils";

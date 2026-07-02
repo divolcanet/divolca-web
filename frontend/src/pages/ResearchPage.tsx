@@ -1,12 +1,5 @@
-import {
-  ArrowRight,
-  Calendar,
-  Clock,
-  Database,
-  MapPin,
-  Mountain,
-} from "lucide-react";
-import researchData from "../data/research.json";
+import { ArrowRight, Mountain } from "lucide-react";
+import researchData from "../data/research";
 import Container from "../components/ui/container";
 import bgImage from "../assets/images/landing-cover.jpeg";
 import { Reveal } from "../components/ui/reveal";
@@ -14,13 +7,7 @@ import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
 import Citation from "../components/Citation";
 
-const icon = [MapPin, Clock, Calendar, Database];
-const stats = researchData.stats.map((stat, index) => {
-  return {
-    ...stat,
-    icon: icon[index],
-  };
-});
+const stats = researchData.stats;
 
 export default function ResearchPage() {
   return (

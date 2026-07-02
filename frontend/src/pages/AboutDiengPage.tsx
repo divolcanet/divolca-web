@@ -1,29 +1,10 @@
-import sikidang from "../assets/dieng/kawah-sikidang.jpg";
 import sileri from "../assets/dieng/kawah-sileri.jpg";
-import telagaWarna from "../assets/dieng/telaga-warna.jpg";
-import telagaPengilon from "../assets/dieng/telaga-pengilon.jpg";
-import candiArjuna from "../assets/dieng/candi-arjuna.jpg";
-import bukitSikunir from "../assets/dieng/bukit-sikunir.jpg";
-import aboutDieng from "../data/about-dieng.json";
+import aboutDieng from "../data/about-dieng";
 import { Reveal } from "../components/ui/reveal";
 import Tag from "../components/ui/tag";
 import Container from "../components/ui/container";
 
-const imgs = [
-  sikidang,
-  sileri,
-  telagaWarna,
-  telagaPengilon,
-  candiArjuna,
-  bukitSikunir,
-];
-
-const destinations = aboutDieng.destinations.map((dest, index) => {
-  return {
-    ...dest,
-    img: imgs[index],
-  };
-});
+const destinations = aboutDieng.destinations;
 
 export default function AboutDiengPage() {
   return (

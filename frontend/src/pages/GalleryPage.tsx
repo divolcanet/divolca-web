@@ -4,7 +4,7 @@ import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
 import { Button } from "../components/ui/button";
 import { X, ZoomIn } from "lucide-react";
-import gallery from "../data/gallery.json";
+import gallery from "../data/gallery";
 
 type Photo = { src: string; caption: string };
 

@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 import { Button } from "./ui/button";
-import researchData from "../data/research.json";
+import researchData from "../data/research";
 import { Copy } from "lucide-react";
 
 const Citation = () => {
