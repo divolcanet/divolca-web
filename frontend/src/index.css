@@ -23,3 +23,16 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.smooth-bounce {
+  animation: smoothBounce 1s ease-in-out infinite alternate;
+}
+
+@keyframes smoothBounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}

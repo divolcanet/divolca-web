@@ -52,7 +52,7 @@ const LandingPage = () => {
         <div
           className={cn(
             buttonVariants({ variant: "outline", size: "icon" }),
-            "absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce bg-white",
+            "absolute bottom-8 left-1/2 -translate-x-1/2 z-10 smooth-bounce bg-white",
           )}
         >
           <ArrowDown />
