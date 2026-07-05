@@ -28,11 +28,34 @@ html {
   animation: smoothBounce 1s ease-in-out infinite alternate;
 }
 
+.animate-bounce-stagger {
+  animation: bounceStagger 10s ease-in-out infinite;
+}
+
 @keyframes smoothBounce {
   from {
     transform: translateY(0);
   }
   to {
     transform: translateY(-20px);
+  }
+}
+
+@keyframes bounceStagger {
+  0%,
+  5% {
+    transform: translateY(0);
+  }
+  12% {
+    transform: translateY(-12px);
+  }
+  20% {
+    transform: translateY(6px);
+  }
+  23% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

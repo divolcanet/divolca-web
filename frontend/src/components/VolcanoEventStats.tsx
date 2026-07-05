@@ -40,15 +40,16 @@ const VolcanoEventStats = () => {
       <div className=" hidden md:block">
         <BannerTooltipContent />
       </div>
-      <div className=" flex items-center gap-2 animate-pulse">
-        {Object.entries(events).map(([status, count]) => {
+      <div className=" flex items-center gap-2">
+        {Object.entries(events).map(([status, count], index) => {
           return (
             <div
               key={status}
               className={cn(
-                " rounded-full px-2 py-1 border flex gap-1 items-center h-fit",
+                "animate-bounce-stagger rounded-full px-2 py-1 border flex gap-1 items-center h-fit",
                 eventClassname[status],
               )}
+              style={{ animationDelay: `${index * 0.4}s` }}
             >
               <MountainSnow size={16} />
               <span className=" text-sm text-black line-clamp-1 hidden sm:block">
