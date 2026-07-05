@@ -16,10 +16,12 @@ const LEVEL_ORDER = ["AWAS", "SIAGA", "WASPADA", "NORMAL"];
 const VolcanoEventStats = () => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<VolcanoActivityStat | null>(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const url = import.meta.env.DEV
         ? "/volcano_activity.json"
         : "/api/volcano-activity";
@@ -33,6 +35,7 @@ const VolcanoEventStats = () => {
       } catch {
         setError(true);
       }
+      setLoading(false);
     };
 
     fetchData();
@@ -48,54 +51,68 @@ const VolcanoEventStats = () => {
   }
 
   return (
-    <div className=" bg-secondary px-5 py-3 flex gap-3 justify-between text-sm">
-      <Tooltip open={open} onOpenChange={setOpen}>
-        <TooltipTrigger
-          className=" block md:hidden"
-          onClick={() => setOpen((prev) => !prev)}
-          onPointerDown={(e) => {
-            if (window.matchMedia("(max-width: 767px)").matches) {
-              e.preventDefault();
-            }
-          }}
-        >
-          <Info />
-        </TooltipTrigger>
-        <TooltipContent>
-          <BannerTooltipContent
-            updatedAt={data?.metadata.updated_at}
-            source={data?.metadata.source}
-          />
-        </TooltipContent>
-      </Tooltip>
-      <div className=" hidden md:block">
-        <BannerTooltipContent
-          updatedAt={data?.metadata.updated_at}
-          source={data?.metadata.source}
-        />
-      </div>
-      <div className=" flex items-center gap-2">
-        {LEVEL_ORDER.map((status, index) => {
-          const count = data?.summary[status] ?? 0;
-          return (
-            <div
-              key={status}
-              className={cn(
-                "animate-bounce-stagger rounded-full px-2 py-1 border flex gap-1 items-center h-fit",
-                eventClassname[status],
-              )}
-              style={{ animationDelay: `${index * 0.4}s` }}
+    <div
+      className={cn(
+        " bg-secondary px-5 py-3 flex gap-3 text-sm",
+        loading || error ? " justify-start" : "justify-center",
+      )}
+    >
+      {loading && <span>Loading...</span>}
+      {error && <span>Data status gunung tidak tersedia</span>}
+      {data && (
+        <>
+          <Tooltip open={open} onOpenChange={setOpen}>
+            <TooltipTrigger
+              className=" block md:hidden"
+              onClick={() => setOpen((prev) => !prev)}
+              onPointerDown={(e) => {
+                if (window.matchMedia("(max-width: 767px)").matches) {
+                  e.preventDefault();
+                }
+              }}
             >
-              <MountainSnow size={16} />
-              <span className=" text-sm text-black line-clamp-1 hidden sm:block">
-                {status.charAt(0).toUpperCase() + status.slice(1).toLowerCase()}{" "}
-                :
-              </span>
-              <span className=" text-sm text-black line-clamp-1">{count}</span>
-            </div>
-          );
-        })}
-      </div>
+              <Info />
+            </TooltipTrigger>
+            <TooltipContent>
+              <BannerTooltipContent
+                updatedAt={data.metadata.updated_at}
+                source={data.metadata.source}
+              />
+            </TooltipContent>
+          </Tooltip>
+          <div className=" hidden md:block">
+            <BannerTooltipContent
+              updatedAt={data.metadata.updated_at}
+              source={data.metadata.source}
+            />
+          </div>
+          <div className=" flex items-center gap-2">
+            {LEVEL_ORDER.map((status, index) => {
+              const count = data.summary[status] ?? 0;
+              return (
+                <div
+                  key={status}
+                  className={cn(
+                    "animate-bounce-stagger rounded-full px-2 py-1 border flex gap-1 items-center h-fit",
+                    eventClassname[status],
+                  )}
+                  style={{ animationDelay: `${index * 0.4}s` }}
+                >
+                  <MountainSnow size={16} />
+                  <span className=" text-sm text-black line-clamp-1 hidden sm:block">
+                    {status.charAt(0).toUpperCase() +
+                      status.slice(1).toLowerCase()}{" "}
+                    :
+                  </span>
+                  <span className=" text-sm text-black line-clamp-1">
+                    {count}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 };
