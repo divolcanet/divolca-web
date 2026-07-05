@@ -5,6 +5,7 @@ import icon from "../assets/icons/icon-light.svg";
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
 import { navLinks } from "./nav-links";
+import VolcanoEventStats from "./VolcanoEventStats";
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -30,15 +31,19 @@ export default function Navbar() {
     <nav
       className={cn(
         " w-full z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-black/70 backdrop-blur-md py-3"
-          : "bg-transparent py-4",
+        isScrolled ? "bg-black/70 backdrop-blur-md" : "bg-transparent",
         ["/", "/tentang-dieng", "/riset"].includes(pathname)
           ? " fixed top-0 left-0"
           : " bg-black/90 sticky top-0",
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <VolcanoEventStats />
+      <div
+        className={cn(
+          "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300",
+          isScrolled ? "py-2" : "py-4",
+        )}
+      >
         <div className="flex items-center justify-between h-16">
           <NavLink to="/" className=" w-45">
             <img src={icon} width={180} />

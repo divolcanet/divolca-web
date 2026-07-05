@@ -85,7 +85,7 @@ export default function AboutTeamPage() {
       setIndex((current) => (current + 1) % team.length);
     }, AUTO_ADVANCE_MS);
     return () => clearInterval(timer);
-  }, []);
+  }, [index]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;

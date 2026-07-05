@@ -7,6 +7,7 @@ export default function AppLayout() {
   return (
     <div className="min-h-svh flex flex-col">
       <Navbar />
+
       <main className="flex-1">
         <Outlet />
       </main>

@@ -22,7 +22,7 @@ const LandingPage = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center mt-40 space-y-5">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center mt-48 space-y-5">
           <Reveal>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 font-fraunces">
               Informasi Geospasial <br />

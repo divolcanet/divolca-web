@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App.tsx";
 import { Toaster } from "./components/ui/sonner.tsx";
 import { BrowserRouter } from "react-router-dom";
+import { TooltipProvider } from "./components/ui/tooltip.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Toaster richColors position="top-center" />
     <BrowserRouter>
-      <App />
+      <TooltipProvider>
+        <App />
+      </TooltipProvider>
     </BrowserRouter>
   </StrictMode>,
 );
