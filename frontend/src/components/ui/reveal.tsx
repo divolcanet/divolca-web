@@ -4,22 +4,25 @@ import { cn } from "../../lib/utils";
 export function Reveal({
   children,
   delay = 200,
+  visible: controlledVisible,
   className = "",
 }: {
   children: ReactNode;
   delay?: number;
+  visible?: boolean;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [intersected, setIntersected] = useState(false);
 
   useEffect(() => {
+    setIntersected(false);
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          setIntersected(true);
           observer.disconnect();
         }
       },
@@ -27,15 +30,15 @@ export function Reveal({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [controlledVisible]);
 
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+      style={{ transitionDelay: intersected ? `${delay}ms` : "0ms" }}
       className={cn(
         "transition-all duration-700 ease-out",
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
+        intersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
         className,
       )}
     >
