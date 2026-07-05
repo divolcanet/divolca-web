@@ -1,6 +1,7 @@
 import { Info, MountainSnow } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { useState } from "react";
 
 const events = {
   AWAS: 0,
@@ -17,10 +18,19 @@ const eventClassname: Record<string, string> = {
 };
 
 const VolcanoEventStats = () => {
+  const [open, setOpen] = useState(false);
   return (
     <div className=" bg-secondary/50 px-5 py-3 flex gap-3 justify-between text-sm">
-      <Tooltip>
-        <TooltipTrigger className=" block md:hidden">
+      <Tooltip open={open} onOpenChange={setOpen}>
+        <TooltipTrigger
+          className=" block md:hidden"
+          onClick={() => setOpen((prev) => !prev)}
+          onPointerDown={(e) => {
+            if (window.matchMedia("(max-width: 767px)").matches) {
+              e.preventDefault();
+            }
+          }}
+        >
           <Info />
         </TooltipTrigger>
         <TooltipContent>
@@ -30,7 +40,7 @@ const VolcanoEventStats = () => {
       <div className=" hidden md:block">
         <BannerTooltipContent />
       </div>
-      <div className=" flex gap-2">
+      <div className=" flex gap-2 animate-pulse">
         {Object.entries(events).map(([status, count]) => {
           return (
             <div
@@ -56,7 +66,7 @@ const VolcanoEventStats = () => {
 
 export const BannerTooltipContent = () => {
   return (
-    <>
+    <div>
       <div className=" font-bold">
         Status gunung berapi indonesia{" "}
         <a href="#" className=" underline font-normal">
@@ -64,7 +74,7 @@ export const BannerTooltipContent = () => {
         </a>
       </div>
       <div className=" text-xs">Per 14 Juli 2026, 12:00 WIB</div>
-    </>
+    </div>
   );
 };
 
