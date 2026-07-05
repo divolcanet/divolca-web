@@ -54,7 +54,7 @@ const VolcanoEventStats = () => {
     <div
       className={cn(
         " bg-secondary px-5 py-3 flex gap-3 text-sm",
-        loading || error ? " justify-start" : "justify-center",
+        loading || error ? " justify-start" : "justify-between",
       )}
     >
       {loading && <span>Loading...</span>}
