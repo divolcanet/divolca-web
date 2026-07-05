@@ -22,3 +22,19 @@ export type HotspotData = {
   title: string;
   description: string;
 };
+
+export type VolcanoActivityStat = {
+  metadata: {
+    updated_at: string;
+    source: string;
+  };
+  summary: Record<string, number>;
+  volcanoes: {
+    name: string;
+    province: string;
+    level: "AWAS" | "SIAGA" | "WASPADA" | "NORMAL";
+    level_id: 1 | 2 | 3 | 4;
+    level_label: string;
+    report_url: string;
+  }[];
+};

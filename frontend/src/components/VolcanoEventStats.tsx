@@ -1,14 +1,8 @@
 import { Info, MountainSnow } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { useState } from "react";
-
-const events = {
-  AWAS: 0,
-  SIAGA: 5,
-  WASPADA: 21,
-  NORMAL: 43,
-};
+import { useState, useEffect } from "react";
+import type { VolcanoActivityStat } from "../data/types";
 
 const eventClassname: Record<string, string> = {
   AWAS: "bg-red-500/35 border-red-500 text-red-500",
@@ -17,8 +11,42 @@ const eventClassname: Record<string, string> = {
   NORMAL: "bg-green-500/35 border-green-500 text-green-500",
 };
 
+const LEVEL_ORDER = ["AWAS", "SIAGA", "WASPADA", "NORMAL"];
+
 const VolcanoEventStats = () => {
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState<VolcanoActivityStat | null>(null);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = import.meta.env.DEV
+        ? "/volcano_activity.json"
+        : "/api/volcano-activity";
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        setData(json);
+        setError(false);
+      } catch {
+        setError(true);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (error) {
+    return (
+      <div className=" bg-secondary px-5 py-3 flex gap-2 justify-start text-sm">
+        <Info />
+        <span>Data status gunung tidak tersedia</span>
+      </div>
+    );
+  }
+
   return (
     <div className=" bg-secondary px-5 py-3 flex gap-3 justify-between text-sm">
       <Tooltip open={open} onOpenChange={setOpen}>
@@ -34,14 +62,21 @@ const VolcanoEventStats = () => {
           <Info />
         </TooltipTrigger>
         <TooltipContent>
-          <BannerTooltipContent />
+          <BannerTooltipContent
+            updatedAt={data?.metadata.updated_at}
+            source={data?.metadata.source}
+          />
         </TooltipContent>
       </Tooltip>
       <div className=" hidden md:block">
-        <BannerTooltipContent />
+        <BannerTooltipContent
+          updatedAt={data?.metadata.updated_at}
+          source={data?.metadata.source}
+        />
       </div>
       <div className=" flex items-center gap-2">
-        {Object.entries(events).map(([status, count], index) => {
+        {LEVEL_ORDER.map((status, index) => {
+          const count = data?.summary[status] ?? 0;
           return (
             <div
               key={status}
@@ -65,16 +100,35 @@ const VolcanoEventStats = () => {
   );
 };
 
-export const BannerTooltipContent = () => {
+const BannerTooltipContent = ({
+  updatedAt,
+  source,
+}: {
+  updatedAt?: string;
+  source?: string;
+}) => {
+  const formatted = updatedAt
+    ? new Date(updatedAt).toLocaleString("id-ID", {
+        timeZone: "Asia/Jakarta",
+        dateStyle: "long",
+        timeStyle: "short",
+      })
+    : null;
+
   return (
     <div>
       <div className=" font-bold">
         Status gunung berapi indonesia{" "}
-        <a href="#" className=" underline font-normal">
+        <a
+          href={source ?? "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className=" underline font-normal"
+        >
           (Selengkapnya)
         </a>
       </div>
-      <div className=" text-xs">Per 14 Juli 2026, 12:00 WIB</div>
+      {formatted && <div className=" text-xs">Per {formatted} WIB</div>}
     </div>
   );
 };
