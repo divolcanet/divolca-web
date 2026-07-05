@@ -1,43 +1,27 @@
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import icon from "../assets/icons/icon-light.svg";
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
-import { navLinks } from "./nav-links";
-import VolcanoEventStats from "./VolcanoEventStats";
+import { useScroll } from "../hooks/useScroll";
+import { fixedNavbarPages, navLinks } from "./nav-links";
 
 export default function Navbar() {
   const { pathname } = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const isScrolled = useScroll(50);
 
   return (
     <nav
       className={cn(
         " w-full z-50 transition-all duration-300",
         isScrolled ? "bg-black/70 backdrop-blur-md" : "bg-transparent",
-        ["/", "/tentang-dieng", "/riset"].includes(pathname)
-          ? " fixed top-0 left-0"
+        fixedNavbarPages.includes(pathname)
+          ? cn("fixed left-0", isScrolled ? "top-0" : "top-12")
           : " bg-black/90 sticky top-0",
       )}
     >
-      <VolcanoEventStats />
       <div
         className={cn(
           "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300",

@@ -20,7 +20,7 @@ const eventClassname: Record<string, string> = {
 const VolcanoEventStats = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div className=" bg-secondary/50 px-5 py-3 flex gap-3 justify-between text-sm">
+    <div className=" bg-secondary px-5 py-3 flex gap-3 justify-between text-sm">
       <Tooltip open={open} onOpenChange={setOpen}>
         <TooltipTrigger
           className=" block md:hidden"
@@ -40,13 +40,13 @@ const VolcanoEventStats = () => {
       <div className=" hidden md:block">
         <BannerTooltipContent />
       </div>
-      <div className=" flex gap-2 animate-pulse">
+      <div className=" flex items-center gap-2 animate-pulse">
         {Object.entries(events).map(([status, count]) => {
           return (
             <div
               key={status}
               className={cn(
-                " rounded-full px-3 py-2 border flex gap-1 items-center h-fit",
+                " rounded-full px-2 py-1 border flex gap-1 items-center h-fit",
                 eventClassname[status],
               )}
             >

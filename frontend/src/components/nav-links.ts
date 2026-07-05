@@ -7,3 +7,5 @@ export const navLinks = [
   { to: "/faq", label: "FAQ" },
   { to: "/glosarium", label: "Glosarium" },
 ];
+
+export const fixedNavbarPages = navLinks.slice(0, 3).map((l) => l.to);
