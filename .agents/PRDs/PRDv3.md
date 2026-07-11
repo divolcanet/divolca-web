@@ -14,11 +14,11 @@ DiVolca.net is a geospatial information platform for the Dieng Volcanic Complex 
 
 The current v2 release is structurally functional but visually "mainstream" — it follows a standard blog-template layout with a disconnected 3D viewer, static data presentation, and no interactive depth. The core problem is that the site **looks like a content website that happens to embed a 3D model**, rather than a **premium geospatial data platform**.
 
-**PRDv3** defines a transformation: evolve DiVolca.net from a static information page into an immersive, interactive geospatial data experience. The MVP goal is a dark-themed, scroll-driven narrative landing page with animated 3D data overlays, depth-slicing for subsurface exploration, and polished micro-interactions throughout — without adding content that doesn't exist yet.
+**PRDv3** defines a transformation: evolve DiVolca.net from a static information page into an immersive, interactive geospatial data experience. The MVP goal is a scroll-driven narrative landing page with animated 3D data overlays, depth-slicing for subsurface exploration, and polished micro-interactions throughout — all within a switchable light/dark theme that defaults to dark — without adding content that doesn't exist yet.
 
 **Core value proposition:** Turn complex geophysics research data into an intuitive, visually stunning exploration experience that feels like a premium product, not a research blog.
 
-**MVP goal statement:** Create a visually premium geospatial data platform where users can intuitively explore 3D terrain with animated magnetic/gravity overlays and navigate a scroll-driven narrative — all within a dark, cinematic theme.
+**MVP goal statement:** Create a visually premium geospatial data platform where users can intuitively explore 3D terrain with animated magnetic/gravity overlays and navigate a scroll-driven narrative — all within a switchable light/dark theme that defaults to dark for maximum visual impact.
 
 ---
 
@@ -36,7 +36,7 @@ Democratize access to complex geophysics research data by transforming it into a
 | 2   | **Cinematic interaction**    | Interactions should feel polished, not mechanical. 60fps animations, physics easing, purposeful transitions. |
 | 3   | **Progressive disclosure**   | Never overwhelm. Reveal complexity step by step through scroll, hover, and click.                            |
 | 4   | **Scientific credibility**   | Typography, color, and layout must signal that this is serious research, not entertainment.                  |
-| 5   | **Dark theme as default**    | Geophysical data pops against dark surfaces. Dark mode is not optional — it's the foundation.                |
+| 5   | **Switchable theme, dark default** | Dark mode is the default but users can toggle to light mode via a Sun/Moon button in the navbar. CSS custom properties with `:root.dark` and Tailwind's `dark:` variant handle the switch. |
 
 ---
 
@@ -88,7 +88,7 @@ Democratize access to complex geophysics research data by transforming it into a
 
 #### Core Functionality
 
-- ✅ Dark theme redesign (background `#091413`, data-colored accents)
+- ✅ Switchable light/dark theme (default: dark `#091413`, toggle via Sun/Moon button in navbar, persisted in localStorage)
 - ✅ Scroll-driven 3D camera animation on landing page (GSAP + Lenis)
 - ✅ Animated magnetic and gravity field lines (particle flow over terrain)
 - ✅ 2D depth slicing with vertical slider (planned feature from `.agents/plans/`)
@@ -496,7 +496,7 @@ VITE_USE_MOCK_DATA=false  # Use local mock data instead of live fetch
 
 The MVP is complete when:
 
-- ✅ Dark theme is applied consistently across all pages
+- ✅ Switchable light/dark theme is applied consistently across all pages (default: dark)
 - ✅ Scroll-driven camera animation works on the landing page (hero → 3D viewer)
 - ✅ Magnetic/gravity particle flow visualization renders on terrain at 60fps
 - ✅ Depth slider controls both 2D cross-section and 3D scene
@@ -535,26 +535,29 @@ The MVP is complete when:
 
 ## 12. Implementation Phases
 
-### Phase 1: Foundation & Dark Theme (Week 1)
+### Phase 1: Foundation & Theme (Week 1)
 
 **Goal:** Establish visual foundation and animation infrastructure. Make the site feel premium immediately.
 
 **Deliverables:**
 
-- ✅ Apply dark theme across all pages (`#091413` backgrounds, adjusted text colors)
-- ✅ Add `gsap`, `@gsap/react`, `lenis`, `framer-motion`, `@react-three/postprocessing`, `zustand` dependencies
+- ✅ Add switchable light/dark theme using CSS custom properties (`:root` / `:root.dark`) mapped to Tailwind semantic tokens (`bg-page`, `text-body`, `bg-card`, etc.)
+- ✅ Add theme toggle button (Sun/Moon) in navbar with localStorage persistence and FOUC-prevention script
+- ✅ Add `gsap`, `lenis`, `framer-motion`, `@react-three/postprocessing`, `zustand`, `three-mesh-bvh` dependencies
 - ✅ Configure Lenis smooth scroll globally
 - ✅ Add post-processing bloom + tone-mapping to 3D scene
 - ✅ Add 3D fog + hemisphere light + shadow map for atmospheric depth
 - ✅ Implement micro-interactions (hover scale, press scale, card lift shadows)
 - ✅ Build loading skeleton for GLB model
-- ✅ Create persistent Scene3D context (single Three.js canvas across pages)
+- ✅ Create persistent Scene3D context (zustand store for view state)
 - ✅ Update Legend component to be data-driven
 
 **Validation:**
 
 - `npm run build` passes
-- Dark theme is consistent across all 8 routes
+- Theme is consistent across all 8 routes in both light and dark modes
+- Toggle persists across page refreshes (localStorage)
+- No FOUC (flash of wrong theme)
 - 3D scene has visible bloom effect
 - Loading skeleton shows during page load
 - All interactive elements have hover/press feedback
@@ -704,6 +707,6 @@ divolca-net/
 | **Lenis + GSAP over Framer Motion scroll**  | GSAP ScrollTrigger is the industry standard for scroll-driven 3D camera animation. Framer Motion is better for UI micro-interactions (used for those). |
 | **zustand over Redux/Context**              | Minimal boilerplate, excellent TypeScript support, tiny bundle size. Only needed for URL state sync — not complex state management.                    |
 | **Custom particle system over deck.gl**     | Fewer dependencies, full control over shaders, better integration with existing Three.js scene. deck.gl if we need to render millions of points later. |
-| **Dark theme as default (no toggle)**       | Simplifies design system, no double-theme maintenance. Geophysical data is objectively better on dark backgrounds.                                     |
+| **Switchable theme, dark default**          | Dark mode is the default but users can toggle to light mode. CSS custom properties (`:root` / `:root.dark`) + Tailwind `dark:` variant enable zero-FOUC switching with minimal maintenance. Tailwind's `dark:` prefix is available for component-level overrides. |
 | **Persistent 3D canvas over mount/unmount** | Avoids expensive Three.js re-initialization on every page navigation. Keeps camera state alive.                                                        |
 | **Placeholder badges over hiding**          | Transparency about data readiness builds trust. "Data Sementara" badges are honest. Hidden placeholders look like bugs.                                |
