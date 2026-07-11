@@ -13,9 +13,9 @@ export default function FAQPage() {
   };
 
   return (
-    <Container className=" bg-accent">
+    <Container className=" bg-page">
       <Reveal>
-        <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
+        <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
           Frequently Asked Questions (FAQ)
         </h1>
         <p className="text-center leading-relaxed mb-12 mx-auto">
@@ -32,7 +32,7 @@ export default function FAQPage() {
             <Reveal key={faq.question} delay={300 + index * 100}>
               <div
                 aria-expanded={isOpen}
-                className="group rounded-full aria-expanded:rounded-4xl aria-expanded:border-2 aria-expanded:border-primary-10 bg-accent-100 shadow-sm"
+                className="group rounded-full aria-expanded:rounded-4xl aria-expanded:border-2 aria-expanded:border-primary-10 bg-card shadow-sm"
               >
                 <button
                   type="button"

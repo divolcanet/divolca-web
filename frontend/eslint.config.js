@@ -18,6 +18,8 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
-    rules: {},
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
   },
 ]);

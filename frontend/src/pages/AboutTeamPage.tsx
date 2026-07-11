@@ -102,9 +102,9 @@ export default function AboutTeamPage() {
   const member = team[index];
 
   return (
-    <Container className=" bg-accent">
+    <Container className=" bg-page">
       <Reveal>
-        <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
+        <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
           Tentang Tim
         </h1>
         <p className="text-center leading-relaxed mb-12 mx-auto">

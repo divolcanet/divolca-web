@@ -32,7 +32,7 @@ export const SpatialMain = () => {
         </TabsList>
       </Tabs>
 
-      <div className=" relative rounded-xl font-mono border border-muted bg-black overflow-hidden">
+      <div className=" relative rounded-xl font-mono border border-muted bg-card overflow-hidden">
         <div className=" aspect-2/3 md:aspect-video relative">
           <Suspense
             fallback={
@@ -72,7 +72,7 @@ export const SpatialMain = () => {
           to={"/full"}
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "absolute top-4 right-4 bg-accent-100 text-xs text-white hover:text-black",
+            "absolute top-4 right-4 bg-elevated text-xs text-body",
           )}
         >
           <Maximize2 />

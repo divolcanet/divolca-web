@@ -152,9 +152,9 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <Container className=" bg-accent" id="3d-view">
+      <Container className=" bg-page" id="3d-view">
         <Reveal>
-          <h1 className="font-fraunces text-4xl font-bold text-primary-25 text-center mb-8">
+          <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
             Model 3D Peta Spasial
           </h1>
           <p className="text-center leading-relaxed mb-12 mx-auto">
@@ -167,7 +167,7 @@ const LandingPage = () => {
         <SpatialMain />
       </Container>
 
-      <Container className=" bg-accent ">
+      <Container className=" bg-page ">
         <Citation />
       </Container>
     </>

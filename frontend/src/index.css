@@ -1,13 +1,47 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --page: #eeeeee;
+  --card: #ffffff;
+  --elevated: #f5f5f5;
+  --line: #e5e7eb;
+  --body: #091413;
+  --dim: #6b7280;
+  --nav: rgba(255, 255, 255, 0.85);
+  --nav-mobile: #ffffff;
+  --title: #1f6f5f;
+}
+
+:root.dark {
+  --page: #091413;
+  --card: #0d1f1c;
+  --elevated: #122a25;
+  --line: #1a3d36;
+  --body: #eeeeee;
+  --dim: #9ca3af;
+  --nav: rgba(0, 0, 0, 0.85);
+  --nav-mobile: #000000;
+  --title: #99fd53;
+}
+
 @theme {
+  --color-page: var(--page);
+  --color-card: var(--card);
+  --color-elevated: var(--elevated);
+  --color-line: var(--line);
+  --color-body: var(--body);
+  --color-dim: var(--dim);
+  --color-nav: var(--nav);
+  --color-nav-mobile: var(--nav-mobile);
+  --color-title: var(--title);
+
   --color-primary-fg: #eeeeee;
   --color-accent: #091413;
   --color-accent-50: #0d1f1c;
   --color-accent-100: #122a25;
   --color-accent-200: #1a3d36;
-  --color-surface: #0d1f1c;
-  --color-surface-elevated: #122a25;
   --color-primary-10: #99fd53;
   --color-primary-25: #6fcf97;
   --color-primary-50: #2fa084;
@@ -23,7 +57,7 @@
 
 @layer base {
   body {
-    @apply bg-accent text-primary-fg font-inter;
+    @apply bg-page text-body font-inter;
   }
 }
 
@@ -68,7 +102,7 @@ html {
     transform: translateY(0);
   }
   to {
-    transform: translateY(-20px);
+    transform: translateY(-12px);
   }
 }
 
