@@ -16,6 +16,7 @@ export function Reveal({
   const [intersected, setIntersected] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIntersected(false);
     const el = ref.current;
     if (!el) return;

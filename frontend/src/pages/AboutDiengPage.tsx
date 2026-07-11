@@ -8,7 +8,7 @@ const destinations = aboutDieng.destinations;
 
 export default function AboutDiengPage() {
   return (
-    <div className=" bg-primary-fg">
+    <div className=" bg-accent">
       {/* Hero */}
       <section className="relative h-[60vh] min-h-105 flex items-end overflow-hidden">
         <img
@@ -16,7 +16,7 @@ export default function AboutDiengPage() {
           alt="Kawah Sileri, Dieng"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-primary-fg via-primary-fg/70 to-accent/50" />
+        <div className="absolute inset-0 bg-linear-to-t from-accent via-accent/70 to-accent/50" />
         <Reveal className=" relative max-w-7xl mx-auto px-5  pb-12 w-full space-y-3">
           <Tag className=" border-2 font-mono">Kompleks Vulkanik</Tag>
           <h1 className="font-fraunces text-4xl sm:text-5xl font-bold text-primary-75">
@@ -73,7 +73,7 @@ export default function AboutDiengPage() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-lg bg-white p-4 space-y-3"
+                className="rounded-lg bg-accent-100 p-4 space-y-3"
               >
                 <p className="text-xs uppercase tracking-wide font-bold">
                   {item.label}
@@ -159,7 +159,7 @@ export default function AboutDiengPage() {
             {aboutDieng.characteristics.map((item) => (
               <div
                 key={item.title}
-                className="rounded-lg bg-white p-5 hover:shadow-md transition-all"
+                className="rounded-lg bg-accent-100 p-5 hover:shadow-md transition-all"
               >
                 <h3 className="text-primary-75 font-fraunces text-base font-semibold mb-2">
                   {item.title}
@@ -186,7 +186,7 @@ export default function AboutDiengPage() {
             {destinations.map((dest) => (
               <div
                 key={dest.title}
-                className="group rounded-xl border border-muted/20 overflow-hidden bg-white hover:-translate-y-1 hover:shadow-lg hover:shadow-accent-75/30 transition-all duration-300 flex flex-col"
+                className="group rounded-xl border border-muted/20 overflow-hidden bg-accent-100 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent-75/30 transition-all duration-300 flex flex-col"
               >
                 <div className="aspect-4/3 overflow-hidden">
                   <img
@@ -211,7 +211,7 @@ export default function AboutDiengPage() {
       </Container>
 
       <Container id="reference">
-        <details className="rounded-lg bg-white p-5">
+        <details className="rounded-lg bg-accent-100 p-5">
           <summary className="cursor-pointer text-primary-75 font-fraunces text-base font-semibold">
             Referensi
           </summary>

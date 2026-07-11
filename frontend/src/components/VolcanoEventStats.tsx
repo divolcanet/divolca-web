@@ -43,7 +43,7 @@ const VolcanoEventStats = () => {
 
   if (error) {
     return (
-      <div className=" bg-secondary px-5 py-3 flex gap-2 justify-start text-sm">
+      <div className=" bg-secondary px-5 py-3 flex gap-2 justify-start text-sm text-black">
         <Info />
         <span>Data status gunung tidak tersedia</span>
       </div>
@@ -53,7 +53,7 @@ const VolcanoEventStats = () => {
   return (
     <div
       className={cn(
-        " bg-secondary px-5 py-3 flex gap-3 text-sm",
+        " bg-secondary px-5 py-3 flex gap-3 text-sm text-black",
         loading || error ? " justify-start" : "justify-between",
       )}
     >

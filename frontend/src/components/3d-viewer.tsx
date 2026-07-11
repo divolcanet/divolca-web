@@ -1,10 +1,15 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode, Suspense } from "react";
 import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import { useGLTF, Html, Center } from "@react-three/drei";
 import { type GLTF } from "three-stdlib";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import {
+  EffectComposer,
+  Bloom,
+  ToneMapping,
+} from "@react-three/postprocessing";
 import { X } from "lucide-react";
 
 type GLTFResult = GLTF & {
@@ -154,14 +159,40 @@ export function Hotspot({
 
 export function Viewer3D({ children }: { children?: ReactNode }) {
   return (
-    <Canvas camera={{ position: [5, 5, 5], fov: 50 }}>
-      <ambientLight intensity={0.4} />
-      <directionalLight position={[5, 8, 5]} intensity={0.8} />
+    <Canvas
+      camera={{ position: [5, 5, 5], fov: 50 }}
+      shadows
+      gl={{
+        antialias: true,
+        toneMapping: 3,
+        toneMappingExposure: 1.0,
+      }}
+      style={{ background: "#000" }}
+    >
+      {/* <fog attach="fog" args={["#091413", 15, 50]} /> */}
+      <hemisphereLight args={["#87ceeb", "#3a3a3a", 0.6]} />
+      <directionalLight
+        position={[5, 8, 5]}
+        intensity={1.0}
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+      />
       <directionalLight position={[-3, 4, -3]} intensity={0.3} />
+      <ambientLight intensity={0.2} />
 
-      {children}
+      <Suspense fallback={null}>{children}</Suspense>
 
-      <OrbitControls makeDefault />
+      <OrbitControls minDistance={2} maxDistance={75} />
+
+      <EffectComposer>
+        <Bloom
+          intensity={0.2}
+          luminanceThreshold={0.7}
+          luminanceSmoothing={0.8}
+        />
+        <ToneMapping mode={3} exposure={1.0} />
+      </EffectComposer>
     </Canvas>
   );
 }

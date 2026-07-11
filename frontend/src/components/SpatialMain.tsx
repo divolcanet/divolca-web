@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { Hotspot, MapModel, Viewer3D } from "./3d-viewer";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { spatialDieng } from "../data/spatial";
@@ -8,6 +8,7 @@ import { buttonVariants } from "./ui/button";
 import { Link } from "react-router-dom";
 import Legend from "./Legend";
 import SpatialModelMenu from "./SpatialModelMenu";
+import { LoadingSkeleton } from "./LoadingSkeleton";
 
 export const SpatialMain = () => {
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
@@ -31,23 +32,31 @@ export const SpatialMain = () => {
         </TabsList>
       </Tabs>
 
-      <div className=" relative rounded-xl font-mono border border-muted bg-[#A1C2BD] overflow-hidden">
+      <div className=" relative rounded-xl font-mono border border-muted bg-black overflow-hidden">
         <div className=" aspect-2/3 md:aspect-video relative">
-          <Viewer3D>
-            <MapModel url={spatialDieng.mountainUrl} />
+          <Suspense
+            fallback={
+              <div className="absolute inset-0">
+                <LoadingSkeleton />
+              </div>
+            }
+          >
+            <Viewer3D>
+              <MapModel url={spatialDieng.mountainUrl} />
 
-            {selectedModel?.hotspots.map((marker) => (
-              <Hotspot
-                key={marker.id}
-                markerId={marker.id}
-                position={marker.position}
-                title={marker.title}
-                description={marker.description}
-                activeMarker={activeMarker}
-                setActiveMarker={setActiveMarker}
-              />
-            ))}
-          </Viewer3D>
+              {selectedModel?.hotspots.map((marker) => (
+                <Hotspot
+                  key={marker.id}
+                  markerId={marker.id}
+                  position={marker.position}
+                  title={marker.title}
+                  description={marker.description}
+                  activeMarker={activeMarker}
+                  setActiveMarker={setActiveMarker}
+                />
+              ))}
+            </Viewer3D>
+          </Suspense>
         </div>
 
         {/* Top Left Menu */}
@@ -63,7 +72,7 @@ export const SpatialMain = () => {
           to={"/full"}
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "absolute top-4 right-4 bg-white text-xs",
+            "absolute top-4 right-4 bg-accent-100 text-xs text-white hover:text-black",
           )}
         >
           <Maximize2 />

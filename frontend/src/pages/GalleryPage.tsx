@@ -95,7 +95,7 @@ export default function GalleryPage() {
   const activeCategory = gallery.find((c) => c.key === activeKey) ?? gallery[0];
 
   return (
-    <Container className=" bg-primary-fg flex flex-col items-center">
+    <Container className=" bg-accent flex flex-col items-center">
       <Reveal>
         <h1 className="font-fraunces text-4xl text-center font-bold text-primary-75 mb-4">
           Galeri Kegiatan

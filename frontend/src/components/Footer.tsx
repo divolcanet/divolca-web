@@ -85,7 +85,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className=" bg-accent text-white">
+    <footer className=" bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 py-12 flex flex-col md:flex-row justify-between gap-8">
         <div className=" flex flex-col items-center text-center md:items-start md:text-start gap-4">
           <NavLink to="/" className=" w-45">

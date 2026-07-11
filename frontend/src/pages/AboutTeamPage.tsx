@@ -102,7 +102,7 @@ export default function AboutTeamPage() {
   const member = team[index];
 
   return (
-    <Container className=" bg-primary-fg">
+    <Container className=" bg-accent">
       <Reveal>
         <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
           Tentang Tim

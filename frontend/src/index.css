@@ -3,6 +3,11 @@
 @theme {
   --color-primary-fg: #eeeeee;
   --color-accent: #091413;
+  --color-accent-50: #0d1f1c;
+  --color-accent-100: #122a25;
+  --color-accent-200: #1a3d36;
+  --color-surface: #0d1f1c;
+  --color-surface-elevated: #122a25;
   --color-primary-10: #99fd53;
   --color-primary-25: #6fcf97;
   --color-primary-50: #2fa084;
@@ -16,8 +21,34 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
-body {
-  @apply font-inter;
+@layer base {
+  body {
+    @apply bg-accent text-primary-fg font-inter;
+  }
+}
+
+@layer utilities {
+  .micro-interact {
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  .micro-interact-hover {
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  .micro-interact-hover:hover {
+    transform: scale(1.03);
+  }
+  .micro-interact-hover:active {
+    transform: scale(0.97);
+  }
+  .micro-interact-press {
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  .micro-interact-press:active {
+    transform: scale(0.95);
+  }
 }
 
 html {
