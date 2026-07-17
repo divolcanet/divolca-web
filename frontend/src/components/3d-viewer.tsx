@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode, Suspense } from "react";
+import { useEffect, useRef, useState, type ReactNode, Suspense } from "react";
 import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import { useGLTF, Html, Center } from "@react-three/drei";
 import { type GLTF } from "three-stdlib";
@@ -23,10 +23,24 @@ interface MapModelProps {
 
 export function MapModel({ url }: MapModelProps) {
   const { scene } = useGLTF(url) as GLTFResult;
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        const mats = Array.isArray(child.material)
+          ? child.material
+          : [child.material];
+        mats.forEach((mat) => {
+          mat.roughness = 0.9;
+          mat.metalness = 0.0;
+        });
+      }
+    });
+  }, [scene]);
+
   return (
     <Center>
-      {" "}
-      <primitive object={scene} />{" "}
+      <primitive object={scene} scale={0.001} />
     </Center>
   );
 }
@@ -102,10 +116,7 @@ export function Hotspot({
         position={[0, 0.05, 0]}
       >
         <sphereGeometry args={[0.12, 16, 16]} />
-        <meshStandardMaterial
-          color={hovered ? "#ef4444" : "#f59e0b"}
-          roughness={0.3}
-        />
+        <meshBasicMaterial color={hovered ? "#ef4444" : "#f59e0b"} />
       </mesh>
 
       {isOpen && (
@@ -160,30 +171,36 @@ export function Hotspot({
 export function Viewer3D({ children }: { children?: ReactNode }) {
   return (
     <Canvas
-      camera={{ position: [5, 5, 5], fov: 50 }}
+      camera={{ position: [20, 10, 12], fov: 45 }}
       shadows
       gl={{
         antialias: true,
         toneMapping: 3,
-        toneMappingExposure: 1.0,
+        toneMappingExposure: 1.5,
       }}
-      style={{ background: "#000" }}
+      style={{ background: "#091413" }}
     >
-      {/* <fog attach="fog" args={["#091413", 15, 50]} /> */}
-      <hemisphereLight args={["#87ceeb", "#3a3a3a", 0.6]} />
+      <fog attach="fog" args={["#091413", 40, 70]} />
+      <hemisphereLight args={["#87ceeb", "#3a3a3a", 0.8]} />
       <directionalLight
-        position={[5, 8, 5]}
-        intensity={1.0}
+        position={[10, 30, 10]}
+        intensity={1.8}
         castShadow
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
       />
-      <directionalLight position={[-3, 4, -3]} intensity={0.3} />
-      <ambientLight intensity={0.2} />
+      <directionalLight position={[-10, -5, -10]} intensity={0.5} />
+      <ambientLight intensity={0.5} />
 
       <Suspense fallback={null}>{children}</Suspense>
 
-      <OrbitControls minDistance={2} maxDistance={75} />
+      <OrbitControls
+        makeDefault
+        autoRotate
+        autoRotateSpeed={0.8}
+        minDistance={10}
+        maxDistance={75}
+      />
 
       <EffectComposer>
         <Bloom

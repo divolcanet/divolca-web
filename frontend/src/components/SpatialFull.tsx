@@ -22,7 +22,7 @@ export const SpatialFull = () => {
   const selectedModel = selectedCategory?.models.find((m) => m.key === model);
 
   return (
-    <div className=" relative font-mono border border-muted bg-card overflow-hidden">
+    <div className=" relative font-mono overflow-hidden">
       <div className=" w-full h-svh relative">
         <Viewer3D>
           <MapModel url={spatialDieng.mountainUrl} />
