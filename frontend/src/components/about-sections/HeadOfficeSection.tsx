@@ -1,0 +1,35 @@
+import { MapPin } from "lucide-react";
+import { Reveal } from "../ui/reveal";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { officeProfile } from "../../data/office";
+
+export default function HeadOfficeSection() {
+  return (
+    <>
+      <Reveal>
+        <h2 className="font-fraunces text-3xl font-bold text-title text-center mb-10">
+          Kantor Pusat
+        </h2>
+      </Reveal>
+
+      <Reveal delay={200}>
+        <Card className=" max-w-3xl mx-auto">
+          <CardHeader>
+            <div className="w-14 h-14 rounded-full bg-primary-10/20 flex items-center justify-center mx-auto">
+              <MapPin className="w-7 h-7 text-primary-50" />
+            </div>
+            <CardTitle className=" text-center">
+              {officeProfile.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className=" text-center">
+            <p className="text-body">{officeProfile.address}</p>
+            <p className="text-dim text-sm mt-2">
+              {officeProfile.email} <br /> {officeProfile.site}
+            </p>
+          </CardContent>
+        </Card>
+      </Reveal>
+    </>
+  );
+}

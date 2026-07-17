@@ -22,7 +22,7 @@ export const SpatialFull = () => {
   const selectedModel = selectedCategory?.models.find((m) => m.key === model);
 
   return (
-    <div className=" relative font-mono border border-muted bg-[#A1C2BD] overflow-hidden">
+    <div className=" relative font-mono overflow-hidden">
       <div className=" w-full h-svh relative">
         <Viewer3D>
           <MapModel url={spatialDieng.mountainUrl} />
@@ -58,7 +58,7 @@ export const SpatialFull = () => {
       {/* Top Right Menu */}
       <div className="absolute top-4 right-4">
         <Tabs value={tab} onValueChange={setTab}>
-          <TabsList className=" mx-auto flex-col rounded-2xl md:flex-row md:rounded-full">
+          <TabsList className=" mx-auto flex-col rounded-2xl md:flex-row md:rounded-full bg-card ">
             {spatialDieng.categories.map((category) => (
               <TabsTrigger key={category.key} value={category.key}>
                 {category.label}
@@ -73,7 +73,7 @@ export const SpatialFull = () => {
         to={"/"}
         className={cn(
           buttonVariants({ variant: "outline" }),
-          "absolute bottom-4 right-4 bg-white",
+          "absolute bottom-4 right-4 bg-elevated text-body",
         )}
       >
         <span className=" hidden md:block">Beranda</span>

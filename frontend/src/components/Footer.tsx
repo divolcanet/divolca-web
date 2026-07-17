@@ -1,10 +1,9 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Rotate3D } from "lucide-react";
 import type { SVGProps } from "react";
-import { navLinks } from "./nav-links";
 import { buttonVariants } from "./ui/button";
 import icon from "../assets/icons/icon-light.svg";
-import { cn } from "../lib/utils";
+import { officeProfile } from "../data/office";
 
 function FacebookIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -85,21 +84,21 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className=" bg-accent text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 py-12 flex flex-col md:flex-row justify-between gap-8">
-        <div className=" flex flex-col items-center text-center md:items-start md:text-start gap-4">
+    <footer className=" bg-black text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 py-24 flex flex-col md:flex-row justify-between gap-8">
+        <div className=" flex flex-col items-center text-center md:items-start md:text-start gap-4 max-w-lg">
           <NavLink to="/" className=" w-45">
             <img src={icon} width={180} />
           </NavLink>
 
           <p className="mt-4 text-sm leading-relaxed">
-            Wisconsin Ave, Suite 700
+            {officeProfile.title}
             <br />
-            Chevy Chase, Maryland 20815
+            {officeProfile.address}
           </p>
         </div>
 
-        <div>
+        {/* <div>
           <h3 className="font-fraunces font-semibold text-primary-10 mb-4 text-xl">
             Team
           </h3>
@@ -118,7 +117,7 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
         <div className=" flex flex-col items-center text-center md:items-start md:text-start gap-6">
           <NavLink className={buttonVariants({ size: "lg" })} to="/full">

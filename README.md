@@ -23,15 +23,14 @@ Projek ini didedikasikan untuk keluaran dari penelitian yang dilakukan di pegunu
 1. Navigation Bar (Bagian menu navigasi)
 2. Bridging/Hero Section (Bagian penjelasan singkat tentang penelitian yang dilakukan)
 3. Model 3D Gunung disertai data spasial (Fitur 1)
-4. Model data spasial untuk tiap-tiap kedalaman (2D/gambar flat), terdapat vertical scroller untuk menentukan gambar yang ditampilkan.
-5. (Fitur 2)
-6. Research
+4. (Fitur 2)
+5. Research
    - Sub section berisi hasil riset, artikel penelitian
    - Sub section berisi infografis Dieng
    - Sub section berisi informasi tentang mitigasi dan langkah-langkah mitigasi bencana vulkanik
-7. (Fitur 3)
-8. About Dieng Mountains
-9. About Team
+6. (Fitur 3)
+7. About Dieng Mountains
+8. About Team
 
 Note:
 

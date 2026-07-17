@@ -1,4 +1,4 @@
-import { ArrowRight, Mountain } from "lucide-react";
+import { ArrowRight, MountainSnow } from "lucide-react";
 import researchData from "../data/research";
 import Container from "../components/ui/container";
 import bgImage from "../assets/images/landing-cover.jpeg";
@@ -6,6 +6,9 @@ import { Reveal } from "../components/ui/reveal";
 import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
 import Citation from "../components/Citation";
+
+import lpdp from "../assets/aknowledgement/lpdp.png";
+import brin from "../assets/aknowledgement/brin.png";
 
 const stats = researchData.stats;
 
@@ -32,15 +35,15 @@ export default function ResearchPage() {
             </h1>
           </Reveal>
           <Reveal delay={300}>
-            <div className=" bg-primary-fg px-5 py-12 flex flex-col justify-center rounded-2xl space-y-8 z-10">
-              <h1 className="font-fraunces font-bold text-primary-75 text-3xl text-center">
+            <div className=" bg-page px-5 py-12 flex flex-col justify-center rounded-2xl space-y-8 z-10">
+              <h1 className="font-fraunces font-bold text-title text-3xl text-center">
                 Statistik Penelitian
               </h1>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {stats.map((stat) => (
                   <div
                     key={stat.key}
-                    className="bg-white rounded-xl p-4 text-center"
+                    className="bg-card rounded-xl p-4 text-center"
                   >
                     <stat.icon className="w-5 h-5 text-primary-75 mx-auto mb-2" />
                     <dt className="text-xs uppercase tracking-wider font-mono mb-1">
@@ -57,11 +60,11 @@ export default function ResearchPage() {
         </Container>
       </section>
 
-      <Container className=" bg-primary-fg ">
+      <Container className=" bg-page ">
         <Reveal delay={400} className="flex flex-col items-center gap-8">
-          <Mountain className="w-12 h-12 sm:w-16 sm:h-16 text-primary-10 mx-auto" />
+          <MountainSnow className="w-12 h-12 sm:w-16 sm:h-16 text-primary-10 mx-auto" />
 
-          <h1 className="font-fraunces font-bold text-primary-75 text-4xl text-center">
+          <h1 className="font-fraunces font-bold text-title text-4xl text-center">
             Publikasi Penelitian
           </h1>
 
@@ -78,7 +81,26 @@ export default function ResearchPage() {
           </a>
         </Reveal>
       </Container>
-      <Container className=" bg-primary-fg ">
+
+      <Container className=" bg-page ">
+        <Reveal delay={500} className="flex flex-col items-center gap-8">
+          <h1 className="font-fraunces font-bold text-title text-4xl text-center">
+            Acknowledgement
+          </h1>
+
+          <p>
+            Projek riset ini sepenuhnya didanai oleh RIM Ekspedisi Geologi Darat
+            dan Pumah Program Purwarupa
+          </p>
+
+          <div className=" flex gap-8 flex-wrap justify-center ">
+            <img src={brin} className="h-24" />
+            <img src={lpdp} className="h-24" />
+          </div>
+        </Reveal>
+      </Container>
+
+      <Container className=" bg-page ">
         <Citation />
       </Container>
     </>

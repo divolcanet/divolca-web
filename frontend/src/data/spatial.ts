@@ -10,7 +10,7 @@ export const spatialDieng: MountainSpatial = {
         {
           key: "tmi",
           label: "Total Magnetic Intensity (TMI)",
-          url: "",
+          url: "/3d/avatar.glb",
           hotspots: [
             {
               id: 1,

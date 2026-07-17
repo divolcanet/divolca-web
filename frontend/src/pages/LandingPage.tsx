@@ -1,4 +1,4 @@
-import { ArrowDown, Rotate3D, ArrowRight } from "lucide-react";
+import { ArrowDown, Rotate3D, ArrowRight, MapPin } from "lucide-react";
 import {
   useState,
   useEffect,
@@ -7,12 +7,14 @@ import {
 } from "react";
 import bgImage from "../assets/images/landing-cover.jpeg";
 import sukunir from "../assets/dieng/bukit-sikunir.jpg";
+import telagaWarna from "../assets/dieng/telaga-warna.jpg";
 import { buttonVariants } from "../components/ui/button";
 import { cn } from "../lib/utils";
 import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
 import Citation from "../components/Citation";
 import { SpatialMain } from "../components/SpatialMain";
+import { MapDieng } from "../components/MapDieng";
 
 type CTA = {
   text: string;
@@ -43,6 +45,18 @@ const heroSlides: HeroSlide[] = [
     },
   },
   {
+    bg: telagaWarna,
+    title: "Titik Penelitian",
+    highlight: "Lokasi Penelitian Kami",
+    desc: "Jelajahi titik-titik lokasi penelitian geofisika di kompleks vulkanik Dieng, mulai dari kawah aktif, telaga, hingga situs budaya.",
+    className: " mt-48 text-white",
+    cta: {
+      text: "Lihat Titik Penelitian",
+      href: "#titik-penelitian",
+      icon: <MapPin className="w-7 h-7" />,
+    },
+  },
+  {
     bg: sukunir,
     title: "Destinasi Wisata",
     highlight: "Pegunungan Dieng",
@@ -62,7 +76,7 @@ const LandingPage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % heroSlides.length);
-    }, 7000);
+    }, 10000);
     return () => clearInterval(timer);
   }, [current]);
 
@@ -152,9 +166,9 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <Container className=" bg-primary-fg" id="3d-view">
+      <Container className=" bg-page" id="3d-view">
         <Reveal>
-          <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
+          <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
             Model 3D Peta Spasial
           </h1>
           <p className="text-center leading-relaxed mb-12 mx-auto">
@@ -167,7 +181,21 @@ const LandingPage = () => {
         <SpatialMain />
       </Container>
 
-      <Container className=" bg-primary-fg ">
+      <Container className=" bg-secondary" id="titik-penelitian">
+        <Reveal>
+          <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
+            Titik Penelitian Kami
+          </h1>
+          <p className="text-center leading-relaxed mb-12 mx-auto text-black">
+            Jelajahi model spasial 3D peta data gaya berat (gravity) dan
+            geomagnetik Kompleks Vulkanik Dieng. Gunakan scrollbar di sisi kanan
+            untuk melihat irisan data pada setiap kedalaman.
+          </p>
+        </Reveal>
+        <MapDieng />
+      </Container>
+
+      <Container className=" bg-page ">
         <Citation />
       </Container>
     </>

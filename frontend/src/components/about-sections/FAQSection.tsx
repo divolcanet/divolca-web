@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import Container from "../components/ui/container";
-import { cn } from "../lib/utils";
-import { Reveal } from "../components/ui/reveal";
-import faqs from "../data/faqs";
+import { cn } from "../../lib/utils";
+import { Reveal } from "../ui/reveal";
+import faqs from "../../data/faqs";
 
-export default function FAQPage() {
+export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
@@ -13,15 +12,14 @@ export default function FAQPage() {
   };
 
   return (
-    <Container className=" bg-primary-fg">
+    <>
       <Reveal>
-        <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
+        <h2 className="font-fraunces text-3xl font-bold text-title text-center mb-8">
           Frequently Asked Questions (FAQ)
-        </h1>
-        <p className="text-center leading-relaxed mb-12 mx-auto">
+        </h2>
+        <p className="text-center leading-relaxed mb-12 mx-auto text-dim">
           Kumpulan pertanyaan yang sering diajukan seputar DiVolca dan Kompleks
-          Vulkanik Dieng. Tidak menemukan jawaban yang kamu cari? Gunakan
-          chatbot di pojok kanan bawah untuk bertanya langsung.
+          Vulkanik Dieng.
         </p>
       </Reveal>
 
@@ -32,14 +30,14 @@ export default function FAQPage() {
             <Reveal key={faq.question} delay={300 + index * 100}>
               <div
                 aria-expanded={isOpen}
-                className="group rounded-full aria-expanded:rounded-4xl aria-expanded:border-2 aria-expanded:border-primary-10 bg-white shadow-sm"
+                className="group rounded-full aria-expanded:rounded-4xl aria-expanded:border-2 aria-expanded:border-primary-10 bg-card shadow-sm"
               >
                 <button
                   type="button"
                   onClick={() => toggle(index)}
                   className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
                 >
-                  <span className="font-medium font-fraunces">
+                  <span className="font-medium font-fraunces text-body">
                     {faq.question}
                   </span>
                   <ChevronDown
@@ -57,7 +55,7 @@ export default function FAQPage() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-4 text-volcanic-400 leading-relaxed text-sm">
+                    <p className="px-5 pb-4 text-dim leading-relaxed text-sm">
                       {faq.answer}
                     </p>
                   </div>
@@ -67,6 +65,6 @@ export default function FAQPage() {
           );
         })}
       </div>
-    </Container>
+    </>
   );
 }

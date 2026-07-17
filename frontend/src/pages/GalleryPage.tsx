@@ -65,7 +65,7 @@ function Lightbox({ photo, onClose }: { photo: Photo; onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-accent/95 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-page/95 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <Button
@@ -95,9 +95,9 @@ export default function GalleryPage() {
   const activeCategory = gallery.find((c) => c.key === activeKey) ?? gallery[0];
 
   return (
-    <Container className=" bg-primary-fg flex flex-col items-center">
+    <Container className=" bg-page flex flex-col items-center">
       <Reveal>
-        <h1 className="font-fraunces text-4xl text-center font-bold text-primary-75 mb-4">
+        <h1 className="font-fraunces text-4xl text-center font-bold text-title mb-4">
           Galeri Kegiatan
         </h1>
         <p className="text-muted text-center max-w-3xl mb-10 mx-auto">

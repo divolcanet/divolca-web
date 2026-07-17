@@ -40,9 +40,9 @@ export default function GlossaryPage() {
   }, []);
 
   return (
-    <Container className=" bg-primary-fg">
+    <Container className=" bg-page">
       <Reveal>
-        <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
+        <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
           Glosarium
         </h1>
         <p className="text-center leading-relaxed mb-12 mx-auto">
@@ -57,7 +57,7 @@ export default function GlossaryPage() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar — uses native <a href="#slug"> for browser-managed scroll */}
           <aside className="lg:w-64 shrink-0">
-            <nav className=" p-4 lg:sticky lg:top-24 space-y-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto rounded-xl bg-white">
+            <nav className=" p-4 lg:sticky lg:top-24 space-y-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto rounded-xl bg-card">
               <h2 className="font-fraunces font-bold  mb-3 lg:mb-4">
                 Daftar Istilah
               </h2>

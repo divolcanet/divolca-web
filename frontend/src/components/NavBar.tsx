@@ -1,10 +1,11 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import icon from "../assets/icons/icon-light.svg";
+import iconLight from "../assets/icons/icon-light.svg";
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
 import { useScroll } from "../hooks/useScroll";
+import { ThemeToggle } from "./ThemeToggle";
 import { fixedNavbarPages, navLinks } from "./nav-links";
 
 export default function Navbar() {
@@ -15,8 +16,8 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        " w-full z-50 transition-all duration-300",
-        isScrolled ? "bg-black/70 backdrop-blur-md" : "bg-transparent",
+        " w-full z-1200 transition-all duration-300",
+        isScrolled ? " bg-black backdrop-blur-md" : "bg-transparent",
         fixedNavbarPages.includes(pathname)
           ? cn("fixed left-0", isScrolled ? "top-0" : "top-12")
           : " bg-black/90 sticky top-0",
@@ -30,7 +31,7 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between h-16">
           <NavLink to="/" className=" w-45">
-            <img src={icon} width={180} />
+            <img src={iconLight} width={180} />
           </NavLink>
 
           <div className="hidden lg:flex items-center gap-6">
@@ -48,18 +49,22 @@ export default function Navbar() {
                 {link.label}
               </NavLink>
             ))}
+            <ThemeToggle />
           </div>
 
-          <Button
-            variant="outline"
-            size="icon"
-            className="lg:hidden bg-primary-10"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X /> : <Menu />}
-          </Button>
+          <div className="flex lg:hidden items-center gap-2">
+            <ThemeToggle />
+            <Button
+              variant="outline"
+              size="icon"
+              className="bg-primary-10"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X /> : <Menu />}
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -75,7 +80,7 @@ export default function Navbar() {
                     variant: "link",
                     className: cn(
                       " w-max",
-                      isActive ? " text-primary-10" : "text-white",
+                      isActive ? " text-primary-10" : "text-white font-normal",
                     ),
                   })
                 }
