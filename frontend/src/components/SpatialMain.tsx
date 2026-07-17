@@ -44,6 +44,8 @@ export const SpatialMain = () => {
             <Viewer3D>
               <MapModel url={spatialDieng.mountainUrl} />
 
+              {selectedModel && <MapModel url={selectedModel.url} />}
+
               {selectedModel?.hotspots.map((marker) => (
                 <Hotspot
                   key={marker.id}
