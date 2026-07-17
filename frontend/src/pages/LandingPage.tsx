@@ -170,10 +170,10 @@ const LandingPage = () => {
 
       <Container className=" bg-secondary" id="3d-view">
         <Reveal>
-          <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
+          <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
             Titik Penelitian Kami
           </h1>
-          <p className="text-center leading-relaxed mb-12 mx-auto">
+          <p className="text-center leading-relaxed mb-12 mx-auto text-black">
             Jelajahi model spasial 3D peta data gaya berat (gravity) dan
             geomagnetik Kompleks Vulkanik Dieng. Gunakan scrollbar di sisi kanan
             untuk melihat irisan data pada setiap kedalaman.
