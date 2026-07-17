@@ -8,6 +8,7 @@ import hanif from "../assets/team/hanif.jpeg";
 import arif from "../assets/team/arif.jpeg";
 import syafrizal from "../assets/team/syafrizal.jpeg";
 import fadlu from "../assets/team/fadlu.jpeg";
+import ade from "../assets/team/ade.jpeg";
 
 const researchData = {
   stats: [
@@ -59,6 +60,7 @@ const researchData = {
       name: "Ade Surya Putra",
       description:
         "Periset dengan kepakaran pada kebencanaan geologi dan pengolahan data geofisika berbasis komputasi. Latar belakangnya kuat dalam fisika dan teknik geofisika, termasuk pengembangan perangkat lunak untuk analisis sinyal seismik. Dalam tim, berperan melakukan akuisisi data lapangan, mengontrol perancangan desain web, serta mengolah data berbasis pemrograman.",
+      photo: ade,
     },
     {
       name: "Anjar Dwi Hariadi",
