@@ -6,9 +6,8 @@ import ScrollToTop from "./components/ScrollToTop";
 const LandingPage = React.lazy(() => import("./pages/LandingPage"));
 const ResearchPage = React.lazy(() => import("./pages/ResearchPage"));
 const AboutDiengPage = React.lazy(() => import("./pages/AboutDiengPage"));
-const AboutTeamPage = React.lazy(() => import("./pages/AboutTeamPage"));
+const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const GalleryPage = React.lazy(() => import("./pages/GalleryPage"));
-const FAQPage = React.lazy(() => import("./pages/FAQPage"));
 const GlossaryPage = React.lazy(() => import("./pages/GlossaryPage"));
 const FullPage = React.lazy(() => import("./pages/FullPage"));
 
@@ -21,9 +20,8 @@ function App() {
           <Route index element={<LandingPage />} />
           <Route path="riset" element={<ResearchPage />} />
           <Route path="tentang-dieng" element={<AboutDiengPage />} />
-          <Route path="tentang-tim" element={<AboutTeamPage />} />
+          <Route path="tentang" element={<AboutPage />} />
           <Route path="galeri" element={<GalleryPage />} />
-          <Route path="faq" element={<FAQPage />} />
           <Route path="glosarium" element={<GlossaryPage />} />
         </Route>
         <Route path="/full" element={<FullPage />} />

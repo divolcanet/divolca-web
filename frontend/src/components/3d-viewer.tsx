@@ -178,7 +178,7 @@ export function Viewer3D({ children }: { children?: ReactNode }) {
         toneMapping: 3,
         toneMappingExposure: 1.5,
       }}
-      style={{ background: "#091413" }}
+      style={{ background: "#122a25" }}
     >
       <fog attach="fog" args={["#091413", 40, 70]} />
       <hemisphereLight args={["#87ceeb", "#3a3a3a", 0.8]} />

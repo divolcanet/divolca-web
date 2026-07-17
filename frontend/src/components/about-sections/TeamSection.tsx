@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Container from "../components/ui/container";
-import { Reveal } from "../components/ui/reveal";
-import { cn } from "../lib/utils";
-import { Button } from "../components/ui/button";
-import researchData from "../data/research";
+import { Reveal } from "../ui/reveal";
+import { cn } from "../../lib/utils";
+import { Button } from "../ui/button";
+import researchData from "../../data/research";
 
 const team = researchData.teams;
 
@@ -33,7 +32,7 @@ function MemberPhoto({
 
   return (
     <div className="relative">
-      <div className=" w-full aspect-square overflow-hidden rounded-xl border-2 border-primary-10 flex items-center justify-center font-fraunces text-3xl ">
+      <div className="w-full aspect-square overflow-hidden rounded-xl border-2 border-primary-10 flex items-center justify-center font-fraunces text-3xl">
         {failed || !photo ? (
           getInitials(name)
         ) : (
@@ -41,7 +40,7 @@ function MemberPhoto({
             src={photo}
             alt={name}
             onError={() => setFailed(true)}
-            className=" w-full h-full object-cover"
+            className="w-full h-full object-cover"
           />
         )}
       </div>
@@ -50,7 +49,7 @@ function MemberPhoto({
         size="icon"
         variant="outline"
         onClick={onPrev}
-        className=" bg-white absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10"
+        className="bg-white absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10"
       >
         <ChevronLeft />
       </Button>
@@ -58,7 +57,7 @@ function MemberPhoto({
         size="icon"
         variant="outline"
         onClick={onNext}
-        className=" bg-white absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10"
+        className="bg-white absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10"
       >
         <ChevronRight />
       </Button>
@@ -68,7 +67,7 @@ function MemberPhoto({
 
 const AUTO_ADVANCE_MS = 5000;
 
-export default function AboutTeamPage() {
+export default function TeamSection() {
   const [index, setIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
@@ -102,12 +101,12 @@ export default function AboutTeamPage() {
   const member = team[index];
 
   return (
-    <Container className=" bg-page">
+    <>
       <Reveal>
-        <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
+        <h2 className="font-fraunces text-3xl font-bold text-title text-center mb-8">
           Tentang Tim
-        </h1>
-        <p className="text-center leading-relaxed mb-12 mx-auto">
+        </h2>
+        <p className="text-center leading-relaxed mb-12 mx-auto text-dim max-w-3xl">
           Tim peneliti DiVolca terdiri dari para akademisi dan praktisi
           geofisika, vulkanologi, oseanografi, serta rekayasa perangkat lunak
           yang berkolaborasi untuk memahami struktur bawah permukaan Pegunungan
@@ -119,9 +118,9 @@ export default function AboutTeamPage() {
         <div
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          className=" flex flex-col md:flex-row gap-10 items-center"
+          className="flex flex-col md:flex-row gap-10 items-center"
         >
-          <div className="flex-1 w-full">
+          <div className="flex-1 w-full max-w-sm">
             <MemberPhoto
               name={member.name}
               photo={member.photo}
@@ -129,14 +128,14 @@ export default function AboutTeamPage() {
               onNext={goNext}
             />
           </div>
-          <div className=" text-center md:text-start flex-2 flex flex-col gap-5 items-center md:items-start">
+          <div className="text-center md:text-start flex-1 flex flex-col gap-5 items-center md:items-start">
             <span className="text-xs font-medium font-mono text-magma-400 tracking-wide uppercase">
               {index + 1} / {team.length}
             </span>
-            <h2 className="font-fraunces text-2xl font-semibold text-volcanic-50 ">
+            <h3 className="font-fraunces text-2xl font-semibold text-body">
               {member.name}
-            </h2>
-            <p className="text-sm text-volcanic-400 leading-relaxed">
+            </h3>
+            <p className="text-sm text-dim leading-relaxed">
               {member.description}
             </p>
 
@@ -149,7 +148,7 @@ export default function AboutTeamPage() {
                   aria-label={`Ke profil ${m.name}`}
                   className={cn(
                     "h-2.5 rounded-full transition-all",
-                    i === index ? " bg-primary-10 w-6" : "bg-muted w-2.5",
+                    i === index ? "bg-primary-10 w-6" : "bg-muted w-2.5",
                   )}
                 />
               ))}
@@ -157,6 +156,6 @@ export default function AboutTeamPage() {
           </div>
         </div>
       </Reveal>
-    </Container>
+    </>
   );
 }
