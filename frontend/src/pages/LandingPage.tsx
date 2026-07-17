@@ -1,4 +1,4 @@
-import { ArrowDown, Rotate3D, ArrowRight } from "lucide-react";
+import { ArrowDown, Rotate3D, ArrowRight, MapPin } from "lucide-react";
 import {
   useState,
   useEffect,
@@ -7,6 +7,7 @@ import {
 } from "react";
 import bgImage from "../assets/images/landing-cover.jpeg";
 import sukunir from "../assets/dieng/bukit-sikunir.jpg";
+import telagaWarna from "../assets/dieng/telaga-warna.jpg";
 import { buttonVariants } from "../components/ui/button";
 import { cn } from "../lib/utils";
 import { Reveal } from "../components/ui/reveal";
@@ -41,6 +42,18 @@ const heroSlides: HeroSlide[] = [
       text: "Jelajahi Model 3D",
       href: "#3d-view",
       icon: <Rotate3D className="w-7 h-7" />,
+    },
+  },
+  {
+    bg: telagaWarna,
+    title: "Titik Penelitian",
+    highlight: "Lokasi Penelitian Kami",
+    desc: "Jelajahi titik-titik lokasi penelitian geofisika di kompleks vulkanik Dieng, mulai dari kawah aktif, telaga, hingga situs budaya.",
+    className: " mt-48 text-white",
+    cta: {
+      text: "Lihat Titik Penelitian",
+      href: "#titik-penelitian",
+      icon: <MapPin className="w-7 h-7" />,
     },
   },
   {
@@ -168,7 +181,7 @@ const LandingPage = () => {
         <SpatialMain />
       </Container>
 
-      <Container className=" bg-secondary" id="3d-view">
+      <Container className=" bg-secondary" id="titik-penelitian">
         <Reveal>
           <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
             Titik Penelitian Kami
