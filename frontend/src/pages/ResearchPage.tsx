@@ -7,6 +7,9 @@ import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
 import Citation from "../components/Citation";
 
+import lpdp from "../assets/aknowledgement/lpdp.png";
+import brin from "../assets/aknowledgement/brin.png";
+
 const stats = researchData.stats;
 
 export default function ResearchPage() {
@@ -78,6 +81,25 @@ export default function ResearchPage() {
           </a>
         </Reveal>
       </Container>
+
+      <Container className=" bg-page ">
+        <Reveal delay={500} className="flex flex-col items-center gap-8">
+          <h1 className="font-fraunces font-bold text-title text-4xl text-center">
+            Acknowledgement
+          </h1>
+
+          <p>
+            Projek riset ini sepenuhnya didanai oleh RIM Ekspedisi Geologi Darat
+            dan Pumah Program Purwarupa
+          </p>
+
+          <div className=" flex gap-8 flex-wrap justify-center ">
+            <img src={brin} className="h-24" />
+            <img src={lpdp} className="h-24" />
+          </div>
+        </Reveal>
+      </Container>
+
       <Container className=" bg-page ">
         <Citation />
       </Container>
