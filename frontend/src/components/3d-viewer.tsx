@@ -192,7 +192,7 @@ export function Viewer3D({ children }: { children?: ReactNode }) {
       <directionalLight position={[-10, -5, -10]} intensity={0.5} />
       <ambientLight intensity={0.5} />
 
-      <Suspense fallback={null}>{children}</Suspense>
+      <Suspense fallback={<>Loading model...</>}>{children}</Suspense>
 
       <OrbitControls
         makeDefault
@@ -206,7 +206,7 @@ export function Viewer3D({ children }: { children?: ReactNode }) {
         <Bloom
           intensity={0.2}
           luminanceThreshold={0.7}
-          luminanceSmoothing={0.8}
+          luminanceSmoothing={0}
         />
         <ToneMapping mode={3} exposure={1.0} />
       </EffectComposer>

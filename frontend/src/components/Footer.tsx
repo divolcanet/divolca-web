@@ -1,10 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Rotate3D } from "lucide-react";
 import type { SVGProps } from "react";
-import { navLinks } from "./nav-links";
 import { buttonVariants } from "./ui/button";
 import icon from "../assets/icons/icon-light.svg";
-import { cn } from "../lib/utils";
 import { officeProfile } from "../data/office";
 
 function FacebookIcon(props: SVGProps<SVGSVGElement>) {

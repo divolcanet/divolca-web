@@ -16,8 +16,8 @@ export default function AboutDiengPage() {
           alt="Kawah Sileri, Dieng"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-accent via-accent/70 to-accent/50" />
-        <Reveal className=" relative max-w-7xl mx-auto px-5  pb-12 w-full space-y-3 text-white">
+        <div className="absolute inset-0 bg-linear-to-t from-primary-fg via-primary-fg/50 to-primary-fg/10 dark:from-accent dark:via-accent/70 dark:to-accent/50" />
+        <Reveal className=" relative max-w-7xl mx-auto px-5  pb-12 w-full space-y-3 ">
           <Tag className=" border-2 font-mono">Kompleks Vulkanik</Tag>
           <h1 className="font-fraunces text-4xl sm:text-5xl font-bold text-title">
             Tentang Dieng

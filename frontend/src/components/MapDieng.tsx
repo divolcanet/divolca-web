@@ -10,7 +10,7 @@ import { buttonVariants } from "./ui/button";
 const CENTER: [number, number] = [-7.21, 109.905];
 const ZOOM = 14;
 
-let DefaultIcon = L.icon({
+const DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
   iconSize: [25, 41],
