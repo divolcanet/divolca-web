@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        " w-full z-50 transition-all duration-300",
+        " w-full z-1200 transition-all duration-300",
         isScrolled ? " bg-black backdrop-blur-md" : "bg-transparent",
         fixedNavbarPages.includes(pathname)
           ? cn("fixed left-0", isScrolled ? "top-0" : "top-12")
