@@ -13,6 +13,7 @@ import { Reveal } from "../components/ui/reveal";
 import Container from "../components/ui/container";
 import Citation from "../components/Citation";
 import { SpatialMain } from "../components/SpatialMain";
+import { MapDieng } from "../components/MapDieng";
 
 type CTA = {
   text: string;
@@ -165,6 +166,20 @@ const LandingPage = () => {
         </Reveal>
 
         <SpatialMain />
+      </Container>
+
+      <Container className=" bg-secondary" id="3d-view">
+        <Reveal>
+          <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
+            Titik Penelitian Kami
+          </h1>
+          <p className="text-center leading-relaxed mb-12 mx-auto">
+            Jelajahi model spasial 3D peta data gaya berat (gravity) dan
+            geomagnetik Kompleks Vulkanik Dieng. Gunakan scrollbar di sisi kanan
+            untuk melihat irisan data pada setiap kedalaman.
+          </p>
+        </Reveal>
+        <MapDieng />
       </Container>
 
       <Container className=" bg-page ">
