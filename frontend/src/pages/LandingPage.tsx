@@ -15,6 +15,8 @@ import Container from "../components/ui/container";
 import Citation from "../components/Citation";
 import { SpatialMain } from "../components/SpatialMain";
 import { MapDieng } from "../components/MapDieng";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../translations";
 
 type CTA = {
   text: string;
@@ -31,47 +33,48 @@ type HeroSlide = {
   className?: HTMLAttributes<HTMLDivElement>["className"];
 };
 
-const heroSlides: HeroSlide[] = [
-  {
-    bg: bgImage,
-    title: "Informasi Geospasial",
-    highlight: "Kompleks Vulkanik Dieng",
-    desc: "Penelitian geofisika di Pegunungan Dieng menghasilkan data magnetik dan gravitasi bawah permukaan yang memberikan wawasan penting tentang struktur vulkanik dan potensi mitigasi bencana di kawasan tersebut.",
-    className: " mt-48",
-    cta: {
-      text: "Jelajahi Model 3D",
-      href: "#3d-view",
-      icon: <Rotate3D className="w-7 h-7" />,
-    },
-  },
-  {
-    bg: telagaWarna,
-    title: "Titik Penelitian",
-    highlight: "Lokasi Penelitian Kami",
-    desc: "Jelajahi titik-titik lokasi penelitian geofisika di kompleks vulkanik Dieng, mulai dari kawah aktif, telaga, hingga situs budaya.",
-    className: " mt-48 text-white",
-    cta: {
-      text: "Lihat Titik Penelitian",
-      href: "#titik-penelitian",
-      icon: <MapPin className="w-7 h-7" />,
-    },
-  },
-  {
-    bg: sukunir,
-    title: "Destinasi Wisata",
-    highlight: "Pegunungan Dieng",
-    desc: "Kawasan Dieng merupakan salah satu destinasi wisata geologi dan budaya utama di Jawa Tengah.",
-    className: " mt-48 text-white",
-    cta: {
-      text: "Pelajari Lebih Lanjut",
-      href: "/tentang-dieng",
-      icon: <ArrowRight className="w-7 h-7" />,
-    },
-  },
-];
-
 const LandingPage = () => {
+  const { lang } = useLanguage();
   const [current, setCurrent] = useState(0);
+
+  const heroSlides: HeroSlide[] = [
+    {
+      bg: bgImage,
+      title: t.landing.heroSlides[0].title[lang],
+      highlight: t.landing.heroSlides[0].highlight[lang],
+      desc: t.landing.heroSlides[0].desc[lang],
+      className: " mt-48",
+      cta: {
+        text: t.landing.heroSlides[0].cta[lang],
+        href: "#3d-view",
+        icon: <Rotate3D className="w-7 h-7" />,
+      },
+    },
+    {
+      bg: telagaWarna,
+      title: t.landing.heroSlides[1].title[lang],
+      highlight: t.landing.heroSlides[1].highlight[lang],
+      desc: t.landing.heroSlides[1].desc[lang],
+      className: " mt-48 text-white",
+      cta: {
+        text: t.landing.heroSlides[1].cta[lang],
+        href: "#titik-penelitian",
+        icon: <MapPin className="w-7 h-7" />,
+      },
+    },
+    {
+      bg: sukunir,
+      title: t.landing.heroSlides[2].title[lang],
+      highlight: t.landing.heroSlides[2].highlight[lang],
+      desc: t.landing.heroSlides[2].desc[lang],
+      className: " mt-48 text-white",
+      cta: {
+        text: t.landing.heroSlides[2].cta[lang],
+        href: "/tentang-dieng",
+        icon: <ArrowRight className="w-7 h-7" />,
+      },
+    },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -169,12 +172,10 @@ const LandingPage = () => {
       <Container className=" bg-page" id="3d-view">
         <Reveal>
           <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
-            Model 3D Peta Spasial
+            {t.landing.model3DTitle[lang]}
           </h1>
           <p className="text-center leading-relaxed mb-12 mx-auto">
-            Jelajahi model spasial 3D peta data gaya berat (gravity) dan
-            geomagnetik Kompleks Vulkanik Dieng. Gunakan scrollbar di sisi kanan
-            untuk melihat irisan data pada setiap kedalaman.
+            {t.landing.model3DDesc[lang]}
           </p>
         </Reveal>
 
@@ -184,12 +185,10 @@ const LandingPage = () => {
       <Container className=" bg-secondary" id="titik-penelitian">
         <Reveal>
           <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
-            Titik Penelitian Kami
+            {t.landing.researchPointsTitle[lang]}
           </h1>
           <p className="text-center leading-relaxed mb-12 mx-auto text-black">
-            Jelajahi model spasial 3D peta data gaya berat (gravity) dan
-            geomagnetik Kompleks Vulkanik Dieng. Gunakan scrollbar di sisi kanan
-            untuk melihat irisan data pada setiap kedalaman.
+            {t.landing.researchPointsDesc[lang]}
           </p>
         </Reveal>
         <MapDieng />

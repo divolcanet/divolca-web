@@ -5,6 +5,8 @@ import Container from "../components/ui/container";
 import { Button } from "../components/ui/button";
 import { X, ZoomIn } from "lucide-react";
 import gallery from "../data/gallery";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../translations";
 
 type Photo = { src: string; caption: string };
 
@@ -56,7 +58,7 @@ function PhotoCard({
   );
 }
 
-function Lightbox({ photo, onClose }: { photo: Photo; onClose: () => void }) {
+function Lightbox({ photo, onClose, closeLabel }: { photo: Photo; onClose: () => void; closeLabel: string }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -70,7 +72,7 @@ function Lightbox({ photo, onClose }: { photo: Photo; onClose: () => void }) {
     >
       <Button
         onClick={onClose}
-        aria-label="Tutup"
+        aria-label={closeLabel}
         size="icon"
         variant="outline"
         className="absolute top-4 right-4 bg-white"
@@ -90,6 +92,7 @@ function Lightbox({ photo, onClose }: { photo: Photo; onClose: () => void }) {
 }
 
 export default function GalleryPage() {
+  const { lang } = useLanguage();
   const [activeKey, setActiveKey] = useState(gallery[0].key);
   const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null);
   const activeCategory = gallery.find((c) => c.key === activeKey) ?? gallery[0];
@@ -98,11 +101,10 @@ export default function GalleryPage() {
     <Container className=" bg-page flex flex-col items-center">
       <Reveal>
         <h1 className="font-fraunces text-4xl text-center font-bold text-title mb-4">
-          Galeri Kegiatan
+          {t.gallery.title[lang]}
         </h1>
         <p className="text-muted text-center max-w-3xl mb-10 mx-auto">
-          Dokumentasi kegiatan akuisisi data lapangan tim DiVolca di Pegunungan
-          Dieng, meliputi survei gravity, magnetik, dan seismik.
+          {t.gallery.desc[lang]}
         </p>
       </Reveal>
 
@@ -136,6 +138,7 @@ export default function GalleryPage() {
         <Lightbox
           photo={lightboxPhoto}
           onClose={() => setLightboxPhoto(null)}
+          closeLabel={t.gallery.close[lang]}
         />
       )}
     </Container>

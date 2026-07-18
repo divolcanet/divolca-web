@@ -6,12 +6,31 @@ import { Button, buttonVariants } from "./ui/button";
 import { cn } from "../lib/utils";
 import { useScroll } from "../hooks/useScroll";
 import { ThemeToggle } from "./ThemeToggle";
-import { fixedNavbarPages, navLinks } from "./nav-links";
+import { fixedNavbarPages, getNavLinks } from "./nav-links";
+import { useLanguage } from "../context/LanguageContext";
+
+function LangToggle() {
+  const { lang, toggle } = useLanguage();
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      className="flex items-center gap-1 text-xs font-mono font-bold tracking-widest px-3 py-1.5 rounded-md border border-white/30 hover:bg-white/10 transition-colors"
+      aria-label="Toggle language"
+    >
+      <span className={lang === "id" ? "text-primary-10" : "text-white/40"}>ID</span>
+      <span className="text-white/30">/</span>
+      <span className={lang === "en" ? "text-primary-10" : "text-white/40"}>EN</span>
+    </button>
+  );
+}
 
 export default function Navbar() {
   const { pathname } = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const isScrolled = useScroll(50);
+  const { lang } = useLanguage();
+  const navLinks = getNavLinks(lang);
 
   return (
     <nav
@@ -49,10 +68,12 @@ export default function Navbar() {
                 {link.label}
               </NavLink>
             ))}
+            <LangToggle />
             <ThemeToggle />
           </div>
 
           <div className="flex lg:hidden items-center gap-2">
+            <LangToggle />
             <ThemeToggle />
             <Button
               variant="outline"

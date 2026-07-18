@@ -1,10 +1,19 @@
-export const navLinks = [
-  { to: "/", label: "Beranda" },
-  { to: "/riset", label: "Riset" },
-  { to: "/tentang-dieng", label: "Tentang Dieng" },
-  { to: "/galeri", label: "Galeri" },
-  { to: "/glosarium", label: "Glosarium" },
-  { to: "/tentang", label: "Tentang" },
+import type { Lang } from "../context/LanguageContext";
+
+const navLinkDefs = [
+  { to: "/", id: "Beranda", en: "Home" },
+  { to: "/riset", id: "Riset", en: "Research" },
+  { to: "/tentang-dieng", id: "Tentang Dieng", en: "About Dieng" },
+  { to: "/galeri", id: "Galeri", en: "Gallery" },
+  { to: "/glosarium", id: "Glosarium", en: "Glossary" },
+  { to: "/tentang", id: "Tentang", en: "About" },
 ];
 
-export const fixedNavbarPages = navLinks.slice(0, 3).map((l) => l.to);
+export function getNavLinks(lang: Lang) {
+  return navLinkDefs.map(({ to, id, en }) => ({
+    to,
+    label: lang === "id" ? id : en,
+  }));
+}
+
+export const fixedNavbarPages = navLinkDefs.slice(0, 3).map((l) => l.to);

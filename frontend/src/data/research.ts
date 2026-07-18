@@ -2,13 +2,14 @@ import { MapPin, Clock, Calendar, Database } from "lucide-react";
 import hasib from "../assets/team/hasib.jpeg";
 import sukir from "../assets/team/sukir.jpg";
 import aditya from "../assets/team/aditya.jpeg";
+import ade from "../assets/team/ade.jpeg";
 import anjar from "../assets/team/anjar.jpeg";
 import aufa from "../assets/team/aufa.jpg";
 import hanif from "../assets/team/hanif.jpeg";
 import arif from "../assets/team/arif.jpeg";
 import syafrizal from "../assets/team/syafrizal.jpeg";
 import fadlu from "../assets/team/fadlu.jpeg";
-import ade from "../assets/team/ade.jpeg";
+
 
 const researchData = {
   stats: [
