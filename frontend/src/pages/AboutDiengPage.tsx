@@ -3,10 +3,13 @@ import aboutDieng from "../data/about-dieng";
 import { Reveal } from "../components/ui/reveal";
 import Tag from "../components/ui/tag";
 import Container from "../components/ui/container";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../translations";
 
 const destinations = aboutDieng.destinations;
 
 export default function AboutDiengPage() {
+  const { lang } = useLanguage();
   return (
     <div className=" bg-page">
       {/* Hero */}
@@ -18,14 +21,12 @@ export default function AboutDiengPage() {
         />
         <div className="absolute inset-0 bg-linear-to-t from-primary-fg via-primary-fg/50 to-primary-fg/10 dark:from-accent dark:via-accent/70 dark:to-accent/50" />
         <Reveal className=" relative max-w-7xl mx-auto px-5  pb-12 w-full space-y-3 ">
-          <Tag className=" border-2 font-mono">Kompleks Vulkanik</Tag>
+          <Tag className=" border-2 font-mono">{t.aboutDieng.heroTag[lang]}</Tag>
           <h1 className="font-fraunces text-4xl sm:text-5xl font-bold text-title">
-            Tentang Dieng
+            {t.aboutDieng.heroTitle[lang]}
           </h1>
           <p className="mt-3 max-w-2xl">
-            Salah satu daerah vulkanik paling unik di Indonesia — kawah aktif,
-            manifestasi panas bumi, dan warisan budaya yang masih hidup hingga
-            kini.
+            {t.aboutDieng.heroDesc[lang]}
           </p>
         </Reveal>
       </section>
@@ -33,28 +34,11 @@ export default function AboutDiengPage() {
       <Container id="pendahuluan">
         <Reveal delay={300}>
           <h2 className="font-fraunces text-2xl font-semibold text-title mb-4">
-            Pendahuluan
+            {t.aboutDieng.introTitle[lang]}
           </h2>
           <div className="space-y-4 text-volcanic-300 leading-relaxed">
-            <p>
-              Kawasan Dieng merupakan salah satu daerah vulkanik paling unik di
-              Indonesia. Kompleks vulkanik ini berada di dataran tinggi Jawa
-              Tengah dan dikenal karena keberadaan kawah aktif, manifestasi
-              panas bumi, emisi gas vulkanik, serta aktivitas hidrotermal yang
-              masih berlangsung hingga saat ini. Selain memiliki nilai geologi
-              yang tinggi, Dieng juga merupakan kawasan budaya dan pariwisata
-              penting yang menyimpan kompleks candi Hindu tertua di Pulau Jawa.
-            </p>
-            <p>
-              Secara vulkanologi, Kompleks Vulkanik Dieng termasuk gunung api
-              aktif tipe kompleks yang tersusun atas sejumlah kerucut vulkanik,
-              kubah lava, kawah, dan zona panas bumi. Aktivitas erupsi yang
-              terjadi umumnya berupa erupsi freatik yang dipicu oleh interaksi
-              antara air tanah dan sistem panas bumi di bawah permukaan. Bahaya
-              utama kawasan ini tidak hanya berasal dari erupsi, tetapi juga
-              emisi gas beracun seperti karbon dioksida (CO₂) dan hidrogen
-              sulfida (H₂S).
-            </p>
+            <p>{t.aboutDieng.intro1[lang]}</p>
+            <p>{t.aboutDieng.intro2[lang]}</p>
           </div>
         </Reveal>
       </Container>
@@ -62,21 +46,16 @@ export default function AboutDiengPage() {
       <Container id="geolokasi">
         <Reveal>
           <h2 className="font-fraunces text-2xl font-semibold text-title mb-6">
-            Geografi &amp; Lokasi
+            {t.aboutDieng.geoTitle[lang]}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            {[
-              { label: "Elevasi", value: "1.900–2.565 mdpl" },
-              { label: "Koordinat", value: "7,2° LS, 109,88° BT" },
-              { label: "Luas Kompleks", value: "± 6 × 14 km" },
-              { label: "Jumlah Kawah", value: "20+ kawah & kerucut" },
-            ].map((item) => (
+            {t.aboutDieng.geoStats.map((item) => (
               <div
-                key={item.label}
+                key={item.label.id}
                 className="rounded-lg bg-card p-4 space-y-3"
               >
                 <p className="text-xs uppercase tracking-wide font-bold">
-                  {item.label}
+                  {item.label[lang]}
                 </p>
                 <p className="text-primary-75 font-fraunces text-lg mt-1">
                   {item.value}
@@ -85,20 +64,8 @@ export default function AboutDiengPage() {
             ))}
           </div>
           <div className="space-y-4 text-volcanic-300 leading-relaxed">
-            <p>
-              Dataran Tinggi Dieng berada di bagian tengah Pulau Jawa, secara
-              administratif terbagi antara Kabupaten Wonosobo dan Kabupaten
-              Banjarnegara, Provinsi Jawa Tengah. Kompleks ini berada pada jalur
-              busur vulkanik Sunda yang terbentuk akibat subduksi Lempeng
-              Indo-Australia di bawah Lempeng Eurasia.
-            </p>
-            <p>
-              Lokasinya berjarak sekitar 26 km dari Kota Wonosobo, 116 km dari
-              Kota Semarang, dan 130 km dari Kota Yogyakarta — dapat diakses
-              melalui jalur Wonosobo–Dieng atau Banjarnegara–Batur–Dieng.
-              Kawasan ini diapit oleh Gunung Sindoro dan Gunung Sumbing yang
-              turut mempengaruhi morfologi regionalnya.
-            </p>
+            <p>{t.aboutDieng.geo1[lang]}</p>
+            <p>{t.aboutDieng.geo2[lang]}</p>
           </div>
         </Reveal>
       </Container>
@@ -106,25 +73,11 @@ export default function AboutDiengPage() {
       <Container id="geologi">
         <Reveal>
           <h2 className="font-fraunces text-2xl font-semibold text-title mb-4">
-            Geologi
+            {t.aboutDieng.geologyTitle[lang]}
           </h2>
           <div className="space-y-4 text-volcanic-300 leading-relaxed">
-            <p>
-              Secara geologi, Kompleks Vulkanik Dieng merupakan kaldera vulkanik
-              besar yang terbentuk akibat aktivitas vulkanik Kuarter. Gunung
-              Prau diduga merupakan gunung api purba yang mengalami keruntuhan
-              membentuk kaldera besar pada masa Pleistosen. Setelah pembentukan
-              kaldera, aktivitas vulkanik selanjutnya menghasilkan sejumlah
-              kerucut dan kawah baru yang tersebar di dalam cekungan Dieng.
-            </p>
-            <p>
-              Produk vulkanik kawasan ini berumur Pleistosen hingga Holosen,
-              didominasi batuan andesit dan andesit basaltik, dengan kubah lava,
-              aliran lava, kawah, danau kawah, serta manifestasi panas bumi
-              berupa fumarola, solfatara, mata air panas, emisi gas vulkanik,
-              dan kawah berair panas — menjadikan Dieng salah satu lapangan
-              panas bumi utama di Indonesia.
-            </p>
+            <p>{t.aboutDieng.geology1[lang]}</p>
+            <p>{t.aboutDieng.geology2[lang]}</p>
           </div>
         </Reveal>
       </Container>
@@ -132,7 +85,7 @@ export default function AboutDiengPage() {
       <Container id="sejarah-erupsi" className=" bg-secondary">
         <Reveal>
           <h2 className="font-fraunces text-2xl font-semibold text-primary-75 mb-8">
-            Sejarah Erupsi
+            {t.aboutDieng.eruptionTitle[lang]}
           </h2>
           <div className="relative border-l border-primary-50 pl-6 space-y-8">
             {aboutDieng.eruptionTimeline.map((item) => (
@@ -153,7 +106,7 @@ export default function AboutDiengPage() {
       <Container id="karakteristik">
         <Reveal>
           <h2 className="font-fraunces text-2xl font-semibold text-title mb-6">
-            Karakteristik Daerah
+            {t.aboutDieng.characteristicsTitle[lang]}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {aboutDieng.characteristics.map((item) => (
@@ -176,11 +129,10 @@ export default function AboutDiengPage() {
       <Container id="destinasi">
         <Reveal>
           <h2 className="font-fraunces text-2xl font-semibold text-title mb-2">
-            Destinasi Wisata
+            {t.aboutDieng.destinationsTitle[lang]}
           </h2>
           <p className="text-volcanic-400 mb-6">
-            Kawasan Dieng merupakan salah satu destinasi wisata geologi dan
-            budaya utama di Jawa Tengah.
+            {t.aboutDieng.destinationsDesc[lang]}
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((dest) => (
@@ -202,7 +154,7 @@ export default function AboutDiengPage() {
                   <p className="text-volcanic-300 text-sm leading-relaxed">
                     {dest.desc}
                   </p>
-                  <Tag className="w-fit mt-auto">Sumber: {dest.source}</Tag>
+                  <Tag className="w-fit mt-auto">{t.aboutDieng.destinationsSource[lang]}: {dest.source}</Tag>
                 </div>
               </div>
             ))}
@@ -213,7 +165,7 @@ export default function AboutDiengPage() {
       <Container id="reference">
         <details className="rounded-lg bg-card p-5">
           <summary className="cursor-pointer text-title font-fraunces text-base font-semibold">
-            Referensi
+            {t.aboutDieng.references[lang]}
           </summary>
           <ul className="mt-4 space-y-2 text-volcanic-400 text-sm leading-relaxed list-disc list-inside">
             <li>BMKG. (2023). Data Klimatologi Dataran Tinggi Dieng.</li>

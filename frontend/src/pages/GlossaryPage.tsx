@@ -5,8 +5,11 @@ import Container from "../components/ui/container";
 import { Reveal } from "../components/ui/reveal";
 import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
+import { useLanguage } from "../context/LanguageContext";
+import { t } from "../translations";
 
 export default function GlossaryPage() {
+  const { lang } = useLanguage();
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   useEffect(() => {
@@ -43,11 +46,10 @@ export default function GlossaryPage() {
     <Container className=" bg-page">
       <Reveal>
         <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
-          Glosarium
+          {t.glossary.title[lang]}
         </h1>
         <p className="text-center leading-relaxed mb-12 mx-auto">
-          Kumpulan istilah geofisika dan vulkanologi yang digunakan dalam
-          penelitian Pegunungan Dieng.
+          {t.glossary.desc[lang]}
         </p>
       </Reveal>
 
@@ -55,11 +57,10 @@ export default function GlossaryPage() {
         <p className="text-volcanic-400">Belum ada istilah yang tersedia.</p>
       ) : (
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar — uses native <a href="#slug"> for browser-managed scroll */}
           <aside className="lg:w-64 shrink-0">
             <nav className=" p-4 lg:sticky lg:top-24 space-y-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto rounded-xl bg-card">
               <h2 className="font-fraunces font-bold  mb-3 lg:mb-4">
-                Daftar Istilah
+                {t.glossary.listTitle[lang]}
               </h2>
               {glossaryData.map((entry) => (
                 <a
@@ -79,7 +80,6 @@ export default function GlossaryPage() {
             </nav>
           </aside>
 
-          {/* Main content */}
           <Reveal delay={300}>
             <div className="flex-1 min-w-0 divide-y divide-muted">
               {glossaryData.map((entry) => (
@@ -103,7 +103,7 @@ export default function GlossaryPage() {
                       )}
                     >
                       <ExternalLink />
-                      Baca selengkapnya
+                      {t.glossary.readMore[lang]}
                     </a>
                   )}
                 </div>

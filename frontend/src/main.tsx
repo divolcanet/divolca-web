@@ -6,6 +6,7 @@ import App from "./App.tsx";
 import { Toaster } from "./components/ui/sonner.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { TooltipProvider } from "./components/ui/tooltip.tsx";
+import { LanguageProvider } from "./context/LanguageContext.tsx";
 
 const lenis = new Lenis({
   duration: 1.2,
@@ -23,9 +24,11 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Toaster richColors position="top-center" />
     <BrowserRouter>
-      <TooltipProvider>
-        <App />
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <App />
+        </TooltipProvider>
+      </LanguageProvider>
     </BrowserRouter>
   </StrictMode>,
 );
