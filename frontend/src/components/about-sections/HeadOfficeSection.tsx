@@ -2,13 +2,16 @@ import { MapPin } from "lucide-react";
 import { Reveal } from "../ui/reveal";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { officeProfile } from "../../data/office";
+import { useLanguage } from "../../context/LanguageContext";
+import { t } from "../../translations";
 
 export default function HeadOfficeSection() {
+  const { lang } = useLanguage();
   return (
     <>
       <Reveal>
         <h2 className="font-fraunces text-3xl font-bold text-title text-center mb-10">
-          Kantor Pusat
+          {t.about.officeTitle[lang]}
         </h2>
       </Reveal>
 

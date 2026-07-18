@@ -8,92 +8,143 @@ import bukitSikunir from "../assets/dieng/bukit-sikunir.jpg";
 const aboutDieng = {
   characteristics: [
     {
-      title: "Dataran Tinggi Vulkanik",
-      desc: "Salah satu dataran tinggi vulkanik terbesar di Indonesia dengan suhu udara berkisar 6–20°C.",
+      title: { id: "Dataran Tinggi Vulkanik", en: "Volcanic Highland" },
+      desc: {
+        id: "Salah satu dataran tinggi vulkanik terbesar di Indonesia dengan suhu udara berkisar 6–20°C.",
+        en: "One of Indonesia's largest volcanic highlands with air temperatures ranging from 6–20°C.",
+      },
     },
     {
-      title: "Aktivitas Panas Bumi",
-      desc: "Manifestasi panas bumi berupa kawah aktif, mata air panas, solfatara, dan fumarola.",
+      title: { id: "Aktivitas Panas Bumi", en: "Geothermal Activity" },
+      desc: {
+        id: "Manifestasi panas bumi berupa kawah aktif, mata air panas, solfatara, dan fumarola.",
+        en: "Geothermal manifestations including active craters, hot springs, solfataras, and fumaroles.",
+      },
     },
     {
-      title: "Emisi Gas Beracun",
-      desc: "Beberapa kawah menghasilkan gas CO\u2082 dan H\u2082S yang berbahaya, terutama di Kawah Timbang.",
+      title: { id: "Emisi Gas Beracun", en: "Toxic Gas Emissions" },
+      desc: {
+        id: "Beberapa kawah menghasilkan gas CO₂ dan H₂S yang berbahaya, terutama di Kawah Timbang.",
+        en: "Several craters produce hazardous CO₂ and H₂S gases, particularly at Kawah Timbang.",
+      },
     },
     {
-      title: "Tanah Vulkanik Subur",
-      desc: "Material vulkanik menyuburkan tanah, menjadikan kawasan ini sentra pertanian kentang, kubis, wortel, carica, dan bawang daun.",
+      title: { id: "Tanah Vulkanik Subur", en: "Fertile Volcanic Soil" },
+      desc: {
+        id: "Material vulkanik menyuburkan tanah, menjadikan kawasan ini sentra pertanian kentang, kubis, wortel, carica, dan bawang daun.",
+        en: "Volcanic material enriches the soil, making this area a center for potato, cabbage, carrot, carica, and spring onion farming.",
+      },
     },
     {
-      title: "Potensi Panas Bumi",
-      desc: "Lapangan panas bumi Dieng telah dimanfaatkan untuk pembangkitan energi listrik melalui sistem geothermal.",
+      title: { id: "Potensi Panas Bumi", en: "Geothermal Potential" },
+      desc: {
+        id: "Lapangan panas bumi Dieng telah dimanfaatkan untuk pembangkitan energi listrik melalui sistem geothermal.",
+        en: "The Dieng geothermal field has been utilized for electricity generation through geothermal systems.",
+      },
     },
   ],
   eruptionTimeline: [
     {
-      year: "Abad 18\u201320",
-      title: "Aktivitas Awal",
-      desc: "Erupsi freatik berlangsung pada kawah-kawah aktif seperti Kawah Sileri, Kawah Timbang, dan Kawah Sikidang.",
+      year: "Abad 18–20",
+      title: { id: "Aktivitas Awal", en: "Early Activity" },
+      desc: {
+        id: "Erupsi freatik berlangsung pada kawah-kawah aktif seperti Kawah Sileri, Kawah Timbang, dan Kawah Sikidang.",
+        en: "Phreatic eruptions occurred at active craters such as Kawah Sileri, Kawah Timbang, and Kawah Sikidang.",
+      },
     },
     {
       year: "20 Februari 1979",
-      title: "Tragedi Gas Beracun",
-      desc: "Pelepasan gas CO\u2082 dari Kawah Sinila dan kawasan Timbang menyebabkan kematian sekitar 149 penduduk \u2014 salah satu bencana gas vulkanik terbesar di Indonesia.",
+      title: { id: "Tragedi Gas Beracun", en: "Toxic Gas Tragedy" },
+      desc: {
+        id: "Pelepasan gas CO₂ dari Kawah Sinila dan kawasan Timbang menyebabkan kematian sekitar 149 penduduk — salah satu bencana gas vulkanik terbesar di Indonesia.",
+        en: "The release of CO₂ gas from Kawah Sinila and the Timbang area caused the deaths of around 149 residents — one of the largest volcanic gas disasters in Indonesia.",
+      },
     },
     {
       year: "2017",
-      title: "Erupsi Kawah Sileri",
-      desc: "Beberapa letusan freatik melontarkan lumpur dan material vulkanik hingga ratusan meter dari pusat erupsi.",
+      title: { id: "Erupsi Kawah Sileri", en: "Kawah Sileri Eruption" },
+      desc: {
+        id: "Beberapa letusan freatik melontarkan lumpur dan material vulkanik hingga ratusan meter dari pusat erupsi.",
+        en: "Several phreatic eruptions hurled mud and volcanic material hundreds of meters from the eruption center.",
+      },
     },
     {
       year: "2018",
-      title: "Erupsi Kawah Sileri",
-      desc: "Kawah Sileri kembali mengalami erupsi freatik dengan semburan lumpur dan uap panas.",
+      title: { id: "Erupsi Kawah Sileri", en: "Kawah Sileri Eruption" },
+      desc: {
+        id: "Kawah Sileri kembali mengalami erupsi freatik dengan semburan lumpur dan uap panas.",
+        en: "Kawah Sileri experienced another phreatic eruption with sprays of mud and hot steam.",
+      },
     },
     {
       year: "29 April 2021",
-      title: "Erupsi Kawah Sileri",
-      desc: "Letusan freatik menghasilkan lontaran material hingga ratusan meter sehingga PVMBG menetapkan zona bahaya.",
+      title: { id: "Erupsi Kawah Sileri", en: "Kawah Sileri Eruption" },
+      desc: {
+        id: "Letusan freatik menghasilkan lontaran material hingga ratusan meter sehingga PVMBG menetapkan zona bahaya.",
+        en: "A phreatic eruption launched material hundreds of meters, prompting PVMBG to establish a danger zone.",
+      },
     },
     {
-      year: "Des 2024 \u2013 Jan 2025",
-      title: "Aktivitas Terbaru",
-      desc: "Erupsi freatik di Kawah Sileri menghasilkan semburan lumpur, sedimen, dan kolom uap putih tanpa peningkatan aktivitas signifikan sebelumnya.",
+      year: "Des 2024 – Jan 2025",
+      title: { id: "Aktivitas Terbaru", en: "Recent Activity" },
+      desc: {
+        id: "Erupsi freatik di Kawah Sileri menghasilkan semburan lumpur, sedimen, dan kolom uap putih tanpa peningkatan aktivitas signifikan sebelumnya.",
+        en: "Phreatic eruptions at Kawah Sileri produced mud sprays, sediment, and white steam columns with no significant prior increase in activity.",
+      },
     },
   ],
   destinations: [
     {
       title: "Kawah Sikidang",
-      desc: "Kawah aktif yang paling mudah diakses wisatawan, dikenal karena aktivitas solfatara dan lumpur panasnya.",
+      desc: {
+        id: "Kawah aktif yang paling mudah diakses wisatawan, dikenal karena aktivitas solfatara dan lumpur panasnya.",
+        en: "The most accessible active crater for visitors, known for its solfatara activity and hot mud.",
+      },
       source: "Kompas.com, 2022",
       img: sikidang,
     },
     {
       title: "Kawah Sileri",
-      desc: "Kawah terbesar dan salah satu kawah paling aktif di Dieng yang sering mengalami erupsi freatik.",
+      desc: {
+        id: "Kawah terbesar dan salah satu kawah paling aktif di Dieng yang sering mengalami erupsi freatik.",
+        en: "The largest and one of the most active craters in Dieng, frequently experiencing phreatic eruptions.",
+      },
       source: "CNN Indonesia, 2021",
       img: sileri,
     },
     {
       title: "Telaga Warna",
-      desc: "Air telaga berubah warna-warni karena sinar matahari mengenai air yang mengandung sulfur tinggi.",
+      desc: {
+        id: "Air telaga berubah warna-warni karena sinar matahari mengenai air yang mengandung sulfur tinggi.",
+        en: "The lake's water changes colors as sunlight hits its high-sulfur content.",
+      },
       source: "Kompas.com, 2020",
       img: telagaWarna,
     },
     {
       title: "Telaga Pengilon",
-      desc: "Perubahan warna air dipengaruhi kandungan mineral dan aktivitas gas vulkanik di dasar danau.",
+      desc: {
+        id: "Perubahan warna air dipengaruhi kandungan mineral dan aktivitas gas vulkanik di dasar danau.",
+        en: "Water color changes are influenced by mineral content and volcanic gas activity at the lake bed.",
+      },
       source: "Magelang Ekspres, 2023",
       img: telagaPengilon,
     },
     {
       title: "Kompleks Candi Arjuna",
-      desc: "Salah satu kompleks candi Hindu tertua di Jawa, diperkirakan dibangun pada abad ke-8 hingga ke-9 Masehi.",
+      desc: {
+        id: "Salah satu kompleks candi Hindu tertua di Jawa, diperkirakan dibangun pada abad ke-8 hingga ke-9 Masehi.",
+        en: "One of the oldest Hindu temple complexes on Java, estimated to have been built in the 8th to 9th centuries AD.",
+      },
       source: "Kompasiana.com, 2025",
       img: candiArjuna,
     },
     {
       title: "Bukit Sikunir",
-      desc: "Lokasi pengamatan matahari terbit yang menjadi salah satu daya tarik wisata utama di Dieng.",
+      desc: {
+        id: "Lokasi pengamatan matahari terbit yang menjadi salah satu daya tarik wisata utama di Dieng.",
+        en: "A sunrise viewing spot that is one of the main tourist attractions in Dieng.",
+      },
       source: "Magelang Ekspres, 2023",
       img: bukitSikunir,
     },
