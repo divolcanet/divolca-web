@@ -4,6 +4,7 @@ import { Reveal } from "../ui/reveal";
 import { cn } from "../../lib/utils";
 import { Button } from "../ui/button";
 import researchData from "../../data/research";
+import { useLanguage } from "../../context/LanguageContext";
 
 const team = researchData.teams;
 
@@ -68,6 +69,7 @@ function MemberPhoto({
 const AUTO_ADVANCE_MS = 5000;
 
 export default function TeamSection() {
+  const { lang } = useLanguage();
   const [index, setIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
@@ -104,13 +106,12 @@ export default function TeamSection() {
     <>
       <Reveal>
         <h2 className="font-fraunces text-3xl font-bold text-title text-center mb-8">
-          Tentang Tim
+          {lang === "id" ? "Tentang Tim" : "About the Team"}
         </h2>
         <p className="text-center leading-relaxed mb-12 mx-auto text-dim max-w-3xl">
-          Tim peneliti DiVolca terdiri dari para akademisi dan praktisi
-          geofisika, vulkanologi, oseanografi, serta rekayasa perangkat lunak
-          yang berkolaborasi untuk memahami struktur bawah permukaan Pegunungan
-          Dieng dan menyajikannya dalam platform informasi geospasial ini.
+          {lang === "id"
+            ? "Tim peneliti DiVolca terdiri dari para akademisi dan praktisi geofisika, vulkanologi, oseanografi, serta rekayasa perangkat lunak yang berkolaborasi untuk memahami struktur bawah permukaan Pegunungan Dieng dan menyajikannya dalam platform informasi geospasial ini."
+            : "The DiVolca research team consists of academics and practitioners in geophysics, volcanology, oceanography, and software engineering who collaborate to understand the subsurface structure of the Dieng Mountains and present it through this geospatial information platform."}
         </p>
       </Reveal>
 
@@ -136,7 +137,7 @@ export default function TeamSection() {
               {member.name}
             </h3>
             <p className="text-sm text-dim leading-relaxed">
-              {member.description}
+              {member.description[lang]}
             </p>
 
             <div className="flex items-center w-fit gap-2">

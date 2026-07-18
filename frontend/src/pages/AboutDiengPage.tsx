@@ -94,9 +94,9 @@ export default function AboutDiengPage() {
                 <span className="absolute -left-7.75 top-1 w-3 h-3 rounded-full bg-destructive" />
                 <p className="text-primary-75 font-mono text-sm">{item.year}</p>
                 <h3 className="font-fraunces font-bold text-lg mt-1">
-                  {item.title}
+                  {item.title[lang]}
                 </h3>
-                <p className=" mt-1 leading-relaxed">{item.desc}</p>
+                <p className=" mt-1 leading-relaxed">{item.desc[lang]}</p>
               </div>
             ))}
           </div>
@@ -111,14 +111,14 @@ export default function AboutDiengPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {aboutDieng.characteristics.map((item) => (
               <div
-                key={item.title}
+                key={item.title.id}
                 className="rounded-lg bg-card p-5 hover:shadow-md transition-all"
               >
                 <h3 className="text-primary-75 font-fraunces text-base font-semibold mb-2">
-                  {item.title}
+                  {item.title[lang]}
                 </h3>
                 <p className="text-volcanic-300 text-sm leading-relaxed">
-                  {item.desc}
+                  {item.desc[lang]}
                 </p>
               </div>
             ))}
@@ -152,7 +152,7 @@ export default function AboutDiengPage() {
                     {dest.title}
                   </h3>
                   <p className="text-volcanic-300 text-sm leading-relaxed">
-                    {dest.desc}
+                    {dest.desc[lang]}
                   </p>
                   <Tag className="w-fit mt-auto">{t.aboutDieng.destinationsSource[lang]}: {dest.source}</Tag>
                 </div>

@@ -74,7 +74,7 @@ export default function GlossaryPage() {
                     "w-full justify-start",
                   )}
                 >
-                  {entry.title}
+                  {entry.title[lang]}
                 </a>
               ))}
             </nav>
@@ -89,9 +89,9 @@ export default function GlossaryPage() {
                   className="scroll-mt-16 py-8 first:pt-0 last:pb-0"
                 >
                   <h2 className=" font-fraunces text-2xl font-semibold text-primary-75 mb-3">
-                    {entry.title}
+                    {entry.title[lang]}
                   </h2>
-                  <p>{entry.content}</p>
+                  <p>{entry.content[lang]}</p>
                   {entry.externalLink && (
                     <a
                       href={entry.externalLink}
