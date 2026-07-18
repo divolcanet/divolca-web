@@ -83,7 +83,10 @@ export const SpatialFull = () => {
       </Link>
 
       {/* Legend */}
-      <Legend className="absolute bottom-4 left-4" />
+      <Legend
+        className="absolute bottom-4 left-4"
+        title={selectedCategory && `Anomali ${selectedCategory.label}`}
+      />
     </div>
   );
 };

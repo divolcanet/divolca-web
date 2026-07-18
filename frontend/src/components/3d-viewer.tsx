@@ -197,6 +197,7 @@ export function Viewer3D({ children }: { children?: ReactNode }) {
       <OrbitControls
         makeDefault
         autoRotate
+        rotateSpeed={0.1}
         autoRotateSpeed={0.8}
         minDistance={10}
         maxDistance={75}

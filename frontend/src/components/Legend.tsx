@@ -4,16 +4,18 @@ interface LegendProps {
   min?: number;
   max?: number;
   unit?: string;
-  steps?: number[];
+  title?: string;
+  steps?: number[] | string[];
   className?: string;
 }
 
-const DEFAULT_STEPS = [-50, 15, 50, 100, 300, 500];
+const DEFAULT_STEPS = ["Rendah", "Sedang", "Tinggi"];
 
 export function Legend({
   min,
   max,
   unit = "nT",
+  title,
   steps = DEFAULT_STEPS,
   className,
 }: LegendProps) {
@@ -28,6 +30,7 @@ export function Legend({
       )}
     >
       <h3 className="font-bold font-fraunces">Legenda</h3>
+      {title && <p>{title}</p>}
       <div className="flex items-start gap-2">
         <div className="flex-1">
           <div className="w-full h-3 bg-[linear-gradient(to_right,var(--color-blue-500),var(--color-green-500),var(--color-yellow-500),var(--color-red-500))] rounded-full" />
