@@ -133,8 +133,8 @@ const BannerTooltipContent = ({
     : null;
 
   return (
-    <div>
-      <div className=" font-bold">
+    <div className=" text-black">
+      <div className=" font-bold ">
         Status gunung berapi indonesia{" "}
         <a
           href={source ?? "#"}
