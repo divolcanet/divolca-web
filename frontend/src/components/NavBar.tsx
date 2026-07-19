@@ -1,5 +1,5 @@
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import iconLight from "../assets/icons/icon-light.svg";
 import { Button, buttonVariants } from "./ui/button";
@@ -8,26 +8,7 @@ import { useScroll } from "../hooks/useScroll";
 import { ThemeToggle } from "./ThemeToggle";
 import { fixedNavbarPages, getNavLinks } from "./nav-links";
 import { useLanguage } from "../data/translations/LanguageContext";
-
-function LangToggle() {
-  const { lang, toggle } = useLanguage();
-  return (
-    <button
-      type="button"
-      onClick={toggle}
-      className="flex items-center gap-1 text-xs font-mono font-bold tracking-widest px-3 py-1.5 rounded-md border border-white/30 hover:bg-white/10 transition-colors"
-      aria-label="Toggle language"
-    >
-      <span className={lang === "id" ? "text-primary-10" : "text-white/40"}>
-        ID
-      </span>
-      <span className="text-white/30">/</span>
-      <span className={lang === "en" ? "text-primary-10" : "text-white/40"}>
-        EN
-      </span>
-    </button>
-  );
-}
+import { LangToggle } from "./LangToggle";
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -35,6 +16,13 @@ export default function Navbar() {
   const isScrolled = useScroll(50);
   const { lang } = useLanguage();
   const navLinks = getNavLinks(lang);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) =>
+      e.key === "Escape" && setMobileOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <nav
@@ -77,7 +65,6 @@ export default function Navbar() {
           </div>
 
           <div className="flex lg:hidden items-center gap-2">
-            <LangToggle />
             <ThemeToggle />
             <Button
               variant="outline"
@@ -93,30 +80,38 @@ export default function Navbar() {
         </div>
       </div>
 
-      {mobileOpen && (
-        <div className="absolute w-full border-t border-primary-10 bg-black ">
-          <div className="px-2 py-4 flex flex-col gap-2 justify-start">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  buttonVariants({
-                    variant: "link",
-                    className: cn(
-                      " w-max",
-                      isActive ? " text-primary-10" : "text-white font-normal",
-                    ),
-                  })
-                }
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </div>
+      {/* Mobile menu panel */}
+      <div
+        className={cn(
+          "fixed w-full h-svh border-t border-primary-10 bg-black/70 backdrop-blur-md transition-all duration-300 ease-in-out",
+          mobileOpen
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "-translate-y-10 opacity-0 pointer-events-none",
+        )}
+        onClick={() => setMobileOpen(false)}
+      >
+        <div className="px-2 py-4 flex flex-col gap-2 justify-start bg-black">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                buttonVariants({
+                  variant: "link",
+                  className: cn(
+                    " w-max",
+                    isActive ? " text-primary-10" : "text-white font-normal",
+                  ),
+                })
+              }
+              onClick={() => setMobileOpen(false)}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+          <LangToggle />
         </div>
-      )}
+      </div>
     </nav>
   );
 }
