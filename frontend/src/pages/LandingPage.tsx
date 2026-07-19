@@ -169,7 +169,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <Container className=" bg-page" id="3d-view">
+      <Container className=" bg-page py-10" id="3d-view">
         <Reveal>
           <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
             {t.landing.model3DTitle[lang]}
@@ -182,7 +182,7 @@ const LandingPage = () => {
         <SpatialMain />
       </Container>
 
-      <Container className=" bg-secondary" id="titik-penelitian">
+      <Container className=" bg-secondary py-10" id="titik-penelitian">
         <Reveal>
           <h1 className="font-fraunces text-4xl font-bold text-primary-75 text-center mb-8">
             {t.landing.researchPointsTitle[lang]}
@@ -194,7 +194,7 @@ const LandingPage = () => {
         <MapDieng />
       </Container>
 
-      <Container className=" bg-page ">
+      <Container className=" bg-page py-10">
         <Citation />
       </Container>
     </>
