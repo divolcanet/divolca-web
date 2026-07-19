@@ -16,6 +16,7 @@ export const SpatialMain = () => {
     spatialDieng.categories[0].key,
   );
   const [model, setModel] = useState<string | undefined>();
+  const [modelOpacity, setModelOpacity] = useState(1);
 
   const selectedCategory = spatialDieng.categories.find((v) => v.key === tab);
   const selectedModel = selectedCategory?.models.find((m) => m.key === model);
@@ -44,7 +45,13 @@ export const SpatialMain = () => {
             <Viewer3D>
               <MapModel url={spatialDieng.mountainUrl} />
 
-              {/* {selectedModel && <MapModel url={selectedModel.url} />} */}
+              {selectedModel && selectedModel.url && (
+                <MapModel
+                  url={selectedModel.url}
+                  opacity={modelOpacity}
+                  position={[0, 0.7, 0]}
+                />
+              )}
 
               {selectedModel?.hotspots.map((marker) => (
                 <Hotspot
@@ -81,9 +88,26 @@ export const SpatialMain = () => {
           <span className=" hidden md:block">Fullscreen</span>
         </Link>
 
+        {/* Opacity Slider */}
+        <div className="absolute bottom-4 right-4 z-10 bg-card/80 backdrop-blur-sm p-3 rounded-xl flex items-center gap-2 border border-line">
+          <span className="text-xs font-fraunces text-body">Opacity</span>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.05"
+            value={modelOpacity}
+            onChange={(e) => setModelOpacity(Number(e.target.value))}
+            className="w-24 accent-primary-10"
+          />
+        </div>
+
         {/* Legend */}
         <Legend
-          className="absolute bottom-4 left-4"
+          className={cn(
+            "absolute bottom-4 left-4",
+            selectedModel ? "block" : "hidden",
+          )}
           title={selectedCategory && `Anomali ${selectedCategory.label}`}
         />
       </div>

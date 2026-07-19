@@ -19,9 +19,11 @@ type GLTFResult = GLTF & {
 
 interface MapModelProps {
   url: string;
+  position?: [number, number, number];
+  opacity?: number;
 }
 
-export function MapModel({ url }: MapModelProps) {
+export function MapModel({ url, opacity = 1, position }: MapModelProps) {
   const { scene } = useGLTF(url) as GLTFResult;
 
   useEffect(() => {
@@ -33,13 +35,16 @@ export function MapModel({ url }: MapModelProps) {
         mats.forEach((mat) => {
           mat.roughness = 0.9;
           mat.metalness = 0.0;
+          mat.transparent = true;
+          mat.opacity = opacity;
+          mat.depthWrite = false;
         });
       }
     });
-  }, [scene]);
+  }, [scene, opacity]);
 
   return (
-    <Center>
+    <Center position={position}>
       <primitive object={scene} scale={0.001} />
     </Center>
   );

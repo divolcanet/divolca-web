@@ -12,7 +12,7 @@ export type Category = {
 export type Model = {
   key: string;
   label: string;
-  url: string;
+  url?: string;
   hotspots: HotspotData[];
 };
 
