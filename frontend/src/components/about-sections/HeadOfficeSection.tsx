@@ -2,8 +2,8 @@ import { MapPin } from "lucide-react";
 import { Reveal } from "../ui/reveal";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { officeProfile } from "../../data/office";
-import { useLanguage } from "../../context/LanguageContext";
-import { t } from "../../translations";
+import { useLanguage } from "../../data/translations/LanguageContext";
+import { t } from "../../data/translations";
 
 export default function HeadOfficeSection() {
   const { lang } = useLanguage();

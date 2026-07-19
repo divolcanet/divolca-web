@@ -5,8 +5,8 @@ import Container from "../components/ui/container";
 import { Reveal } from "../components/ui/reveal";
 import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
-import { useLanguage } from "../context/LanguageContext";
-import { t } from "../translations";
+import { useLanguage } from "../data/translations/LanguageContext";
+import { t } from "../data/translations";
 
 export default function GlossaryPage() {
   const { lang } = useLanguage();

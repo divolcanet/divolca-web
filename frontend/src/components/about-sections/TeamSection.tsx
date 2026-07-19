@@ -4,7 +4,7 @@ import { Reveal } from "../ui/reveal";
 import { cn } from "../../lib/utils";
 import { Button } from "../ui/button";
 import researchData from "../../data/research";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../data/translations/LanguageContext";
 
 const team = researchData.teams;
 

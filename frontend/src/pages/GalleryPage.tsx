@@ -5,8 +5,8 @@ import Container from "../components/ui/container";
 import { Button } from "../components/ui/button";
 import { X, ZoomIn } from "lucide-react";
 import gallery from "../data/gallery";
-import { useLanguage } from "../context/LanguageContext";
-import { t } from "../translations";
+import { useLanguage } from "../data/translations/LanguageContext";
+import { t } from "../data/translations";
 
 type Photo = { src: string; caption: string };
 
@@ -58,7 +58,15 @@ function PhotoCard({
   );
 }
 
-function Lightbox({ photo, onClose, closeLabel }: { photo: Photo; onClose: () => void; closeLabel: string }) {
+function Lightbox({
+  photo,
+  onClose,
+  closeLabel,
+}: {
+  photo: Photo;
+  onClose: () => void;
+  closeLabel: string;
+}) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);

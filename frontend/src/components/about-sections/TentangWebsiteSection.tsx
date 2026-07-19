@@ -1,5 +1,5 @@
 import { Reveal } from "../ui/reveal";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../data/translations/LanguageContext";
 
 const websiteInfo = {
   tentang: {

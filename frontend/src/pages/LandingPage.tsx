@@ -15,8 +15,8 @@ import Container from "../components/ui/container";
 import Citation from "../components/Citation";
 import { SpatialMain } from "../components/SpatialMain";
 import { MapDieng } from "../components/MapDieng";
-import { useLanguage } from "../context/LanguageContext";
-import { t } from "../translations";
+import { useLanguage } from "../data/translations/LanguageContext";
+import { t } from "../data/translations";
 
 type CTA = {
   text: string;

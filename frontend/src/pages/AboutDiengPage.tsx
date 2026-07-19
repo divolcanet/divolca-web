@@ -3,8 +3,8 @@ import aboutDieng from "../data/about-dieng";
 import { Reveal } from "../components/ui/reveal";
 import Tag from "../components/ui/tag";
 import Container from "../components/ui/container";
-import { useLanguage } from "../context/LanguageContext";
-import { t } from "../translations";
+import { useLanguage } from "../data/translations/LanguageContext";
+import { t } from "../data/translations";
 
 const destinations = aboutDieng.destinations;
 
@@ -21,13 +21,13 @@ export default function AboutDiengPage() {
         />
         <div className="absolute inset-0 bg-linear-to-t from-primary-fg via-primary-fg/50 to-primary-fg/10 dark:from-accent dark:via-accent/70 dark:to-accent/50" />
         <Reveal className=" relative max-w-7xl mx-auto px-5  pb-12 w-full space-y-3 ">
-          <Tag className=" border-2 font-mono">{t.aboutDieng.heroTag[lang]}</Tag>
+          <Tag className=" border-2 font-mono">
+            {t.aboutDieng.heroTag[lang]}
+          </Tag>
           <h1 className="font-fraunces text-4xl sm:text-5xl font-bold text-title">
             {t.aboutDieng.heroTitle[lang]}
           </h1>
-          <p className="mt-3 max-w-2xl">
-            {t.aboutDieng.heroDesc[lang]}
-          </p>
+          <p className="mt-3 max-w-2xl">{t.aboutDieng.heroDesc[lang]}</p>
         </Reveal>
       </section>
 
@@ -154,7 +154,9 @@ export default function AboutDiengPage() {
                   <p className="text-volcanic-300 text-sm leading-relaxed">
                     {dest.desc[lang]}
                   </p>
-                  <Tag className="w-fit mt-auto">{t.aboutDieng.destinationsSource[lang]}: {dest.source}</Tag>
+                  <Tag className="w-fit mt-auto">
+                    {t.aboutDieng.destinationsSource[lang]}: {dest.source}
+                  </Tag>
                 </div>
               </div>
             ))}

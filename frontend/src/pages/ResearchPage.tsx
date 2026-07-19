@@ -6,8 +6,8 @@ import { Reveal } from "../components/ui/reveal";
 import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
 import Citation from "../components/Citation";
-import { useLanguage } from "../context/LanguageContext";
-import { t } from "../translations";
+import { useLanguage } from "../data/translations/LanguageContext";
+import { t } from "../data/translations";
 
 import lpdp from "../assets/aknowledgement/lpdp.png";
 import brin from "../assets/aknowledgement/brin.png";
@@ -85,9 +85,7 @@ export default function ResearchPage() {
             {t.research.acknowledgementTitle[lang]}
           </h1>
 
-          <p>
-            {t.research.acknowledgementDesc[lang]}
-          </p>
+          <p>{t.research.acknowledgementDesc[lang]}</p>
 
           <div className=" flex gap-8 flex-wrap justify-center ">
             <img src={brin} className="h-24" />

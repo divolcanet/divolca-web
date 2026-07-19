@@ -6,7 +6,7 @@ import App from "./App.tsx";
 import { Toaster } from "./components/ui/sonner.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { TooltipProvider } from "./components/ui/tooltip.tsx";
-import { LanguageProvider } from "./context/LanguageContext.tsx";
+import { LanguageProvider } from "./data/translations/LanguageContext.tsx";
 
 const lenis = new Lenis({
   duration: 1.2,

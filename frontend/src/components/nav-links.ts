@@ -1,4 +1,4 @@
-import type { Lang } from "../context/LanguageContext";
+import type { Lang } from "../data/translations/LanguageContext";
 
 const navLinkDefs = [
   { to: "/", id: "Beranda", en: "Home" },

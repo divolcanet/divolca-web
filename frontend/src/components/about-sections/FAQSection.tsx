@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Reveal } from "../ui/reveal";
 import faqs from "../../data/faqs";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../data/translations/LanguageContext";
 
 export default function FAQSection() {
   const { lang } = useLanguage();
