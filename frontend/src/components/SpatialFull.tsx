@@ -29,7 +29,12 @@ export const SpatialFull = () => {
           <MapModel url={spatialDieng.mountainUrl} />
 
           {selectedModel && selectedModel.url && (
-            <MapModel url={selectedModel.url} opacity={modelOpacity} />
+            <MapModel
+              key={selectedModel.url}
+              url={selectedModel.url}
+              opacity={modelOpacity}
+              position={[0, 0.7, 0]}
+            />
           )}
 
           {selectedModel?.hotspots.map((marker) => (

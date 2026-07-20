@@ -47,6 +47,7 @@ export const SpatialMain = () => {
 
               {selectedModel && selectedModel.url && (
                 <MapModel
+                  key={selectedModel.url}
                   url={selectedModel.url}
                   opacity={modelOpacity}
                   position={[0, 0.7, 0]}

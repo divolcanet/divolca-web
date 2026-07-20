@@ -6,7 +6,7 @@ export function LangToggle() {
     <button
       type="button"
       onClick={toggle}
-      className="flex items-center gap-1 font-mono font-bold tracking-widest px-3 py-1.5 rounded-md border border-white/30 hover:bg-white/10 transition-colors"
+      className="flex items-center gap-1 font-mono font-bold tracking-widest px-3 py-1.5 rounded-full border border-white/30 hover:bg-white/10 transition-colors"
       aria-label="Toggle language"
     >
       <span className={lang === "id" ? "text-primary-10" : "text-white/40"}>

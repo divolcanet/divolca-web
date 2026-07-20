@@ -81,7 +81,7 @@ const LandingPage = () => {
       setCurrent((prev) => (prev + 1) % heroSlides.length);
     }, 10000);
     return () => clearInterval(timer);
-  }, [current]);
+  }, [current, heroSlides.length]);
 
   return (
     <>

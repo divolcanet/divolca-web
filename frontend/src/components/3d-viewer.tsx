@@ -32,12 +32,13 @@ export function MapModel({ url, opacity = 1, position }: MapModelProps) {
         const mats = Array.isArray(child.material)
           ? child.material
           : [child.material];
+        const isTransparent = opacity < 1;
         mats.forEach((mat) => {
           mat.roughness = 0.9;
           mat.metalness = 0.0;
-          mat.transparent = true;
+          mat.transparent = isTransparent;
           mat.opacity = opacity;
-          mat.depthWrite = false;
+          mat.depthWrite = !isTransparent;
         });
       }
     });
@@ -176,7 +177,12 @@ export function Hotspot({
 export function Viewer3D({ children }: { children?: ReactNode }) {
   return (
     <Canvas
-      camera={{ position: [20, 10, 12], fov: 45 }}
+      camera={{
+        position: [20, 10, 12],
+        fov: 45,
+        near: 0.1,
+        far: 5000,
+      }}
       shadows
       gl={{
         antialias: true,
