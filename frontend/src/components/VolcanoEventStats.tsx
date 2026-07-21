@@ -24,7 +24,7 @@ const VolcanoEventStats = () => {
       setLoading(true);
       const url = import.meta.env.DEV
         ? "/volcano_activity.json"
-        : "/api/volcano-activity";
+        : "/data/volcano_activity.json";
 
       try {
         const res = await fetch(url);
