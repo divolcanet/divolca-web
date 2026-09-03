@@ -15,9 +15,10 @@ interface MapModelProps {
   url: string;
   position?: [number, number, number];
   opacity?: number;
+  scale?: number;
 }
 
-export function MapModel({ url, opacity = 1, position }: MapModelProps) {
+export function MapModel({ url, opacity = 1, position, scale }: MapModelProps) {
   const { scene } = useGLTF(url) as GLTFResult;
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export function MapModel({ url, opacity = 1, position }: MapModelProps) {
 
   return (
     <Center position={position}>
-      <primitive object={scene} scale={0.00035} />
+      <primitive object={scene} scale={scale} />
     </Center>
   );
 }
