@@ -11,7 +11,7 @@ interface LegendProps {
 
 const DEFAULT_STEPS = ["Rendah", "Sedang", "Tinggi"];
 
-export function Legend({ min, max, unit = "nT", title, steps = DEFAULT_STEPS, className }: LegendProps) {
+export function Legend({ min, max, unit = "satuan", title, steps = DEFAULT_STEPS, className }: LegendProps) {
   const displayMin = min ?? steps[0];
   const displayMax = max ?? steps[steps.length - 1];
 

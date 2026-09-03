@@ -1,8 +1,8 @@
 export type MountainSpatial = { mountainUrl: string; categories: Category[] };
 
-export type Category = { key: string; label: string; models: Model[] };
+export type Category = { key: string; label: string; unit: string; models: Model[] };
 
-export type Model = { key: string; label: string; url?: string; show_base_model?: boolean; hotspots: HotspotData[] };
+export type Model = { key: string; label: string; url?: string; dynamic_transparency?: boolean; show_base_model?: boolean; hotspots: HotspotData[] };
 
 export type HotspotData = { id: number; position: [number, number, number]; title: string; description: string };
 

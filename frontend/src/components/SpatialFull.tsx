@@ -2,9 +2,6 @@ import { useState, Suspense } from "react";
 import { Hotspot, MapModel, Viewer3D } from "./3d-viewer";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { spatialDieng } from "../data/spatial";
-import { Home } from "lucide-react";
-import { cn } from "../lib/utils";
-import { buttonVariants } from "./ui/button";
 import { Link } from "react-router-dom";
 import Legend from "./Legend";
 import icon from "../assets/icons/icon-dark.svg";
@@ -16,6 +13,8 @@ export const SpatialFull = () => {
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
   const [tab, setTab] = useState<string | undefined>(spatialDieng.categories[0].key);
   const [model, setModel] = useState<string | undefined>();
+
+  const [modelOpacity, setModelOpacity] = useState(1);
 
   const selectedCategory = spatialDieng.categories.find((v) => v.key === tab);
   const selectedModel = selectedCategory?.models.find((m) => m.key === model);
@@ -29,7 +28,7 @@ export const SpatialFull = () => {
           <Viewer3D>
             {showBase && <MapModel url={spatialDieng.mountainUrl} />}
 
-            {selectedModel && selectedModel.url && <MapModel key={selectedModel.url} url={selectedModel.url} position={[0, 0.7, 0]} />}
+            {selectedModel && selectedModel.url && <MapModel key={selectedModel.url} url={selectedModel.url} opacity={selectedModel.dynamic_transparency ? modelOpacity : 1} position={[0, 0.2, 0]} />}
 
             {selectedModel?.hotspots.map((marker) => (
               <Hotspot
@@ -70,19 +69,21 @@ export const SpatialFull = () => {
       </div>
 
       {/* Opacity Slider */}
-      {/* <div className="absolute bottom-4 right-4 z-10 bg-card/80 backdrop-blur-sm p-3 rounded-xl flex items-center gap-2 border border-line">
-        <span className="text-xs font-fraunces text-body">Opacity</span>
-        <input type="range" min="0" max="1" step="0.05" value={modelOpacity} onChange={(e) => setModelOpacity(Number(e.target.value))} className="w-24 accent-primary-10" />
-      </div> */}
+      {selectedModel?.dynamic_transparency && (
+        <div className="absolute bottom-4 right-4 z-10 bg-card/80 backdrop-blur-sm p-3 rounded-xl flex items-center gap-2 border border-line">
+          <span className="text-xs font-fraunces text-body">Opacity</span>
+          <input type="range" min="0" max="1" step="0.05" value={modelOpacity} onChange={(e) => setModelOpacity(Number(e.target.value))} className="w-24 accent-primary-10" />
+        </div>
+      )}
 
       {/* Bottom Right Button */}
-      <Link to={"/"} className={cn(buttonVariants({ variant: "outline" }), "absolute bottom-4 right-4 bg-elevated text-body")}>
+      {/* <Link to={"/"} className={cn(buttonVariants({ variant: "outline" }), "absolute bottom-4 right-4 bg-elevated text-body")}>
         <span className=" hidden md:block">Beranda</span>
         <Home />
-      </Link>
+      </Link> */}
 
       {/* Legend */}
-      <Legend className="absolute bottom-4 left-4" title={selectedCategory && `Anomali ${selectedCategory.label}`} />
+      <Legend className="absolute bottom-4 left-4" title={selectedCategory && `Anomali ${selectedCategory.label}`} unit={selectedCategory?.unit} />
     </div>
   );
 };
