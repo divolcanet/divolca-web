@@ -20,11 +20,13 @@ export const SpatialFull = () => {
   const selectedCategory = spatialDieng.categories.find((v) => v.key === tab);
   const selectedModel = selectedCategory?.models.find((m) => m.key === model);
 
+  const showBase = selectedModel ? selectedModel.show_base_model : true;
+
   return (
     <div className=" relative font-mono overflow-hidden">
       <div className=" w-full h-svh relative">
         <Viewer3D>
-          <MapModel url={spatialDieng.mountainUrl} />
+          {showBase && <MapModel url={spatialDieng.mountainUrl} />}
 
           {selectedModel && selectedModel.url && <MapModel key={selectedModel.url} url={selectedModel.url} opacity={modelOpacity} position={[0, 0.7, 0]} />}
 
