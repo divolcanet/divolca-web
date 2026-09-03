@@ -1,7 +1,7 @@
 import type { MountainSpatial } from "./types";
 
 export const spatialDieng: MountainSpatial = {
-  mountainUrl: "/3d/mountain_terrain.glb",
+  mountainUrl: "/3d/map3d.glb",
   categories: [
     {
       key: "magnetik",
