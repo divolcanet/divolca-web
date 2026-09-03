@@ -8,13 +8,12 @@ import { buttonVariants } from "./ui/button";
 import { Link } from "react-router-dom";
 import Legend from "./Legend";
 import SpatialModelMenu from "./SpatialModelMenu";
-import { LoadingSkeleton } from "./LoadingSkeleton";
+import { ModelLoader } from "./ModelLoader";
 
 export const SpatialMain = () => {
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
   const [tab, setTab] = useState<string | undefined>(spatialDieng.categories[0].key);
   const [model, setModel] = useState<string | undefined>();
-  const [modelOpacity, setModelOpacity] = useState(1);
 
   const selectedCategory = spatialDieng.categories.find((v) => v.key === tab);
   const selectedModel = selectedCategory?.models.find((m) => m.key === model);
@@ -35,15 +34,10 @@ export const SpatialMain = () => {
 
       <div className=" relative rounded-xl font-mono border border-muted bg-card overflow-hidden">
         <div className=" aspect-2/3 md:aspect-video relative">
-          <Suspense
-            fallback={
-              <div className="absolute inset-0">
-                <LoadingSkeleton />
-              </div>
-            }>
+          <Suspense fallback={null}>
             <Viewer3D>
               {showBase && <MapModel url={spatialDieng.mountainUrl} />}
-              {selectedModel && selectedModel.url && <MapModel key={selectedModel.key} url={selectedModel.url} opacity={modelOpacity} position={[0, 0.7, 0]} />}
+              {selectedModel && selectedModel.url && <MapModel key={selectedModel.key} url={selectedModel.url} position={[0, 0.7, 0]} />}
               {selectedModel?.hotspots.map((marker) => (
                 <Hotspot
                   key={marker.id}
@@ -57,6 +51,7 @@ export const SpatialMain = () => {
               ))}
             </Viewer3D>
           </Suspense>
+          <ModelLoader />
         </div>
 
         {/* Top Left Menu */}
@@ -69,10 +64,10 @@ export const SpatialMain = () => {
         </Link>
 
         {/* Opacity Slider */}
-        <div className="absolute bottom-4 right-4 z-10 bg-card/80 backdrop-blur-sm p-3 rounded-xl flex items-center gap-2 border border-line">
+        {/* <div className="absolute bottom-4 right-4 z-10 bg-card/80 backdrop-blur-sm p-3 rounded-xl flex items-center gap-2 border border-line">
           <span className="text-xs font-fraunces text-body">Opacity</span>
           <input type="range" min="0" max="1" step="0.05" value={modelOpacity} onChange={(e) => setModelOpacity(Number(e.target.value))} className="w-24 accent-primary-10" />
-        </div>
+        </div> */}
 
         {/* Legend */}
         <Legend className={cn("absolute bottom-4 left-4", selectedModel ? "block" : "hidden")} title={selectedCategory && `Anomali ${selectedCategory.label}`} />

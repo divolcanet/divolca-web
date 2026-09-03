@@ -7,6 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { EffectComposer, Bloom, ToneMapping } from "@react-three/postprocessing";
 import { X } from "lucide-react";
+import { ProgressTracker } from "./ModelLoader";
 
 type GLTFResult = GLTF & { nodes: { [key: string]: THREE.Object3D }; materials: { [key: string]: THREE.Material } };
 
@@ -160,7 +161,9 @@ export function Viewer3D({ children }: { children?: ReactNode }) {
       <directionalLight position={[-10, -5, -10]} intensity={0.5} />
       <ambientLight intensity={0.5} />
 
-      <Suspense fallback={<>Loading model...</>}>{children}</Suspense>
+      <ProgressTracker />
+
+      <Suspense fallback={null}>{children}</Suspense>
 
       <OrbitControls makeDefault autoRotate rotateSpeed={0.1} autoRotateSpeed={0.8} minDistance={10} maxDistance={75} />
 
