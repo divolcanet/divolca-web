@@ -37,7 +37,7 @@ export function MapModel({ url, opacity = 1, position }: MapModelProps) {
 
   return (
     <Center position={position}>
-      <primitive object={scene} scale={0.001} />
+      <primitive object={scene} scale={0.00035} />
     </Center>
   );
 }

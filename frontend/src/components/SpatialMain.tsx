@@ -19,6 +19,8 @@ export const SpatialMain = () => {
   const selectedCategory = spatialDieng.categories.find((v) => v.key === tab);
   const selectedModel = selectedCategory?.models.find((m) => m.key === model);
 
+  const showBase = selectedModel ? selectedModel.show_base_model : true;
+
   return (
     <>
       <Tabs value={tab} onValueChange={setTab} className=" mb-5">
@@ -40,10 +42,8 @@ export const SpatialMain = () => {
               </div>
             }>
             <Viewer3D>
-              <MapModel url={spatialDieng.mountainUrl} />
-
-              {selectedModel && selectedModel.url && <MapModel key={selectedModel.url} url={selectedModel.url} opacity={modelOpacity} position={[0, 0.7, 0]} />}
-
+              {showBase && <MapModel url={spatialDieng.mountainUrl} />}
+              {selectedModel && selectedModel.url && <MapModel key={selectedModel.key} url={selectedModel.url} opacity={modelOpacity} position={[0, 0.7, 0]} />}
               {selectedModel?.hotspots.map((marker) => (
                 <Hotspot
                   key={marker.id}
