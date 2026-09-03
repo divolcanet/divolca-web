@@ -12,30 +12,10 @@ import ade from "../assets/team/ade.jpeg";
 
 const researchData = {
   stats: [
-    {
-      key: "location",
-      title: { id: "Lokasi", en: "Location" },
-      value: "Pegunungan Dieng, Jawa Tengah, Indonesia",
-      icon: MapPin,
-    },
-    {
-      key: "research-offline",
-      title: { id: "Penelitian Langsung", en: "Field Research" },
-      value: "14 hari",
-      icon: Clock,
-    },
-    {
-      key: "research-total",
-      title: { id: "Total Penelitian", en: "Total Research" },
-      value: "6 bulan",
-      icon: Calendar,
-    },
-    {
-      key: "data-type",
-      title: { id: "Jenis Data", en: "Data Type" },
-      value: "Primer",
-      icon: Database,
-    },
+    { key: "location", title: { id: "Lokasi", en: "Location" }, value: "Pegunungan Dieng, Jawa Tengah, Indonesia", icon: MapPin },
+    { key: "research-offline", title: { id: "Penelitian Langsung", en: "Field Research" }, value: "14 hari", icon: Clock },
+    { key: "research-total", title: { id: "Total Penelitian", en: "Total Research" }, value: "6 bulan", icon: Calendar },
+    { key: "data-type", title: { id: "Jenis Data", en: "Data Type" }, value: "Primer", icon: Database },
   ],
   teams: [
     {

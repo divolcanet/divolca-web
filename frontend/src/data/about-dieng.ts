@@ -23,10 +23,7 @@ const aboutDieng = {
     },
     {
       title: { id: "Emisi Gas Beracun", en: "Toxic Gas Emissions" },
-      desc: {
-        id: "Beberapa kawah menghasilkan gas CO₂ dan H₂S yang berbahaya, terutama di Kawah Timbang.",
-        en: "Several craters produce hazardous CO₂ and H₂S gases, particularly at Kawah Timbang.",
-      },
+      desc: { id: "Beberapa kawah menghasilkan gas CO₂ dan H₂S yang berbahaya, terutama di Kawah Timbang.", en: "Several craters produce hazardous CO₂ and H₂S gases, particularly at Kawah Timbang." },
     },
     {
       title: { id: "Tanah Vulkanik Subur", en: "Fertile Volcanic Soil" },
@@ -71,10 +68,7 @@ const aboutDieng = {
     {
       year: "2018",
       title: { id: "Erupsi Kawah Sileri", en: "Kawah Sileri Eruption" },
-      desc: {
-        id: "Kawah Sileri kembali mengalami erupsi freatik dengan semburan lumpur dan uap panas.",
-        en: "Kawah Sileri experienced another phreatic eruption with sprays of mud and hot steam.",
-      },
+      desc: { id: "Kawah Sileri kembali mengalami erupsi freatik dengan semburan lumpur dan uap panas.", en: "Kawah Sileri experienced another phreatic eruption with sprays of mud and hot steam." },
     },
     {
       year: "29 April 2021",
@@ -114,10 +108,7 @@ const aboutDieng = {
     },
     {
       title: "Telaga Warna",
-      desc: {
-        id: "Air telaga berubah warna-warni karena sinar matahari mengenai air yang mengandung sulfur tinggi.",
-        en: "The lake's water changes colors as sunlight hits its high-sulfur content.",
-      },
+      desc: { id: "Air telaga berubah warna-warni karena sinar matahari mengenai air yang mengandung sulfur tinggi.", en: "The lake's water changes colors as sunlight hits its high-sulfur content." },
       source: "Kompas.com, 2020",
       img: telagaWarna,
     },
@@ -141,10 +132,7 @@ const aboutDieng = {
     },
     {
       title: "Bukit Sikunir",
-      desc: {
-        id: "Lokasi pengamatan matahari terbit yang menjadi salah satu daya tarik wisata utama di Dieng.",
-        en: "A sunrise viewing spot that is one of the main tourist attractions in Dieng.",
-      },
+      desc: { id: "Lokasi pengamatan matahari terbit yang menjadi salah satu daya tarik wisata utama di Dieng.", en: "A sunrise viewing spot that is one of the main tourist attractions in Dieng." },
       source: "Magelang Ekspres, 2023",
       img: bukitSikunir,
     },

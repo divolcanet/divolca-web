@@ -8,7 +8,9 @@ function getStoredLang(): Lang {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored === "id" || stored === "en") return stored;
-  } catch { /* localStorage unavailable */ }
+  } catch {
+    /* localStorage unavailable */
+  }
   return "id";
 }
 
@@ -17,10 +19,7 @@ interface LanguageContextValue {
   toggle: () => void;
 }
 
-const LanguageContext = createContext<LanguageContextValue>({
-  lang: "id",
-  toggle: () => {},
-});
+const LanguageContext = createContext<LanguageContextValue>({ lang: "id", toggle: () => {} });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>(getStoredLang);
@@ -31,11 +30,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [lang]);
 
   const toggle = () => setLang((l) => (l === "id" ? "en" : "id"));
-  return (
-    <LanguageContext.Provider value={{ lang, toggle }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={{ lang, toggle }}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {

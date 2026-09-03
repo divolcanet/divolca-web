@@ -6,13 +6,7 @@ export function ThemeToggle() {
   const { isDark, toggleTheme } = useTheme();
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={toggleTheme}
-      aria-label={isDark ? "Beralih ke tema terang" : "Beralih ke tema gelap"}
-      className="text-white "
-    >
+    <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label={isDark ? "Beralih ke tema terang" : "Beralih ke tema gelap"} className="text-white ">
       {isDark ? <Sun /> : <Moon />}
     </Button>
   );

@@ -5,17 +5,10 @@ import { type GLTF } from "three-stdlib";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import {
-  EffectComposer,
-  Bloom,
-  ToneMapping,
-} from "@react-three/postprocessing";
+import { EffectComposer, Bloom, ToneMapping } from "@react-three/postprocessing";
 import { X } from "lucide-react";
 
-type GLTFResult = GLTF & {
-  nodes: { [key: string]: THREE.Object3D };
-  materials: { [key: string]: THREE.Material };
-};
+type GLTFResult = GLTF & { nodes: { [key: string]: THREE.Object3D }; materials: { [key: string]: THREE.Material } };
 
 interface MapModelProps {
   url: string;
@@ -29,9 +22,7 @@ export function MapModel({ url, opacity = 1, position }: MapModelProps) {
   useEffect(() => {
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        const mats = Array.isArray(child.material)
-          ? child.material
-          : [child.material];
+        const mats = Array.isArray(child.material) ? child.material : [child.material];
         const isTransparent = opacity < 1;
         mats.forEach((mat) => {
           mat.roughness = 0.9;
@@ -60,14 +51,7 @@ interface HotspotProps {
   setActiveMarker: (id: number | null) => void;
 }
 
-export function Hotspot({
-  position,
-  title,
-  description,
-  markerId,
-  activeMarker,
-  setActiveMarker,
-}: HotspotProps) {
+export function Hotspot({ position, title, description, markerId, activeMarker, setActiveMarker }: HotspotProps) {
   const [hovered, setHovered] = useState<boolean>(false);
   const isOpen = activeMarker === markerId;
 
@@ -82,8 +66,7 @@ export function Hotspot({
       const scale = 1 + progress * 3.0;
       pulseSphereRef.current.scale.set(scale, scale, scale);
 
-      const material = pulseSphereRef.current
-        .material as THREE.MeshBasicMaterial;
+      const material = pulseSphereRef.current.material as THREE.MeshBasicMaterial;
       material.opacity = (1 - progress) * 0.4;
     }
   });
@@ -115,12 +98,7 @@ export function Hotspot({
         />
       </mesh>
 
-      <mesh
-        onClick={handleClick}
-        onPointerOver={handlePointerOver}
-        onPointerOut={handlePointerOut}
-        position={[0, 0.05, 0]}
-      >
+      <mesh onClick={handleClick} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} position={[0, 0.05, 0]}>
         <sphereGeometry args={[0.12, 16, 16]} />
         <meshBasicMaterial color={hovered ? "#ef4444" : "#f59e0b"} />
       </mesh>
@@ -161,8 +139,7 @@ export function Hotspot({
               onClick={(e) => {
                 e.stopPropagation();
                 setActiveMarker(null);
-              }}
-            >
+              }}>
               <X />
             </button>
             <h3 className=" mr-1.5 text-lg font-bold pr-4">{title}</h3>
@@ -176,50 +153,19 @@ export function Hotspot({
 
 export function Viewer3D({ children }: { children?: ReactNode }) {
   return (
-    <Canvas
-      camera={{
-        position: [20, 10, 12],
-        fov: 45,
-        near: 0.1,
-        far: 5000,
-      }}
-      shadows
-      gl={{
-        antialias: true,
-        toneMapping: 3,
-        toneMappingExposure: 1.5,
-      }}
-      style={{ background: "#122a25" }}
-    >
+    <Canvas camera={{ position: [20, 10, 12], fov: 45, near: 0.1, far: 5000 }} shadows gl={{ antialias: true, toneMapping: 3, toneMappingExposure: 1.5 }} style={{ background: "#122a25" }}>
       <fog attach="fog" args={["#091413", 40, 70]} />
       <hemisphereLight args={["#87ceeb", "#3a3a3a", 0.8]} />
-      <directionalLight
-        position={[10, 30, 10]}
-        intensity={1.8}
-        castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-      />
+      <directionalLight position={[10, 30, 10]} intensity={1.8} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />
       <directionalLight position={[-10, -5, -10]} intensity={0.5} />
       <ambientLight intensity={0.5} />
 
       <Suspense fallback={<>Loading model...</>}>{children}</Suspense>
 
-      <OrbitControls
-        makeDefault
-        autoRotate
-        rotateSpeed={0.1}
-        autoRotateSpeed={0.8}
-        minDistance={10}
-        maxDistance={75}
-      />
+      <OrbitControls makeDefault autoRotate rotateSpeed={0.1} autoRotateSpeed={0.8} minDistance={10} maxDistance={75} />
 
       <EffectComposer>
-        <Bloom
-          intensity={0.2}
-          luminanceThreshold={0.7}
-          luminanceSmoothing={0}
-        />
+        <Bloom intensity={0.2} luminanceThreshold={0.7} luminanceSmoothing={0} />
         <ToneMapping mode={3} exposure={1.0} />
       </EffectComposer>
     </Canvas>

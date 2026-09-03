@@ -25,9 +25,7 @@ export default function TentangWebsiteSection() {
       {Object.values(websiteInfo).map((item, i) => (
         <Reveal key={item.title.id} delay={200 + i * 100}>
           <div>
-            <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
-              {item.title[lang]}
-            </h1>
+            <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">{item.title[lang]}</h1>
             <p>{item.content[lang]}</p>
           </div>
         </Reveal>

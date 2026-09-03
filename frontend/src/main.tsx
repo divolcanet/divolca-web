@@ -8,11 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { TooltipProvider } from "./components/ui/tooltip.tsx";
 import { LanguageProvider } from "./data/translations/LanguageContext.tsx";
 
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothWheel: true,
-});
+const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
 
 function raf(time: number) {
   lenis.raf(time);

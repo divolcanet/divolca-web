@@ -12,10 +12,7 @@ export const t = {
     heroSlides: [
       {
         title: { id: "Informasi Geospasial", en: "Geospatial Information" },
-        highlight: {
-          id: "Kompleks Vulkanik Dieng",
-          en: "Dieng Volcanic Complex",
-        },
+        highlight: { id: "Kompleks Vulkanik Dieng", en: "Dieng Volcanic Complex" },
         desc: {
           id: "Penelitian geofisika di Pegunungan Dieng menghasilkan data magnetik dan gravitasi bawah permukaan yang memberikan wawasan penting tentang struktur vulkanik dan potensi mitigasi bencana di kawasan tersebut.",
           en: "Geophysical research in the Dieng Mountains produces subsurface magnetic and gravity data that provide important insights into volcanic structure and disaster mitigation potential in the area.",
@@ -41,18 +38,12 @@ export const t = {
         cta: { id: "Pelajari Lebih Lanjut", en: "Learn More" },
       },
     ],
-    model3DTitle: {
-      id: "Model 3D Peta Spasial",
-      en: "3D Spatial Map Model",
-    },
+    model3DTitle: { id: "Model 3D Peta Spasial", en: "3D Spatial Map Model" },
     model3DDesc: {
       id: "Jelajahi model spasial 3D peta data gaya berat (gravity) dan geomagnetik Kompleks Vulkanik Dieng. Gunakan scrollbar di sisi kanan untuk melihat irisan data pada setiap kedalaman.",
       en: "Explore the 3D spatial model of gravity and geomagnetic data of the Dieng Volcanic Complex. Use the scrollbar on the right to view data slices at each depth.",
     },
-    researchPointsTitle: {
-      id: "Titik Penelitian Kami",
-      en: "Our Research Points",
-    },
+    researchPointsTitle: { id: "Titik Penelitian Kami", en: "Our Research Points" },
     researchPointsDesc: {
       id: "Jelajahi model spasial 3D peta data gaya berat (gravity) dan geomagnetik Kompleks Vulkanik Dieng. Gunakan scrollbar di sisi kanan untuk melihat irisan data pada setiap kedalaman.",
       en: "Explore the 3D spatial model of gravity and geomagnetic data of the Dieng Volcanic Complex. Use the scrollbar on the right to view data slices at each depth.",
@@ -79,15 +70,9 @@ export const t = {
   },
 
   research: {
-    heroTitle: {
-      id: "Informasi Hasil Riset",
-      en: "Research Results Information",
-    },
+    heroTitle: { id: "Informasi Hasil Riset", en: "Research Results Information" },
     statsTitle: { id: "Statistik Penelitian", en: "Research Statistics" },
-    publicationsTitle: {
-      id: "Publikasi Penelitian",
-      en: "Research Publications",
-    },
+    publicationsTitle: { id: "Publikasi Penelitian", en: "Research Publications" },
     publicationsDesc: {
       id: "Penelitian geofisika di Pegunungan Dieng menghasilkan data magnetik dan gravitasi bawah permukaan yang memberikan wawasan penting tentang struktur vulkanik dan potensi mitigasi bencana di kawasan tersebut.",
       en: "Geophysical research in the Dieng Mountains produces subsurface magnetic and gravity data that provide important insights into volcanic structure and disaster mitigation potential in the area.",
@@ -119,18 +104,9 @@ export const t = {
     geoTitle: { id: "Geografi & Lokasi", en: "Geography & Location" },
     geoStats: [
       { label: { id: "Elevasi", en: "Elevation" }, value: "1.900–2.565 mdpl" },
-      {
-        label: { id: "Koordinat", en: "Coordinates" },
-        value: "7,2° LS, 109,88° BT",
-      },
-      {
-        label: { id: "Luas Kompleks", en: "Complex Area" },
-        value: "± 6 × 14 km",
-      },
-      {
-        label: { id: "Jumlah Kawah", en: "Number of Craters" },
-        value: "20+ kawah & kerucut",
-      },
+      { label: { id: "Koordinat", en: "Coordinates" }, value: "7,2° LS, 109,88° BT" },
+      { label: { id: "Luas Kompleks", en: "Complex Area" }, value: "± 6 × 14 km" },
+      { label: { id: "Jumlah Kawah", en: "Number of Craters" }, value: "20+ kawah & kerucut" },
     ],
     geo1: {
       id: "Dataran Tinggi Dieng berada di bagian tengah Pulau Jawa, secara administratif terbagi antara Kabupaten Wonosobo dan Kabupaten Banjarnegara, Provinsi Jawa Tengah. Kompleks ini berada pada jalur busur vulkanik Sunda yang terbentuk akibat subduksi Lempeng Indo-Australia di bawah Lempeng Eurasia.",
@@ -167,8 +143,5 @@ export const t = {
     teamTitle: { id: "Tim Peneliti", en: "Research Team" },
   },
 
-  footer: {
-    explore3D: { id: "Jelajahi Model 3D", en: "Explore 3D Model" },
-    copyright: { id: "Hak Cipta Dilindungi", en: "All Rights Reserved" },
-  },
+  footer: { explore3D: { id: "Jelajahi Model 3D", en: "Explore 3D Model" }, copyright: { id: "Hak Cipta Dilindungi", en: "All Rights Reserved" } },
 };

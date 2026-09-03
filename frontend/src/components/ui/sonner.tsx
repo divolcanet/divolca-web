@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  CircleCheckIcon,
-  InfoIcon,
-  Loader2Icon,
-  OctagonXIcon,
-  TriangleAlertIcon,
-} from "lucide-react";
+import { CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon } from "lucide-react";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
 
 const Toaster = ({ ...props }: ToasterProps) => {
@@ -22,18 +16,9 @@ const Toaster = ({ ...props }: ToasterProps) => {
         loading: <Loader2Icon className="size-4 animate-spin" />,
       }}
       style={
-        {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
-          "--success-border": "var(--primary-10)",
-          "--border-radius": "calc(infinity * 1px)",
-        } as React.CSSProperties
+        { "--normal-bg": "var(--popover)", "--normal-text": "var(--popover-foreground)", "--success-border": "var(--primary-10)", "--border-radius": "calc(infinity * 1px)" } as React.CSSProperties
       }
-      toastOptions={{
-        classNames: {
-          toast: "cn-toast ",
-        },
-      }}
+      toastOptions={{ classNames: { toast: "cn-toast " } }}
       {...props}
     />
   );

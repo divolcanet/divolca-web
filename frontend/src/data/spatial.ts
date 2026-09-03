@@ -7,12 +7,7 @@ export const spatialDieng: MountainSpatial = {
       key: "magnetik",
       label: "Magnetik",
       models: [
-        {
-          key: "magnetik_pengukuran",
-          label: "Titik Pengukuran",
-          url: "/3d/magnetic_points_3d.glb",
-          hotspots: [],
-        },
+        { key: "magnetik_pengukuran", label: "Titik Pengukuran", url: "/3d/magnetic_points_3d.glb", hotspots: [] },
         {
           key: "tmi",
           label: "Total Magnetic Intensity (TMI)",
@@ -32,16 +27,8 @@ export const spatialDieng: MountainSpatial = {
             // },
           ],
         },
-        {
-          key: "magnetik_regional",
-          label: "Magnetik Regional",
-          hotspots: [],
-        },
-        {
-          key: "magnetik_rtp",
-          label: "Magnetik RTP",
-          hotspots: [],
-        },
+        { key: "magnetik_regional", label: "Magnetik Regional", hotspots: [] },
+        { key: "magnetik_rtp", label: "Magnetik RTP", hotspots: [] },
         // {
         //   key: "mag-residual",
         //   label: "Magnetik Residual",
@@ -66,77 +53,25 @@ export const spatialDieng: MountainSpatial = {
       key: "gravity",
       label: "Gravity",
       models: [
-        {
-          key: "magnetik_pengukuran",
-          label: "Titik Pengukuran",
-          hotspots: [],
-        },
-        {
-          key: "gravity_cba",
-          label: "Complete Bouguer Anomaly (CBA)",
-          hotspots: [],
-        },
-        {
-          key: "gravity_regional",
-          label: "Gravity Regional",
-          hotspots: [],
-        },
+        { key: "magnetik_pengukuran", label: "Titik Pengukuran", hotspots: [] },
+        { key: "gravity_cba", label: "Complete Bouguer Anomaly (CBA)", hotspots: [] },
+        { key: "gravity_regional", label: "Gravity Regional", hotspots: [] },
       ],
     },
     {
       key: "thermal",
       label: "Thermal",
       models: [
-        {
-          key: "thermal-sileri",
-          label: "Kawah Sileri",
-          hotspots: [],
-        },
-        {
-          key: "thermal-candradimuka",
-          label: "Kawah Candradimuka",
-          hotspots: [],
-        },
-        {
-          key: "thermal-dringo",
-          label: "Telaga Dringo",
-          hotspots: [],
-        },
-        {
-          key: "thermal-sipandu",
-          label: "Kawah Sipandu",
-          hotspots: [],
-        },
-        {
-          key: "thermal-Sikunir",
-          label: "Sikunir",
-          hotspots: [],
-        },
-        {
-          key: "thermal-Bismo",
-          label: "Gunung Bismo",
-          hotspots: [],
-        },
-        {
-          key: "thermal-mili",
-          label: "Pemandian Air Panas Kolam Mili",
-          hotspots: [],
-        },
-        {
-          key: "thermal-warna",
-          label: "Telaga Warna",
-          hotspots: [],
-        },
-        {
-          key: "thermal-pengilon",
-          label: "Telaga Pengilon",
-          hotspots: [],
-        },
-        {
-          key: "thermal-ratapan",
-          label: "Ratapan Angin",
-          hotspots: [],
-        },
+        { key: "thermal-sileri", label: "Kawah Sileri", hotspots: [] },
+        { key: "thermal-candradimuka", label: "Kawah Candradimuka", hotspots: [] },
+        { key: "thermal-dringo", label: "Telaga Dringo", hotspots: [] },
+        { key: "thermal-sipandu", label: "Kawah Sipandu", hotspots: [] },
+        { key: "thermal-Sikunir", label: "Sikunir", hotspots: [] },
+        { key: "thermal-Bismo", label: "Gunung Bismo", hotspots: [] },
+        { key: "thermal-mili", label: "Pemandian Air Panas Kolam Mili", hotspots: [] },
+        { key: "thermal-warna", label: "Telaga Warna", hotspots: [] },
+        { key: "thermal-pengilon", label: "Telaga Pengilon", hotspots: [] },
+        { key: "thermal-ratapan", label: "Ratapan Angin", hotspots: [] },
       ],
     },
   ],

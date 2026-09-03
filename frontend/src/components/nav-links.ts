@@ -10,10 +10,7 @@ const navLinkDefs = [
 ];
 
 export function getNavLinks(lang: Lang) {
-  return navLinkDefs.map(({ to, id, en }) => ({
-    to,
-    label: lang === "id" ? id : en,
-  }));
+  return navLinkDefs.map(({ to, id, en }) => ({ to, label: lang === "id" ? id : en }));
 }
 
 export const fixedNavbarPages = navLinkDefs.slice(0, 3).map((l) => l.to);

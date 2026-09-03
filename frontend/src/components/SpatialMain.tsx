@@ -12,9 +12,7 @@ import { LoadingSkeleton } from "./LoadingSkeleton";
 
 export const SpatialMain = () => {
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
-  const [tab, setTab] = useState<string | undefined>(
-    spatialDieng.categories[0].key,
-  );
+  const [tab, setTab] = useState<string | undefined>(spatialDieng.categories[0].key);
   const [model, setModel] = useState<string | undefined>();
   const [modelOpacity, setModelOpacity] = useState(1);
 
@@ -40,19 +38,11 @@ export const SpatialMain = () => {
               <div className="absolute inset-0">
                 <LoadingSkeleton />
               </div>
-            }
-          >
+            }>
             <Viewer3D>
               <MapModel url={spatialDieng.mountainUrl} />
 
-              {selectedModel && selectedModel.url && (
-                <MapModel
-                  key={selectedModel.url}
-                  url={selectedModel.url}
-                  opacity={modelOpacity}
-                  position={[0, 0.7, 0]}
-                />
-              )}
+              {selectedModel && selectedModel.url && <MapModel key={selectedModel.url} url={selectedModel.url} opacity={modelOpacity} position={[0, 0.7, 0]} />}
 
               {selectedModel?.hotspots.map((marker) => (
                 <Hotspot
@@ -70,21 +60,10 @@ export const SpatialMain = () => {
         </div>
 
         {/* Top Left Menu */}
-        <SpatialModelMenu
-          models={selectedCategory?.models ?? []}
-          value={model}
-          onValueChange={setModel}
-          className="p-4 absolute top-4 z-10"
-        />
+        <SpatialModelMenu models={selectedCategory?.models ?? []} value={model} onValueChange={setModel} className="p-4 absolute top-4 z-10" />
 
         {/* Top Right Button */}
-        <Link
-          to={"/full"}
-          className={cn(
-            buttonVariants({ variant: "outline" }),
-            "absolute top-4 right-4 bg-elevated text-xs text-body",
-          )}
-        >
+        <Link to={"/full"} className={cn(buttonVariants({ variant: "outline" }), "absolute top-4 right-4 bg-elevated text-xs text-body")}>
           <Maximize2 />
           <span className=" hidden md:block">Fullscreen</span>
         </Link>
@@ -92,25 +71,11 @@ export const SpatialMain = () => {
         {/* Opacity Slider */}
         <div className="absolute bottom-4 right-4 z-10 bg-card/80 backdrop-blur-sm p-3 rounded-xl flex items-center gap-2 border border-line">
           <span className="text-xs font-fraunces text-body">Opacity</span>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.05"
-            value={modelOpacity}
-            onChange={(e) => setModelOpacity(Number(e.target.value))}
-            className="w-24 accent-primary-10"
-          />
+          <input type="range" min="0" max="1" step="0.05" value={modelOpacity} onChange={(e) => setModelOpacity(Number(e.target.value))} className="w-24 accent-primary-10" />
         </div>
 
         {/* Legend */}
-        <Legend
-          className={cn(
-            "absolute bottom-4 left-4",
-            selectedModel ? "block" : "hidden",
-          )}
-          title={selectedCategory && `Anomali ${selectedCategory.label}`}
-        />
+        <Legend className={cn("absolute bottom-4 left-4", selectedModel ? "block" : "hidden")} title={selectedCategory && `Anomali ${selectedCategory.label}`} />
       </div>
     </>
   );

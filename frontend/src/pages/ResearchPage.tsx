@@ -21,11 +21,7 @@ export default function ResearchPage() {
       {/* Hero Section */}
       <section className="relative flex justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            src={bgImage}
-            alt="Hero Background"
-            className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
-          />
+          <img src={bgImage} alt="Hero Background" className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]" />
         </div>
 
         <Container className=" z-10  mt-40">
@@ -36,22 +32,13 @@ export default function ResearchPage() {
           </Reveal>
           <Reveal delay={300}>
             <div className=" bg-page px-5 py-12 flex flex-col justify-center rounded-2xl space-y-8 z-10">
-              <h1 className="font-fraunces font-bold text-title text-3xl text-center">
-                {t.research.statsTitle[lang]}
-              </h1>
+              <h1 className="font-fraunces font-bold text-title text-3xl text-center">{t.research.statsTitle[lang]}</h1>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {stats.map((stat) => (
-                  <div
-                    key={stat.key}
-                    className="bg-card rounded-xl p-4 text-center"
-                  >
+                  <div key={stat.key} className="bg-card rounded-xl p-4 text-center">
                     <stat.icon className="w-5 h-5 text-primary-75 mx-auto mb-2" />
-                    <dt className="text-xs uppercase tracking-wider font-mono mb-1">
-                      {stat.title[lang]}
-                    </dt>
-                    <dd className="text-lg font-semibold text-primary-75">
-                      {stat.value}
-                    </dd>
+                    <dt className="text-xs uppercase tracking-wider font-mono mb-1">{stat.title[lang]}</dt>
+                    <dd className="text-lg font-semibold text-primary-75">{stat.value}</dd>
                   </div>
                 ))}
               </div>
@@ -64,13 +51,9 @@ export default function ResearchPage() {
         <Reveal delay={400} className="flex flex-col items-center gap-8">
           <MountainSnow className="w-12 h-12 sm:w-16 sm:h-16 text-primary-10 mx-auto" />
 
-          <h1 className="font-fraunces font-bold text-title text-4xl text-center">
-            {t.research.publicationsTitle[lang]}
-          </h1>
+          <h1 className="font-fraunces font-bold text-title text-4xl text-center">{t.research.publicationsTitle[lang]}</h1>
 
-          <p className=" leading-relaxed text-center">
-            {t.research.publicationsDesc[lang]}
-          </p>
+          <p className=" leading-relaxed text-center">{t.research.publicationsDesc[lang]}</p>
 
           <a className={cn(buttonVariants(), " w-fit")}>
             {t.research.accessPaper[lang]}
@@ -81,9 +64,7 @@ export default function ResearchPage() {
 
       <Container className=" bg-page ">
         <Reveal delay={500} className="flex flex-col items-center gap-8">
-          <h1 className="font-fraunces font-bold text-title text-4xl text-center">
-            {t.research.acknowledgementTitle[lang]}
-          </h1>
+          <h1 className="font-fraunces font-bold text-title text-4xl text-center">{t.research.acknowledgementTitle[lang]}</h1>
 
           <p>{t.research.acknowledgementDesc[lang]}</p>
 

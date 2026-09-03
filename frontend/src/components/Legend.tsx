@@ -11,24 +11,12 @@ interface LegendProps {
 
 const DEFAULT_STEPS = ["Rendah", "Sedang", "Tinggi"];
 
-export function Legend({
-  min,
-  max,
-  unit = "nT",
-  title,
-  steps = DEFAULT_STEPS,
-  className,
-}: LegendProps) {
+export function Legend({ min, max, unit = "nT", title, steps = DEFAULT_STEPS, className }: LegendProps) {
   const displayMin = min ?? steps[0];
   const displayMax = max ?? steps[steps.length - 1];
 
   return (
-    <div
-      className={cn(
-        "bg-card/90 backdrop-blur-sm p-4 rounded-xl flex flex-col gap-3 w-2/3 md:w-120 text-sm text-body border border-line",
-        className,
-      )}
-    >
+    <div className={cn("bg-card/90 backdrop-blur-sm p-4 rounded-xl flex flex-col gap-3 w-2/3 md:w-120 text-sm text-body border border-line", className)}>
       <h3 className="font-bold font-fraunces">Legenda</h3>
       {title && <p>{title}</p>}
       <div className="flex items-start gap-2">

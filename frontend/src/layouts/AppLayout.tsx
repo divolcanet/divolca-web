@@ -11,12 +11,7 @@ export default function AppLayout() {
   return (
     <div className="min-h-svh flex flex-col">
       <div className="relative z-10 flex flex-col min-h-svh">
-        <div
-          className={cn(
-            "sticky top-0 z-60 transition-transform duration-300",
-            scrolled && "-translate-y-full",
-          )}
-        >
+        <div className={cn("sticky top-0 z-60 transition-transform duration-300", scrolled && "-translate-y-full")}>
           <VolcanoEventStats />
         </div>
         <Navbar />

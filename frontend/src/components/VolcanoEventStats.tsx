@@ -22,9 +22,7 @@ const VolcanoEventStats = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const url = import.meta.env.DEV
-        ? "/volcano_activity.json"
-        : "/data/volcano_activity.json";
+      const url = import.meta.env.DEV ? "/volcano_activity.json" : "/data/volcano_activity.json";
 
       try {
         const res = await fetch(url);
@@ -51,12 +49,7 @@ const VolcanoEventStats = () => {
   }
 
   return (
-    <div
-      className={cn(
-        " bg-secondary px-5 py-3 flex gap-3 text-sm text-black",
-        loading || error ? " justify-start" : "justify-between",
-      )}
-    >
+    <div className={cn(" bg-secondary px-5 py-3 flex gap-3 text-sm text-black", loading || error ? " justify-start" : "justify-between")}>
       {loading && <span>Loading...</span>}
       {error && <span>Data status gunung tidak tersedia</span>}
       {data && (
@@ -69,22 +62,15 @@ const VolcanoEventStats = () => {
                 if (window.matchMedia("(max-width: 767px)").matches) {
                   e.preventDefault();
                 }
-              }}
-            >
+              }}>
               <Info />
             </TooltipTrigger>
             <TooltipContent>
-              <BannerTooltipContent
-                updatedAt={data.metadata.updated_at}
-                source={data.metadata.source}
-              />
+              <BannerTooltipContent updatedAt={data.metadata.updated_at} source={data.metadata.source} />
             </TooltipContent>
           </Tooltip>
           <div className=" hidden md:block">
-            <BannerTooltipContent
-              updatedAt={data.metadata.updated_at}
-              source={data.metadata.source}
-            />
+            <BannerTooltipContent updatedAt={data.metadata.updated_at} source={data.metadata.source} />
           </div>
           <div className=" flex items-center gap-2">
             {LEVEL_ORDER.map((status, index) => {
@@ -92,21 +78,11 @@ const VolcanoEventStats = () => {
               return (
                 <div
                   key={status}
-                  className={cn(
-                    "animate-bounce-stagger rounded-full px-2 py-1 border flex gap-1 items-center h-fit",
-                    eventClassname[status],
-                  )}
-                  style={{ animationDelay: `${index * 0.4}s` }}
-                >
+                  className={cn("animate-bounce-stagger rounded-full px-2 py-1 border flex gap-1 items-center h-fit", eventClassname[status])}
+                  style={{ animationDelay: `${index * 0.4}s` }}>
                   <MountainSnow size={16} />
-                  <span className=" text-sm text-black line-clamp-1 hidden sm:block">
-                    {status.charAt(0).toUpperCase() +
-                      status.slice(1).toLowerCase()}{" "}
-                    :
-                  </span>
-                  <span className=" text-sm text-black line-clamp-1">
-                    {count}
-                  </span>
+                  <span className=" text-sm text-black line-clamp-1 hidden sm:block">{status.charAt(0).toUpperCase() + status.slice(1).toLowerCase()} :</span>
+                  <span className=" text-sm text-black line-clamp-1">{count}</span>
                 </div>
               );
             })}
@@ -117,31 +93,14 @@ const VolcanoEventStats = () => {
   );
 };
 
-const BannerTooltipContent = ({
-  updatedAt,
-  source,
-}: {
-  updatedAt?: string;
-  source?: string;
-}) => {
-  const formatted = updatedAt
-    ? new Date(updatedAt).toLocaleString("id-ID", {
-        timeZone: "Asia/Jakarta",
-        dateStyle: "long",
-        timeStyle: "short",
-      })
-    : null;
+const BannerTooltipContent = ({ updatedAt, source }: { updatedAt?: string; source?: string }) => {
+  const formatted = updatedAt ? new Date(updatedAt).toLocaleString("id-ID", { timeZone: "Asia/Jakarta", dateStyle: "long", timeStyle: "short" }) : null;
 
   return (
     <div className=" text-black">
       <div className=" font-bold ">
         Status gunung berapi indonesia{" "}
-        <a
-          href={source ?? "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" underline font-normal"
-        >
+        <a href={source ?? "#"} target="_blank" rel="noopener noreferrer" className=" underline font-normal">
           (Selengkapnya)
         </a>
       </div>

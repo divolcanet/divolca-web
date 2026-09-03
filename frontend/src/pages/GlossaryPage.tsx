@@ -45,12 +45,8 @@ export default function GlossaryPage() {
   return (
     <Container className=" bg-page">
       <Reveal>
-        <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">
-          {t.glossary.title[lang]}
-        </h1>
-        <p className="text-center leading-relaxed mb-12 mx-auto">
-          {t.glossary.desc[lang]}
-        </p>
+        <h1 className="font-fraunces text-4xl font-bold text-title text-center mb-8">{t.glossary.title[lang]}</h1>
+        <p className="text-center leading-relaxed mb-12 mx-auto">{t.glossary.desc[lang]}</p>
       </Reveal>
 
       {!glossaryData ? (
@@ -59,21 +55,13 @@ export default function GlossaryPage() {
         <div className="flex flex-col lg:flex-row gap-8">
           <aside className="lg:w-64 shrink-0">
             <nav className=" p-4 lg:sticky lg:top-24 space-y-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto rounded-xl bg-card">
-              <h2 className="font-fraunces font-bold  mb-3 lg:mb-4">
-                {t.glossary.listTitle[lang]}
-              </h2>
+              <h2 className="font-fraunces font-bold  mb-3 lg:mb-4">{t.glossary.listTitle[lang]}</h2>
               {glossaryData.map((entry) => (
                 <a
                   key={entry.slug}
                   href={`#${entry.slug}`}
                   onClick={() => setActiveSlug(entry.slug)}
-                  className={cn(
-                    buttonVariants({
-                      variant: activeSlug === entry.slug ? "default" : "link",
-                    }),
-                    "w-full justify-start",
-                  )}
-                >
+                  className={cn(buttonVariants({ variant: activeSlug === entry.slug ? "default" : "link" }), "w-full justify-start")}>
                   {entry.title[lang]}
                 </a>
               ))}
@@ -83,25 +71,11 @@ export default function GlossaryPage() {
           <Reveal delay={300}>
             <div className="flex-1 min-w-0 divide-y divide-muted">
               {glossaryData.map((entry) => (
-                <div
-                  key={entry.slug}
-                  id={entry.slug}
-                  className="scroll-mt-16 py-8 first:pt-0 last:pb-0"
-                >
-                  <h2 className=" font-fraunces text-2xl font-semibold text-primary-75 mb-3">
-                    {entry.title[lang]}
-                  </h2>
+                <div key={entry.slug} id={entry.slug} className="scroll-mt-16 py-8 first:pt-0 last:pb-0">
+                  <h2 className=" font-fraunces text-2xl font-semibold text-primary-75 mb-3">{entry.title[lang]}</h2>
                   <p>{entry.content[lang]}</p>
                   {entry.externalLink && (
-                    <a
-                      href={entry.externalLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(
-                        buttonVariants({ variant: "link" }),
-                        "font-normal p-0",
-                      )}
-                    >
+                    <a href={entry.externalLink} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "link" }), "font-normal p-0")}>
                       <ExternalLink />
                       {t.glossary.readMore[lang]}
                     </a>

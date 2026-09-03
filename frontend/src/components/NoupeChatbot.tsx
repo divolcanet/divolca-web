@@ -3,9 +3,7 @@ import { useEffect } from "react";
 export default function NoupeChatbot() {
   useEffect(() => {
     const showNoupeWidget = () => {
-      const widgets = document.querySelectorAll(
-        '[id*="noupe"], [class*="noupe"]',
-      );
+      const widgets = document.querySelectorAll('[id*="noupe"], [class*="noupe"]');
       widgets.forEach((el) => {
         (el as HTMLElement).style.display = "block";
       });
@@ -19,9 +17,7 @@ export default function NoupeChatbot() {
 
     return () => {
       observer.disconnect();
-      const widgets = document.querySelectorAll(
-        '[id*="noupe"], [class*="noupe"]',
-      );
+      const widgets = document.querySelectorAll('[id*="noupe"], [class*="noupe"]');
       widgets.forEach((el) => {
         (el as HTMLElement).style.display = "none";
       });
