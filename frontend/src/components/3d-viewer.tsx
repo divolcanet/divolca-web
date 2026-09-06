@@ -8,6 +8,7 @@ import { OrbitControls } from "@react-three/drei";
 import { EffectComposer, Bloom, ToneMapping } from "@react-three/postprocessing";
 import { X } from "lucide-react";
 import { ProgressTracker } from "./ModelLoader";
+import MapPin from "./3d/map-pin";
 
 type GLTFResult = GLTF & { nodes: { [key: string]: THREE.Object3D }; materials: { [key: string]: THREE.Material } };
 
@@ -65,7 +66,7 @@ export function Hotspot({ position, title, description, markerId, activeMarker, 
 
       const progress = (time * 1.2) % 1;
 
-      const scale = 1 + progress * 3.0;
+      const scale = 1 + progress * 1.0;
       pulseSphereRef.current.scale.set(scale, scale, scale);
 
       const material = pulseSphereRef.current.material as THREE.MeshBasicMaterial;
@@ -90,7 +91,7 @@ export function Hotspot({ position, title, description, markerId, activeMarker, 
 
   return (
     <group position={position}>
-      <mesh ref={pulseSphereRef} position={[0, 0.05, 0]}>
+      <mesh ref={pulseSphereRef} position={[0, 0.25, 0]}>
         <sphereGeometry args={[0.12, 16, 16]} />
         <meshBasicMaterial
           color={hovered ? "#ef4444" : "#f59e0b"}
@@ -101,7 +102,7 @@ export function Hotspot({ position, title, description, markerId, activeMarker, 
       </mesh>
 
       <mesh onClick={handleClick} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} position={[0, 0.05, 0]}>
-        <sphereGeometry args={[0.12, 16, 16]} />
+        <MapPin />
         <meshBasicMaterial color={hovered ? "#ef4444" : "#f59e0b"} />
       </mesh>
 
@@ -153,7 +154,7 @@ export function Hotspot({ position, title, description, markerId, activeMarker, 
   );
 }
 
-export function Viewer3D({ children }: { children?: ReactNode }) {
+export function Viewer3D({ autorotate = true, children }: { autorotate?: boolean; children?: ReactNode }) {
   return (
     <Canvas camera={{ position: [20, 10, 12], fov: 45, near: 0.1, far: 5000 }} shadows gl={{ antialias: true, toneMapping: 3, toneMappingExposure: 1.5 }} style={{ background: "#122a25" }}>
       <fog attach="fog" args={["#091413", 40, 70]} />
@@ -166,7 +167,7 @@ export function Viewer3D({ children }: { children?: ReactNode }) {
 
       <Suspense fallback={null}>{children}</Suspense>
 
-      <OrbitControls makeDefault autoRotate rotateSpeed={0.1} autoRotateSpeed={0.8} minDistance={10} maxDistance={75} />
+      <OrbitControls makeDefault autoRotate={autorotate} rotateSpeed={0.1} autoRotateSpeed={0.8} minDistance={5} maxDistance={40} />
 
       <EffectComposer>
         <Bloom intensity={0.2} luminanceThreshold={0.7} luminanceSmoothing={0} />

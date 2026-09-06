@@ -1,7 +1,7 @@
 import { useState, Suspense } from "react";
 import { Hotspot, MapModel, Viewer3D } from "./3d-viewer";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
-import { spatialDieng } from "../data/spatial";
+import { BaseHotspots, spatialDieng } from "../data/spatial";
 import { Maximize2 } from "lucide-react";
 import { cn } from "../lib/utils";
 import { buttonVariants } from "./ui/button";
@@ -9,12 +9,13 @@ import { Link } from "react-router-dom";
 import Legend from "./Legend";
 import SpatialModelMenu from "./SpatialModelMenu";
 import { ModelLoader } from "./ModelLoader";
+import { Switch } from "./ui/switch";
 
 export const SpatialMain = () => {
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
   const [tab, setTab] = useState<string | undefined>(spatialDieng.categories[0].key);
-  const [model, setModel] = useState<string | undefined>();
-
+  const [model, setModel] = useState<string | null>(null);
+  const [autorotate, setAutorotate] = useState<boolean>(true);
   const [modelOpacity, setModelOpacity] = useState(1);
 
   const selectedCategory = spatialDieng.categories.find((v) => v.key === tab);
@@ -37,16 +38,16 @@ export const SpatialMain = () => {
       <div className=" relative rounded-xl font-mono border border-muted bg-card overflow-hidden">
         <div className=" aspect-2/3 md:aspect-video relative">
           <Suspense fallback={null}>
-            <Viewer3D>
+            <Viewer3D autorotate={autorotate}>
               {showBase && <MapModel url={spatialDieng.mountainUrl} />}
               {selectedModel && selectedModel.url && (
                 <MapModel key={selectedModel.key} url={selectedModel.url} opacity={selectedModel.dynamic_transparency ? modelOpacity : 1} position={[0, 0.2, 0]} />
               )}
-              {selectedModel?.hotspots.map((marker) => (
+              {BaseHotspots.map((marker) => (
                 <Hotspot
                   key={marker.id}
                   markerId={marker.id}
-                  position={marker.position}
+                  position={marker.utmToScenePosition()}
                   title={marker.title}
                   description={marker.description}
                   activeMarker={activeMarker}
@@ -62,18 +63,28 @@ export const SpatialMain = () => {
         <SpatialModelMenu models={selectedCategory?.models ?? []} value={model} onValueChange={setModel} className="p-4 absolute top-4 z-10" />
 
         {/* Top Right Button */}
-        <Link to={"/full"} className={cn(buttonVariants({ variant: "outline" }), "absolute top-4 right-4 bg-elevated text-xs text-body")}>
+        <Link to={"/full"} className={cn(buttonVariants({ variant: "outline" }), " absolute top-4 right-4 flex gap-2 bg-elevated text-xs text-body")}>
           <Maximize2 />
           <span className=" hidden md:block">Fullscreen</span>
         </Link>
 
-        {/* Opacity Slider */}
-        {selectedModel?.dynamic_transparency && (
-          <div className="absolute bottom-4 right-4 z-10 bg-card/80 backdrop-blur-sm p-3 rounded-xl flex items-center gap-2 border border-line">
-            <span className="text-xs font-fraunces text-body">Opacity</span>
-            <input type="range" min="0" max="1" step="0.05" value={modelOpacity} onChange={(e) => setModelOpacity(Number(e.target.value))} className="w-24 accent-primary-10" />
+        {/* Bottom Right Button */}
+        <div className=" absolute bottom-4 right-4 z-10 bg-card/80 backdrop-blur-sm p-3 rounded-xl space-y-3">
+          {/* Rotation Controller */}
+          <div className="flex items-center gap-1 justify-between">
+            <label htmlFor="autorotate" className="text-xs font-fraunces text-body">
+              Rotasi
+            </label>
+            <Switch id="autorotate" checked={autorotate} onCheckedChange={setAutorotate} />
           </div>
-        )}
+          {/* Opacity Slider */}
+          {selectedModel?.dynamic_transparency && (
+            <div className="flex items-center gap-1 justify-between">
+              <span className="text-xs font-fraunces text-body">Opacity</span>
+              <input type="range" min="0" max="1" step="0.05" value={modelOpacity} onChange={(e) => setModelOpacity(Number(e.target.value))} className="w-24 accent-primary-10" />
+            </div>
+          )}
+        </div>
 
         {/* Legend */}
         <Legend className={cn("absolute bottom-4 left-4", selectedModel ? "block" : "hidden")} title={selectedCategory && `Anomali ${selectedCategory.label}`} unit={selectedCategory?.unit} />
