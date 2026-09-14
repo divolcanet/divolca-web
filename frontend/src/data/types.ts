@@ -24,7 +24,7 @@ export type MountainSpatial = { mountainUrl: string; categories: Category[] };
 
 export type Category = { key: string; label: string; unit: string; models: Model[] };
 
-export type Model = { key: string; label: string; url?: string; dynamic_transparency?: boolean; show_base_model?: boolean; hotspots: HotspotModel[] };
+export type Model = { key: string; label: string; url?: string; dynamic_transparency?: boolean; show_base_model?: boolean; scale?: number; hotspots: HotspotModel[] };
 
 export type VolcanoActivityStat = {
   metadata: { updated_at: string; source: string };

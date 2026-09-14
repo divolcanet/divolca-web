@@ -11,6 +11,7 @@ import { t } from "../data/translations";
 
 import lpdp from "../assets/aknowledgement/lpdp.png";
 import brin from "../assets/aknowledgement/brin.png";
+import alterasiHidrotermal from "../assets/research/pemetaan-alterasi-hidrotermal.jpeg";
 
 const stats = researchData.stats;
 
@@ -47,6 +48,7 @@ export default function ResearchPage() {
         </Container>
       </section>
 
+      {/* Publications */}
       <Container className=" bg-page ">
         <Reveal delay={400} className="flex flex-col items-center gap-8">
           <MountainSnow className="w-12 h-12 sm:w-16 sm:h-16 text-primary-10 mx-auto" />
@@ -62,6 +64,24 @@ export default function ResearchPage() {
         </Reveal>
       </Container>
 
+      {/* Alterasi Hidrotermal */}
+      <Container className=" bg-page ">
+        <Reveal delay={450} className="flex flex-col items-center gap-8">
+          <h1 className="font-fraunces font-bold text-title text-4xl text-center">
+            Pemetaan Awal Zona Alterasi Hidrotermal
+          </h1>
+          <p className="leading-relaxed text-center max-w-3xl">
+            Hasil analisis data magnetik satelit untuk mengidentifikasi zona alterasi hidrotermal di Kawasan Vulkanik Dieng.
+          </p>
+          <img
+            src={alterasiHidrotermal}
+            alt="Pemetaan Awal Zona Alterasi Hidrotermal Dieng"
+            className="w-full max-w-3xl rounded-2xl shadow-lg"
+          />
+        </Reveal>
+      </Container>
+
+      {/* Acknowledgement */}
       <Container className=" bg-page ">
         <Reveal delay={500} className="flex flex-col items-center gap-8">
           <h1 className="font-fraunces font-bold text-title text-4xl text-center">{t.research.acknowledgementTitle[lang]}</h1>
