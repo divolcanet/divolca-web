@@ -41,19 +41,26 @@ export const SpatialMain = () => {
             <Viewer3D autorotate={autorotate}>
               {showBase && <MapModel url={spatialDieng.mountainUrl} />}
               {selectedModel && selectedModel.url && (
-                <MapModel key={selectedModel.key} url={selectedModel.url} opacity={selectedModel.dynamic_transparency ? modelOpacity : 1} position={[0, 0.2, 0]} />
-              )}
-              {BaseHotspots.map((marker) => (
-                <Hotspot
-                  key={marker.id}
-                  markerId={marker.id}
-                  position={marker.utmToScenePosition()}
-                  title={marker.title}
-                  description={marker.description}
-                  activeMarker={activeMarker}
-                  setActiveMarker={setActiveMarker}
+                <MapModel
+                    key={selectedModel.key}
+                    url={selectedModel.url}
+                    opacity={selectedModel.dynamic_transparency ? modelOpacity : 1}
+                    position={[0, 0.2, 0]}
+                    scale={selectedModel.scale}
                 />
-              ))}
+                )}
+              {showBase &&
+                BaseHotspots.map((marker) => (
+                    <Hotspot
+                    key={marker.id}
+                    markerId={marker.id}
+                    position={marker.utmToScenePosition()}
+                    title={marker.title}
+                    description={marker.description}
+                    activeMarker={activeMarker}
+                    setActiveMarker={setActiveMarker}
+                    />
+                ))}
             </Viewer3D>
           </Suspense>
           <ModelLoader />
