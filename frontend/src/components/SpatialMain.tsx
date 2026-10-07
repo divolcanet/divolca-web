@@ -1,7 +1,7 @@
 import { useState, Suspense } from "react";
 import { Hotspot, MapModel, Viewer3D } from "./3d-viewer";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
-import { BaseHotspots, spatialDieng } from "../data/spatial";
+import { spatialDieng } from "../data/spatial";
 import { Maximize2 } from "lucide-react";
 import { cn } from "../lib/utils";
 import { buttonVariants } from "./ui/button";
@@ -42,16 +42,16 @@ export const SpatialMain = () => {
               {showBase && <MapModel url={spatialDieng.mountainUrl} />}
               {selectedModel && selectedModel.url && (
                 <MapModel
-                    key={selectedModel.key}
-                    url={selectedModel.url}
-                    opacity={selectedModel.dynamic_transparency ? modelOpacity : 1}
-                    position={[0, 0.2, 0]}
-                    scale={selectedModel.scale}
+                  key={selectedModel.key}
+                  url={selectedModel.url}
+                  opacity={selectedModel.dynamic_transparency ? modelOpacity : 1}
+                  position={[0, (selectedModel.height ?? 0), 0]}
+                  scale={selectedModel.scale}
                 />
-                )}
-              {showBase &&
-                BaseHotspots.map((marker) => (
-                    <Hotspot
+              )}
+              {
+                selectedModel?.hotspots.map((marker) => (
+                  <Hotspot
                     key={marker.id}
                     markerId={marker.id}
                     position={marker.utmToScenePosition()}
@@ -59,7 +59,7 @@ export const SpatialMain = () => {
                     description={marker.description}
                     activeMarker={activeMarker}
                     setActiveMarker={setActiveMarker}
-                    />
+                  />
                 ))}
             </Viewer3D>
           </Suspense>

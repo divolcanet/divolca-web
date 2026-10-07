@@ -17,6 +17,31 @@ export const BaseHotspots: HotspotModel[] = [
   new HotspotModel({ id: 14, position: [375866, 9201660, 1952], title: "Telaga Menjer", description: "Kabupaten Wonosobo, Jawa Tengah" }),
 ];
 
+const UNKNOWN_ANOMALY = "Tingkat anomali belum diketahui";
+
+const withAnomaly = (descByTitle: Record<string, string>): HotspotModel[] => BaseHotspots.map((h) => new HotspotModel({ ...h, description: descByTitle[h.title] ?? UNKNOWN_ANOMALY }));
+
+export const GravityHotspots: HotspotModel[] = withAnomaly({
+  "Kawah Sikidang": "Tingkat Anomali Rendah",
+  "Telaga Warna": "Tingkat Anomali Rendah",
+  "Kawah Candradimuka": "Tingkat Anomali Rendah",
+  "Gunung Prau": "Tingkat Anomali Rendah",
+  "Kawah Sileri": "Tingkat Anomali Rendah",
+  "Telaga Menjer": "Tingkat Anomali Rendah",
+  "Kawah Wurung": "Tingkat Anomali Rendah",
+  "Gunung Bisma": "Tingkat anomali rendah di bagian barat, rendah–meningkat di puncak, rendah ke utara",
+});
+
+export const MagnetikHotspots: HotspotModel[] = withAnomaly({
+  "Kawah Sikidang": "Tingkat Anomali Rendah",
+  "Telaga Warna": "Tingkat Anomali Rendah",
+  "Kawah Candradimuka": "Tingkat Anomali Rendah",
+  "Gunung Prau": "Tingkat Anomali Rendah",
+  "Kawah Sileri": "Tingkat Anomali Rendah",
+  "Telaga Menjer": "Tingkat Anomali Rendah",
+  "Gunung Bisma": "Tingkat Anomali Rendah",
+});
+
 export const spatialDieng: MountainSpatial = {
   mountainUrl: "/3d/basemap.glb",
   categories: [
@@ -25,8 +50,8 @@ export const spatialDieng: MountainSpatial = {
       label: "Magnetik",
       unit: "nT",
       models: [
-        { key: "magnetik_pengukuran", label: "Titik Pengukuran", url: "/3d/magnetik_stations.glb", hotspots: [] },
-        { key: "tmi", show_base_model: true, label: "Total Magnetic Intensity (TMI)", dynamic_transparency: true, url: "/3d/magnetik_tmi.glb", hotspots: [] },
+        { key: "magnetik_pengukuran", label: "Titik Pengukuran", url: "/3d/magnetik_stations.glb", hotspots: BaseHotspots },
+        { key: "tmi", show_base_model: true, label: "Total Magnetic Intensity (TMI)", height: 0.2, dynamic_transparency: true, url: "/3d/magnetik_tmi.glb", hotspots: MagnetikHotspots },
         { key: "magnetik_regional", label: "Magnetik Regional", hotspots: [] },
         { key: "magnetik_rtp", label: "Magnetik RTP", hotspots: [] },
       ],
@@ -36,18 +61,11 @@ export const spatialDieng: MountainSpatial = {
       label: "Gravity",
       unit: "mmGal",
       models: [
-        { key: "magnetik_pengukuran", label: "Titik Pengukuran", url: "/3d/gravity_stations.glb", hotspots: [] },
-        { key: "gravity_cba", show_base_model: true, label: "Complete Bouguer Anomaly (CBA)", dynamic_transparency: true, url: "/3d/gravity_cba.glb", hotspots: [] },
+        { key: "magnetik_pengukuran", label: "Titik Pengukuran", url: "/3d/gravity_stations.glb", hotspots: BaseHotspots },
+        { key: "gravity_cba", show_base_model: true, label: "Complete Bouguer Anomaly (CBA)", height: 0.2, dynamic_transparency: true, url: "/3d/gravity_cba.glb", hotspots: GravityHotspots },
         { key: "gravity_regional", label: "Gravity Regional", hotspots: [] },
       ],
     },
-    {
-      key: "thermal",
-      unit: "°C",
-      label: "Thermal",
-      models: [
-        { key: "thermal-sikidang", label: "Kawah Sikidang", url: "/3d/Sikidang_3d.glb", show_base_model: false, scale: 30, hotspots: [] },
-      ],
-    },
+    { key: "thermal", unit: "°C", label: "Thermal", models: [{ key: "thermal-sikidang", label: "Kawah Sikidang", url: "/3d/Sikidang_3d.glb", show_base_model: false, scale: 30, hotspots: [] }] },
   ],
 };
