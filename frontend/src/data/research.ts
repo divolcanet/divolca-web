@@ -99,8 +99,7 @@ const researchData = {
       photo: fadlu,
     },
   ],
-  bibtex:
-    "@misc{zhou2026danceopdonpolicygenerativefield,\n      title={DanceOPD: On-Policy Generative Field Distillation}, \n      author={Wei Zhou and Xiongwei Zhu and Zelin Xu and Bo Dong and Lixue Gong and Yongyuan Liang and Meng Chu and Leigang Qu and Lingdong Kong and Wei Liu and Tat-Seng Chua},\n      year={2026},\n      eprint={2606.27377},\n      archivePrefix={arXiv},\n      primaryClass={cs.CV},\n      url={https://arxiv.org/abs/2606.27377},\n}",
+  bibtex:"@unpublished{zakly2026preliminary,\n  author    = {Zakly, H. I. and Hasib, M. and Susilo, A. and Juwono, A. M. and Rohman, A. N. and Sarianna, F. N. and Matondang, F. and Suryanata, P. B. and Pratama, A. and Praja, N. K. and Nurfiani, D. and Zulaikah, S.},\n  title     = {Preliminary result of a regional hydrothermal alteration analysis in the Dieng Volcanic Area using satellite magnetic anomaly data},\n  journal   = {IOP Conference Series: Earth and Environmental Science},\n  year      = {2026},\n  note      = {Manuscript under consideration for publication}\n}",
 };
 
 export default researchData;
