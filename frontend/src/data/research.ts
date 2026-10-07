@@ -99,7 +99,20 @@ const researchData = {
       photo: fadlu,
     },
   ],
-  bibtex:"@unpublished{zakly2026preliminary,\n  author    = {Zakly, H. I. and Hasib, M. and Susilo, A. and Juwono, A. M. and Rohman, A. N. and Sarianna, F. N. and Matondang, F. and Suryanata, P. B. and Pratama, A. and Praja, N. K. and Nurfiani, D. and Zulaikah, S.},\n  title     = {Preliminary result of a regional hydrothermal alteration analysis in the Dieng Volcanic Area using satellite magnetic anomaly data},\n  journal   = {IOP Conference Series: Earth and Environmental Science},\n  year      = {2026},\n  note      = {Manuscript under consideration for publication}\n}",
+  bibtex: [
+    {
+      text: "@article{Zakly2026,\n  author    = {Zakly, Hanif 'Izzuddin and Hasib, Mohammad and Susilo, Adi and Juwono, Alamsyah M. and Rohman, Arif Nur and Sarianna, Faradilla Nur and Matondang, Fathia and Suryanata, Putu Billy and Pratama, Aditya and Praja, Nia Kurnia and Nurfiani, Dini and Zulaikah, Siti},\n  title     = {Preliminary result of a regional hydrothermal alteration analysis in the Dieng Volcanic Area using satellite magnetic anomaly data},\n  journal   = {IOP Conference Series: Earth and Environmental Science},\n  year      = {2026},\n  note      = {Manuscript under consideration for publication}\n}",
+      url: "#",
+    },
+    {
+      text: "@article{Rohman2026,\n  author    = {Rohman, Arif Nur and Hasib, Mohamad and Maryanto, Sukir and Zakly, Hanif 'Izzuddin and Sarianna, Faradilla Nur and Matondang, Fathia and Suryanata, Putu Billy and Pratama, Aditya and Nurfiani, Dini and Martha, Agustya Adi and Sutejo, Bayu and Pangetu, Fernanda Daiva},\n  title     = {Multi-scale subsurface modeling of volcanic structures using integrated magnetic, gravity, and seismic in the southern sector of the Dieng Volcanic Complex, Indonesia},\n  year      = {2026},\n  note      = {Manuscript in preparation}\n}",
+      url: "#",
+    },
+    {
+      text: "@misc{Hasib2026,\n  author       = {Hasib, M. and Hidayat, S. and Hariadi, A. D. and Pratama, A. and Zakly, H. I. and Maryanto, S. and Aufaristama, M. and Rohman, A. N. and Putra, A. S. and Rijal, F. and Daiva, S. A.},\n  title        = {DIVOLCA.NET V.1: Platform Informasi Geospasial Kompleks Vulkanik Dieng},\n  howpublished = {Computer software},\n  publisher    = {Direktorat Jenderal Kekayaan Intelektual, Kementerian Hukum Republik Indonesia},\n  year         = {2026},\n  note         = {Copyright registration No. 001408710}\n}",
+      url: "#",
+    },
+  ],
 };
 
 export default researchData;

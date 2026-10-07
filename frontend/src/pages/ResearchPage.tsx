@@ -1,10 +1,8 @@
-import { ArrowRight, MountainSnow } from "lucide-react";
+import { MountainSnow } from "lucide-react";
 import researchData from "../data/research";
 import Container from "../components/ui/container";
 import bgImage from "../assets/images/landing-cover.jpeg";
 import { Reveal } from "../components/ui/reveal";
-import { cn } from "../lib/utils";
-import { buttonVariants } from "../components/ui/button";
 import Citation from "../components/Citation";
 import { useLanguage } from "../data/translations/LanguageContext";
 import { t } from "../data/translations";
@@ -56,11 +54,6 @@ export default function ResearchPage() {
           <h1 className="font-fraunces font-bold text-title text-4xl text-center">{t.research.publicationsTitle[lang]}</h1>
 
           <p className=" leading-relaxed text-center">{t.research.publicationsDesc[lang]}</p>
-
-          <a className={cn(buttonVariants(), " w-fit")}>
-            {t.research.accessPaper[lang]}
-            <ArrowRight className="w-5 h-5" />
-          </a>
         </Reveal>
       </Container>
 
