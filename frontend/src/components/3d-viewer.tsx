@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode, Suspense } from "react";
-import { useFrame, type ThreeEvent } from "@react-three/fiber";
+import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { useGLTF, Html, Center } from "@react-three/drei";
 import { type GLTF } from "three-stdlib";
 import * as THREE from "three";
@@ -154,25 +154,68 @@ export function Hotspot({ position, title, description, markerId, activeMarker, 
   );
 }
 
+// ponytail: shared mutable ref for the compass overlay (one viewer instance per route)
+const compassRose: { current: HTMLDivElement | null } = { current: null };
+
+function CompassRotator() {
+  const controls = useThree((s) => s.controls) as unknown as { getAzimuthalAngle?: () => number } | null;
+  useFrame(() => {
+    if (controls?.getAzimuthalAngle && compassRose.current) {
+      compassRose.current.style.transform = `rotate(${-THREE.MathUtils.radToDeg(controls.getAzimuthalAngle())}deg)`;
+    }
+  });
+  return null;
+}
+
+function CompassRose() {
+  return (
+    <div className="pointer-events-none absolute right-4 top-1/2 z-10 -translate-y-1/2">
+      <div ref={compassRose} className="rounded-full bg-card/80 p-2 shadow-lg backdrop-blur-sm">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" className="fill-elevated stroke-line" strokeWidth="2" />
+          <polygon points="32,45 37,32 27,32" className="fill-dim" />
+          <polygon points="32,19 37,32 27,32" fill="#ef4444" />
+          <text x="32" y="15" textAnchor="middle" className="fill-destructive" fontSize="10" fontWeight="bold" fontFamily="monospace">
+            U
+          </text>
+          <text x="57" y="35.5" textAnchor="middle" className="fill-dim" fontSize="10" fontFamily="monospace">
+            T
+          </text>
+          <text x="32" y="57" textAnchor="middle" className="fill-dim" fontSize="10" fontFamily="monospace">
+            S
+          </text>
+          <text x="7" y="35.5" textAnchor="middle" className="fill-dim" fontSize="10" fontFamily="monospace">
+            B
+          </text>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 export function Viewer3D({ autorotate = true, children }: { autorotate?: boolean; children?: ReactNode }) {
   return (
-    <Canvas camera={{ position: [20, 10, 12], fov: 45, near: 0.1, far: 5000 }} shadows gl={{ antialias: true, toneMapping: 3, toneMappingExposure: 1.5 }} style={{ background: "#122a25" }}>
-      <fog attach="fog" args={["#091413", 40, 70]} />
-      <hemisphereLight args={["#87ceeb", "#3a3a3a", 0.8]} />
-      <directionalLight position={[10, 30, 10]} intensity={1.8} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />
-      <directionalLight position={[-10, -5, -10]} intensity={0.5} />
-      <ambientLight intensity={0.5} />
+    <div className="relative h-full w-full">
+      <Canvas camera={{ position: [20, 10, 12], fov: 45, near: 0.1, far: 5000 }} shadows gl={{ antialias: true, toneMapping: 3, toneMappingExposure: 1.5 }} style={{ background: "#122a25" }}>
+        <fog attach="fog" args={["#091413", 40, 70]} />
+        <hemisphereLight args={["#87ceeb", "#3a3a3a", 0.8]} />
+        <directionalLight position={[10, 30, 10]} intensity={1.8} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />
+        <directionalLight position={[-10, -5, -10]} intensity={0.5} />
+        <ambientLight intensity={0.5} />
 
-      <ProgressTracker />
+        <ProgressTracker />
+        <CompassRotator />
 
-      <Suspense fallback={null}>{children}</Suspense>
+        <Suspense fallback={null}>{children}</Suspense>
 
-      <OrbitControls makeDefault autoRotate={autorotate} rotateSpeed={0.1} autoRotateSpeed={0.8} minDistance={5} maxDistance={40} />
+        <OrbitControls makeDefault autoRotate={autorotate} rotateSpeed={0.1} autoRotateSpeed={0.8} minDistance={5} maxDistance={40} />
 
-      <EffectComposer>
-        <Bloom intensity={0.2} luminanceThreshold={0.7} luminanceSmoothing={0} />
-        <ToneMapping mode={3} exposure={1.0} />
-      </EffectComposer>
-    </Canvas>
+        <EffectComposer>
+          <Bloom intensity={0.2} luminanceThreshold={0.7} luminanceSmoothing={0} />
+          <ToneMapping mode={3} exposure={1.0} />
+        </EffectComposer>
+      </Canvas>
+      <CompassRose />
+    </div>
   );
 }

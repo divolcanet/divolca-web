@@ -1,7 +1,7 @@
 import { useState, Suspense } from "react";
 import { Hotspot, MapModel, Viewer3D } from "./3d-viewer";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
-import { BaseHotspots, spatialDieng } from "../data/spatial";
+import { spatialDieng } from "../data/spatial";
 import { Link } from "react-router-dom";
 import Legend from "./Legend";
 import icon from "../assets/icons/icon-dark.svg";
