@@ -1,5 +1,3 @@
-import { cn } from "../lib/utils";
-
 interface LegendProps {
   min?: number;
   max?: number;
@@ -16,7 +14,7 @@ export function Legend({ min, max, unit = "satuan", title, steps = DEFAULT_STEPS
   const displayMax = max ?? steps[steps.length - 1];
 
   return (
-    <div className={cn("bg-card/90 backdrop-blur-sm p-4 rounded-xl flex flex-col gap-3 w-2/3 md:w-120 text-sm text-body border border-line", className)}>
+    <div className={className}>
       <h3 className="font-bold font-fraunces">Legenda</h3>
       {title && <p>{title}</p>}
       <div className="flex items-start gap-2">

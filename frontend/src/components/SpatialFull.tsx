@@ -1,5 +1,5 @@
 import { useState, Suspense } from "react";
-import { Hotspot, MapModel, Viewer3D } from "./3d-viewer";
+import { Hotspot, MapModel, ScaleBar, Viewer3D } from "./3d-viewer";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { spatialDieng } from "../data/spatial";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ import iconInitial from "../assets/icons/icon-intial.svg";
 import SpatialModelMenu from "./SpatialModelMenu";
 import { ModelLoader } from "./ModelLoader";
 import { Switch } from "./ui/switch";
+import { cn } from "../lib/utils";
+import { SCALE } from "../lib/3d-const";
 
 export const SpatialFull = () => {
   const [activeMarker, setActiveMarker] = useState<number | null>(null);
@@ -26,7 +28,7 @@ export const SpatialFull = () => {
     <div className=" relative font-mono overflow-hidden">
       <div className=" w-full h-svh relative">
         <Suspense fallback={null}>
-          <Viewer3D autorotate={autorotate}>
+          <Viewer3D autorotate={autorotate} metersPerUnit={(selectedModel?.ground_scale ?? 1 / SCALE) / (selectedModel?.scale ?? 1)}>
             {showBase && <MapModel url={spatialDieng.mountainUrl} />}
 
             {selectedModel && selectedModel.url && (
@@ -95,8 +97,11 @@ export const SpatialFull = () => {
         )}
       </div>
 
-      {/* Legend */}
-      <Legend className="absolute bottom-4 left-4" title={selectedCategory && `Anomali ${selectedCategory.label}`} unit={selectedCategory?.unit} />
+      {/* Scale and Legend */}
+      <div className={cn("absolute bottom-4 left-4", "bg-card/90 backdrop-blur-sm p-4 rounded-xl flex flex-col gap-3 w-2/3 md:w-120 text-sm text-body border border-line")}>
+        <ScaleBar />
+        <Legend className={selectedModel ? "block" : "hidden"} title={selectedCategory && `Anomali ${selectedCategory.label}`} unit={selectedCategory?.unit} />
+      </div>
     </div>
   );
 };

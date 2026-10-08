@@ -66,6 +66,11 @@ export const spatialDieng: MountainSpatial = {
         { key: "gravity_regional", label: "Gravity Regional", hotspots: [] },
       ],
     },
-    { key: "thermal", unit: "°C", label: "Thermal", models: [{ key: "thermal-sikidang", label: "Kawah Sikidang", url: "/3d/Sikidang_3d.glb", show_base_model: false, scale: 30, hotspots: [] }] },
+    {
+      key: "thermal",
+      unit: "°C",
+      label: "Thermal",
+      models: [{ key: "thermal-sikidang", label: "Kawah Sikidang", url: "/3d/Sikidang_3d.glb", show_base_model: false, scale: 30, ground_scale: 1 / 0.00035, hotspots: [] }],
+    },
   ],
 };

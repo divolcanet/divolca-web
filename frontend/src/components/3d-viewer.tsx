@@ -9,6 +9,7 @@ import { EffectComposer, Bloom, ToneMapping } from "@react-three/postprocessing"
 import { X } from "lucide-react";
 import { ProgressTracker } from "./ModelLoader";
 import MapPin from "./3d/map-pin";
+import { SCALE } from "../lib/3d-const";
 
 type GLTFResult = GLTF & { nodes: { [key: string]: THREE.Object3D }; materials: { [key: string]: THREE.Material } };
 
@@ -193,7 +194,55 @@ function CompassRose() {
   );
 }
 
-export function Viewer3D({ autorotate = true, children }: { autorotate?: boolean; children?: ReactNode }) {
+// ponytail: shared mutable refs for HUD overlays (one viewer instance per route)
+const scaleBar: { fill: HTMLDivElement | null; label: HTMLSpanElement | null } = { fill: null, label: null };
+
+const NICE_DISTANCES = [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000];
+const MAX_BAR_PX = 140;
+
+function ScaleBarUpdater({ metersPerUnit }: { metersPerUnit: number }) {
+  const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
+  const size = useThree((s) => s.size);
+  useFrame(() => {
+    if (!scaleBar.fill || !scaleBar.label || !camera.fov || metersPerUnit <= 0) return;
+    const dist = camera.position.length(); // ponytail: OrbitControls target is scene origin
+    if (dist <= 0) return;
+    // px per meter at the origin depth (tangential scale, direction-independent)
+    const pxPerMeter = (size.height * 0.5) / (Math.tan((camera.fov * Math.PI) / 360) * dist) / metersPerUnit;
+    let meters = NICE_DISTANCES[0];
+    for (const d of NICE_DISTANCES) {
+      if (d * pxPerMeter <= MAX_BAR_PX) meters = d;
+      else break;
+    }
+    scaleBar.fill.style.width = `${meters * pxPerMeter}px`;
+    scaleBar.label.textContent = meters >= 1000 ? `${meters / 1000} km` : `${meters} m`;
+  });
+  return null;
+}
+
+export function ScaleBar() {
+  return (
+    <>
+      <h3 className="font-bold font-fraunces">Skala</h3>
+      <div className="flex items-center gap-2 text-xs text-body">
+        <div
+          ref={(el) => {
+            scaleBar.fill = el;
+          }}
+          className="h-2 border-x-2 border-b-2 border-body"
+        />
+        <span
+          ref={(el) => {
+            scaleBar.label = el;
+          }}
+          className="font-bold"
+        />
+      </div>
+    </>
+  );
+}
+
+export function Viewer3D({ autorotate = true, metersPerUnit = 1 / SCALE, children }: { autorotate?: boolean; metersPerUnit?: number; children?: ReactNode }) {
   return (
     <div className="relative h-full w-full">
       <Canvas camera={{ position: [20, 10, 12], fov: 45, near: 0.1, far: 5000 }} shadows gl={{ antialias: true, toneMapping: 3, toneMappingExposure: 1.5 }} style={{ background: "#122a25" }}>
@@ -205,6 +254,7 @@ export function Viewer3D({ autorotate = true, children }: { autorotate?: boolean
 
         <ProgressTracker />
         <CompassRotator />
+        <ScaleBarUpdater metersPerUnit={metersPerUnit} />
 
         <Suspense fallback={null}>{children}</Suspense>
 
