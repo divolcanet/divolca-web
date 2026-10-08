@@ -1,8 +1,10 @@
+import { useState } from "react";
 import sileri from "../assets/dieng/kawah-sileri.jpg";
 import aboutDieng from "../data/about-dieng";
 import { Reveal } from "../components/ui/reveal";
 import Tag from "../components/ui/tag";
 import Container from "../components/ui/container";
+import Lightbox from "../components/Lightbox";
 import { useLanguage } from "../data/translations/LanguageContext";
 import { t } from "../data/translations";
 
@@ -10,6 +12,11 @@ const destinations = aboutDieng.destinations;
 
 export default function AboutDiengPage() {
   const { lang } = useLanguage();
+  const [activeMap, setActiveMap] = useState<{ src: string; caption: string } | null>(null);
+  const geologyMaps = [
+    { src: "/geology/peta_geologi_dieng.jpeg", caption: t.aboutDieng.geologyMapDieng[lang] },
+    { src: "/geology/peta_geologi_regional.jpeg", caption: t.aboutDieng.geologyMapRegional[lang] },
+  ];
   return (
     <div className=" bg-page">
       {/* Hero */}
@@ -57,6 +64,20 @@ export default function AboutDiengPage() {
           <div className="space-y-4 text-volcanic-300 leading-relaxed">
             <p>{t.aboutDieng.geology1[lang]}</p>
             <p>{t.aboutDieng.geology2[lang]}</p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4 mt-6">
+            {geologyMaps.map((map) => (
+              <button
+                key={map.src}
+                type="button"
+                onClick={() => setActiveMap(map)}
+                className="group rounded-xl border border-muted/20 overflow-hidden bg-card hover:-translate-y-1 hover:shadow-lg hover:shadow-accent-75/30 transition-all duration-300">
+                <div className="aspect-video overflow-hidden">
+                  <img src={map.src} alt={map.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <p className="p-3 text-sm text-volcanic-400 text-center">{map.caption}</p>
+              </button>
+            ))}
           </div>
         </Reveal>
       </Container>
@@ -137,6 +158,10 @@ export default function AboutDiengPage() {
           </ul>
         </details>
       </Container>
+
+      {activeMap && (
+        <Lightbox src={activeMap.src} caption={activeMap.caption} onClose={() => setActiveMap(null)} closeLabel={t.gallery.close[lang]} />
+      )}
     </div>
   );
 }

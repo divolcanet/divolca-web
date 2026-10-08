@@ -117,6 +117,8 @@ export const t = {
       en: "It is located about 26 km from Wonosobo, 116 km from Semarang, and 130 km from Yogyakarta — accessible via the Wonosobo–Dieng or Banjarnegara–Batur–Dieng routes. The area is flanked by Mount Sindoro and Mount Sumbing, which also influence its regional morphology.",
     },
     geologyTitle: { id: "Geologi", en: "Geology" },
+    geologyMapDieng: { id: "Peta Geologi Dieng", en: "Dieng Geological Map" },
+    geologyMapRegional: { id: "Peta Geologi Regional", en: "Regional Geological Map" },
     geology1: {
       id: "Secara geologi, Kompleks Vulkanik Dieng merupakan kaldera vulkanik besar yang terbentuk akibat aktivitas vulkanik Kuarter. Gunung Prau diduga merupakan gunung api purba yang mengalami keruntuhan membentuk kaldera besar pada masa Pleistosen. Setelah pembentukan kaldera, aktivitas vulkanik selanjutnya menghasilkan sejumlah kerucut dan kawah baru yang tersebar di dalam cekungan Dieng.",
       en: "Geologically, the Dieng Volcanic Complex is a large volcanic caldera formed by Quaternary volcanic activity. Mount Prau is believed to be an ancient volcano that collapsed to form a large caldera during the Pleistocene. After caldera formation, subsequent volcanic activity produced numerous cones and new craters scattered within the Dieng basin.",
