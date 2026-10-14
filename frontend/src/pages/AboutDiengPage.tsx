@@ -13,10 +13,15 @@ const destinations = aboutDieng.destinations;
 export default function AboutDiengPage() {
   const { lang } = useLanguage();
   const [activeMap, setActiveMap] = useState<{ src: string; caption: string } | null>(null);
+  
   const geologyMaps = [
     { src: "/geology/peta_geologi_dieng.jpeg", caption: t.aboutDieng.geologyMapDieng[lang] },
     { src: "/geology/peta_geologi_regional.jpeg", caption: t.aboutDieng.geologyMapRegional[lang] },
   ];
+
+  // Data Peta KRB
+  const krbMap = { src: "/geology/KRBG_Dieng.jpeg", caption: "Peta Kawasan Rawan Bencana Gunungapi Dieng" };
+
   return (
     <div className=" bg-page">
       {/* Hero */}
@@ -58,6 +63,7 @@ export default function AboutDiengPage() {
         </Reveal>
       </Container>
 
+      {/* Bagian Geologi (Kode Asli) */}
       <Container id="geologi">
         <Reveal>
           <h2 className="font-fraunces text-2xl font-semibold text-title mb-4">{t.aboutDieng.geologyTitle[lang]}</h2>
@@ -78,6 +84,42 @@ export default function AboutDiengPage() {
                 <p className="p-3 text-sm text-volcanic-400 text-center">{map.caption}</p>
               </button>
             ))}
+          </div>
+        </Reveal>
+      </Container>
+
+      {/* 
+        BAGIAN BARU: KAWASAN RAWAN BENCANA DIENG 
+        Diletakkan di antara Geologi dan Sejarah Erupsi
+      */}
+      <Container id="kawasan-rawan-bencana" className="pt-0">
+        <Reveal>
+          <h2 className="font-fraunces text-2xl font-semibold text-title mb-4">Kawasan Rawan Bencana Dieng</h2>
+          <div className="space-y-4 text-volcanic-300 leading-relaxed">
+            <p>
+              Pemetaan Kawasan Rawan Bencana (KRB) di Dataran Tinggi Dieng sangat penting mengingat kompleks vulkanik ini berpotensi menimbulkan letusan freatik dan pelepasan gas beracun secara tiba-tiba. 
+            </p>
+            <p>
+              Zona bahaya utama sering kali terpusat pada kawah-kawah aktif, sehingga pemahaman mengenai zona radius aman yang ditetapkan oleh PVMBG merupakan bagian dari upaya mitigasi untuk melindungi keselamatan warga lokal dan pengunjung pariwisata kawasan.
+            </p>
+          </div>
+          
+          <div className="mt-6">
+            <button
+              type="button"
+              onClick={() => setActiveMap(krbMap)}
+              className="group w-full rounded-xl border border-muted/20 overflow-hidden bg-card hover:-translate-y-1 hover:shadow-lg hover:shadow-accent-75/30 transition-all duration-300"
+            >
+              <div className="aspect-[21/9] md:aspect-video overflow-hidden bg-gray-100">
+                {/* Menggunakan nama file KRBG_Dieng.jpeg sesuai permintaan */}
+                <img 
+                  src={krbMap.src} 
+                  alt={krbMap.caption} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+              </div>
+              <p className="p-3 text-sm text-volcanic-400 text-center">{krbMap.caption} (Sumber: PVMBG)</p>
+            </button>
           </div>
         </Reveal>
       </Container>
