@@ -77,7 +77,7 @@ export const t = {
       id: "Penelitian geofisika di Pegunungan Dieng menghasilkan data magnetik dan gravitasi bawah permukaan yang memberikan wawasan penting tentang struktur vulkanik dan potensi mitigasi bencana di kawasan tersebut.",
       en: "Geophysical research in the Dieng Mountains produces subsurface magnetic and gravity data that provide important insights into volcanic structure and disaster mitigation potential in the area.",
     },
-    accessPaper: { id: "Akses Paper Penelitian", en: "Access Research Paper" },
+    accessPaper: { id: "Paper", en: "Paper" },
     acknowledgementTitle: { id: "Acknowledgement", en: "Acknowledgement" },
     acknowledgementDesc: {
       id: "Proyek riset ini sepenuhnya didanai oleh RIM Ekspedisi Geologi Darat dan Pumah Program Purwarupa",
