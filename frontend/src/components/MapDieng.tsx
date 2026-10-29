@@ -1,12 +1,26 @@
 import { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import type { LatLngBoundsExpression } from "leaflet";
-// Tambahkan kata "type" sebelum MapPoint
+import L from "leaflet";
 import { mapPoints, type MapPoint } from "../data/map-dieng"; 
 import { cn } from "../lib/utils";
 import { buttonVariants } from "./ui/button";
 import { Modal } from "./ui/Modal";
 import "leaflet/dist/leaflet.css";
+
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+const defaultIcon = L.icon({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
 
 const CENTER: [number, number] = [-7.215, 109.9];
 const ZOOM = 14;
@@ -16,7 +30,6 @@ export function MapDieng({ className }: { className?: string }) {
 
   return (
     <>
-      {/* Peta Utama */}
       <div className={cn("w-full aspect-2/3 md:aspect-video rounded-xl overflow-hidden border border-primary-10 relative z-0", className)}>
         <MapContainer
           center={CENTER}
@@ -30,13 +43,12 @@ export function MapDieng({ className }: { className?: string }) {
           <TileLayer attribution='&copy; OpenStreetMap contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           
           {mapPoints.map((point) => (
-            <Marker key={point.slug} position={point.position}>
+            <Marker key={point.slug} position={point.position} icon={defaultIcon}>
               <Popup>
                 <div className="font-inter text-sm min-w-45">
                   <h3 className="font-fraunces font-bold text-base mb-1">{point.title}</h3>
                   <p className=" text-sm mb-3 line-clamp-3">{point.description}</p>
                   
-                  {/* Error size "sm" diperbaiki menjadi "default" */}
                   <button 
                     className={buttonVariants({ variant: "default", size: "default", className: "w-full mt-2" })} 
                     onClick={() => setSelectedPoint(point)}
@@ -50,7 +62,6 @@ export function MapDieng({ className }: { className?: string }) {
         </MapContainer>
       </div>
 
-      {/* Modal Pop-up untuk Detail Selengkapnya */}
       <Modal 
         isOpen={selectedPoint !== null} 
         onClose={() => setSelectedPoint(null)} 
