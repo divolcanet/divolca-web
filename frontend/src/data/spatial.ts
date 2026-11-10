@@ -210,15 +210,6 @@ export const spatialDieng: MountainSpatial = {
           url: "/3d/gravity_residual_gauss.glb",
           hotspots: GravityHotspots,
         },
-        {
-          key: "gravity_residual_upward",
-          label: "Gravity Residual",
-          show_base_model: true,
-          height: 0.2,
-          dynamic_transparency: true,
-          url: "/3d/gravity_residual_upward.glb",
-          hotspots: GravityHotspots,
-        },
       ],
     },
     {

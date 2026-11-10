@@ -82,7 +82,7 @@ export function MapDieng({ className }: { className?: string }) {
                 {selectedPoint.details.nilaiTerkemuka && (
                   <div>
                     <h4 className="font-bold text-primary-75 mb-1 font-fraunces text-lg">Nilai Terkemuka</h4>
-                    <p>{selectedPoint.details.nilaiTerkemuka}</p>
+                    <p className="whitespace-pre-line">{selectedPoint.details.nilaiTerkemuka}</p>
                   </div>
                 )}
                 {selectedPoint.details.banyakMakna && (
