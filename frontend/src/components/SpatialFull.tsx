@@ -100,7 +100,7 @@ export const SpatialFull = () => {
       {/* Scale and Legend */}
       <div className={cn("absolute bottom-4 left-4", "bg-card/90 backdrop-blur-sm p-4 rounded-xl flex flex-col gap-3 w-2/3 md:w-120 text-sm text-body border border-line")}>
         <ScaleBar />
-        <Legend className={selectedModel ? "block" : "hidden"} title={selectedCategory && `Anomali ${selectedCategory.label}`} unit={selectedCategory?.unit} />
+        <Legend className={selectedModel ? "block" : "hidden"} category={selectedCategory?.key} title={selectedCategory && `Anomali ${selectedCategory.label}`} unit={selectedCategory?.unit} />
       </div>
     </div>
   );
