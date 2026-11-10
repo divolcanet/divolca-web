@@ -15,7 +15,9 @@ export default function GlossaryPage() {
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
-      const el = document.getElementById(hash.replace("#", ""));
+      const slug = hash.replace("#", "");
+      setActiveSlug(slug);
+      const el = document.getElementById(slug);
       el?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, []);
@@ -23,11 +25,13 @@ export default function GlossaryPage() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSlug(entry.target.id);
-          }
-        }
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length === 0) return;
+        // Pilih section yang paling atas di viewport agar highlight fokus
+        const topmost = visible.reduce((acc, e) =>
+          e.boundingClientRect.top < acc.boundingClientRect.top ? e : acc,
+        );
+        setActiveSlug(topmost.target.id);
       },
       { rootMargin: "-120px 0px -60% 0px" },
     );
@@ -70,18 +74,21 @@ export default function GlossaryPage() {
 
           <Reveal delay={300}>
             <div className="flex-1 min-w-0 divide-y divide-muted">
-              {glossaryData.map((entry) => (
-                <div key={entry.slug} id={entry.slug} className="scroll-mt-16 py-8 first:pt-0 last:pb-0">
-                  <h2 className=" font-fraunces text-2xl font-semibold text-primary-75 mb-3">{entry.title[lang]}</h2>
-                  <p>{entry.content[lang]}</p>
-                  {entry.externalLink && (
-                    <a href={entry.externalLink} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "link" }), "font-normal p-0")}>
-                      <ExternalLink />
-                      {t.glossary.readMore[lang]}
-                    </a>
-                  )}
-                </div>
-              ))}
+              {glossaryData.map((entry) => {
+                const isActive = activeSlug === entry.slug;
+                return (
+                  <div key={entry.slug} id={entry.slug} className={cn("scroll-mt-16 py-8 first:pt-0 last:pb-0 transition-colors", isActive && "bg-elevated rounded-xl px-4 -mx-4")}>
+                    <h2 className={cn("font-fraunces text-2xl font-semibold mb-3 transition-colors", isActive ? "text-primary-10 text-3xl" : "text-primary-75")}>{entry.title[lang]}</h2>
+                    <p>{entry.content[lang]}</p>
+                    {entry.externalLink && (
+                      <a href={entry.externalLink} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "link" }), "font-normal p-0")}>
+                        <ExternalLink />
+                        {t.glossary.readMore[lang]}
+                      </a>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
         </div>

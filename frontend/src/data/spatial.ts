@@ -133,6 +133,7 @@ export const spatialDieng: MountainSpatial = {
           label: "Titik Pengukuran",
           url: "/3d/magnetik_stations.glb",
           hotspots: BaseHotspots,
+          glossarySlug: "pengukuran-magnetik",
         },
         {
           key: "tmi",
@@ -142,6 +143,7 @@ export const spatialDieng: MountainSpatial = {
           dynamic_transparency: true,
           url: "/3d/magnetik_tmi.glb",
           hotspots: MagnetikHotspots,
+          glossarySlug: "tmi",
         },
         {
           key: "magnetik_regional",
@@ -151,6 +153,7 @@ export const spatialDieng: MountainSpatial = {
           dynamic_transparency: true,
           url: "/3d/magnetik_regional_gauss.glb",
           hotspots: MagnetikHotspots,
+          glossarySlug: "magnetik-regional",
         },
         {
           key: "magnetik_residual",
@@ -160,6 +163,7 @@ export const spatialDieng: MountainSpatial = {
           dynamic_transparency: true,
           url: "/3d/magnetik_residual_gauss.glb",
           hotspots: MagnetikHotspots,
+          glossarySlug: "magnetik-residual",
         },
         {
           key: "magnetik_rtp",
@@ -169,6 +173,7 @@ export const spatialDieng: MountainSpatial = {
           dynamic_transparency: true,
           url: "/3d/magnetik_rtp.glb",
           hotspots: MagnetikHotspots,
+          glossarySlug: "magnetik-rtp",
         },
       ],
     },
@@ -182,6 +187,7 @@ export const spatialDieng: MountainSpatial = {
           label: "Titik Pengukuran",
           url: "/3d/gravity_stations.glb",
           hotspots: BaseHotspots,
+          glossarySlug: "pengukuran-gravitasi",
         },
         {
           key: "gravity_cba",
@@ -191,6 +197,7 @@ export const spatialDieng: MountainSpatial = {
           dynamic_transparency: true,
           url: "/3d/gravity_cba.glb",
           hotspots: GravityHotspots,
+          glossarySlug: "cba",
         },
         {
           key: "gravity_regional",
@@ -200,6 +207,7 @@ export const spatialDieng: MountainSpatial = {
           dynamic_transparency: true,
           url: "/3d/gravity_regional_gauss.glb",
           hotspots: GravityHotspots,
+          glossarySlug: "gravitasi-regional",
         },
         {
           key: "gravity_residual",
@@ -209,6 +217,7 @@ export const spatialDieng: MountainSpatial = {
           dynamic_transparency: true,
           url: "/3d/gravity_residual_gauss.glb",
           hotspots: GravityHotspots,
+          glossarySlug: "gravitasi-residual",
         },
       ],
     },
